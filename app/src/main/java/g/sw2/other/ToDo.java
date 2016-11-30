@@ -15,5 +15,6 @@ public class ToDo {
 	//TODO 5 image in content
 	//TODO 6 actionbar button functionality and algorithms
 	//TODO 7 - sing in and save progress;
+	//todo add - ANR and crash reporting, analytics
 
 }
