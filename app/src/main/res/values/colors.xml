@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#31dff9</color>
+    <color name="colorPrimaryDark">#09cfe5</color> <!-- setStatusBarColor() -->
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="a">#31dff9</color>
+    <color name="colorLightSky">#75c1ff</color>
+    <color name="colorLightSky1">#d1f9ff</color>
+</resources>
+

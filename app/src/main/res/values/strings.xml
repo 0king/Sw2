@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Sw2</string>
+    <string name="title_activity_nav_drawer">NavDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <!-- -->
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_bookmarks">Bookmarks</string>
+    <string name="nav_activity">Daily Activity</string>
+    <string name="nav_method">Our methodology</string> <!-- our beliefs-->
+    <string name="nav_purpose">Purpose of the app</string>
+    <string name="nav_feedback">Submit feedback</string>
+    <string name="nav_up_features">Upcoming features</string>
+    <string name="nav_share">Share the app</string>
+    <string name="nav_rate">Rate the app</string>
+    <string name="nav_about_us">About Us</string>
+    <string name="nav_settings">Settings</string> <!-- notification settings -->
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Profile</item>
+        <item>Bookmarks</item>
+        <item>Activity</item>
+        <item>Purpose</item>
+        <item>Methodology</item>
+        <item>Feedback</item>
+        <item>Upcoming features</item>
+        <item>About Us</item>
+    </string-array>
+
+    <string name="activity_title_about_us">About Us</string>
+    <string name="activity_title_privacy_policy">Privacy Policy</string>
+    <string name="action_logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+
+</resources>

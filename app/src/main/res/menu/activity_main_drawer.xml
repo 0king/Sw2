@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- androidhive -->
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/ic_home_black_24dp"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@mipmap/ic_school_black_24dp"
+            android:title="@string/nav_profile" />
+        <item
+            android:id="@+id/nav_bookmarks"
+            android:icon="@mipmap/ic_bookmark_black_24dp"
+            android:title="@string/nav_bookmarks" />
+
+        <item
+            android:id="@+id/nav_activity"
+            android:icon="@mipmap/ic_lightbulb_outline_black_24dp"
+            android:title="@string/nav_activity" />
+
+        <item
+            android:id="@+id/nav_method"
+            android:icon="@mipmap/ic_new_releases_black_24dp"
+            android:title="@string/nav_method" />
+
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@mipmap/ic_email_black_24dp"
+            android:title="@string/nav_feedback" />
+    </group>
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_about_us"
+                android:title="@string/nav_about_us" />
+
+            <item
+                android:id="@+id/nav_share"
+                android:title="@string/nav_share" />
+
+            <item
+                android:id="@+id/nav_rate"
+                android:title="@string/nav_rate" />
+
+        </menu>
+    </item>
+
+</menu>
