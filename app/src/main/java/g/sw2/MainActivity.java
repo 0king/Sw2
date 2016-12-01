@@ -92,11 +92,6 @@ public class MainActivity extends AppCompatActivity
 
 		Crittercism.initialize(getApplicationContext(),"c2dfb4f16e2641c497e1b3927716d3df00555300");
 
-		/* Make sure the *Fabric.with()* line is after all other*3rd-party SDKs that set an *UncaughtExceptionHandler */
-		Fabric.with(this, new Crashlytics());
-
-		setContentView(R.layout.activity_main);
-
 		/* start - google analytics code */
 		// Obtain the shared Tracker instance.
 		AppController application = (AppController) getApplication();
@@ -106,6 +101,11 @@ public class MainActivity extends AppCompatActivity
 		gTracker.send(new HitBuilders.ScreenViewBuilder().build());
 		/* end screen_view_hit */
 		/* end - google analytics code */
+
+		/* Make sure the *Fabric.with()* line is after all other*3rd-party SDKs that set an *UncaughtExceptionHandler */
+		Fabric.with(this, new Crashlytics());
+
+		setContentView(R.layout.activity_main);
 
 
 		toolbar = (Toolbar) findViewById(R.id.toolbar); //toolbar.setLogo(R.mipmap.ic_launcher);

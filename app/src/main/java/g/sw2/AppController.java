@@ -11,7 +11,7 @@ import com.google.android.gms.analytics.Tracker;
 
 public class AppController extends Application {
 
-	/* following code for google analytics */
+	/* start code for google analytics */
 
 	private Tracker mTracker;
 
