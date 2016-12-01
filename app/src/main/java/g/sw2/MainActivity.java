@@ -27,6 +27,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.crashlytics.android.Crashlytics;
 import com.crittercism.app.Crittercism;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import g.sw2.other.CircleTransform;
 import g.sw2.other.UrlList;
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity
 	private boolean shouldLoadHomeFragOnBackPress = true;
 	private Handler mHandler;
 
+	/* google analytics */
+	private Tracker gTracker;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +96,16 @@ public class MainActivity extends AppCompatActivity
 		Fabric.with(this, new Crashlytics());
 
 		setContentView(R.layout.activity_main);
+
+		/* start - google analytics code */
+		// Obtain the shared Tracker instance.
+		AppController application = (AppController) getApplication();
+		gTracker = application.getDefaultTracker();
+		gTracker.setScreenName("MainActivity");
+		/* start screen_view_hit */
+		gTracker.send(new HitBuilders.ScreenViewBuilder().build());
+		/* end screen_view_hit */
+		/* end - google analytics code */
 
 
 		toolbar = (Toolbar) findViewById(R.id.toolbar); //toolbar.setLogo(R.mipmap.ic_launcher);
