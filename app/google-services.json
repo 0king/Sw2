@@ -1,12 +1,12 @@
 {
   "project_info": {
-    "project_number": "1092539307570",
-    "project_id": "firebase-gene"
+    "project_number": "684314544562",
+    "project_id": "firebase-epsilon"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1092539307570:android:a8897377bc1252f1",
+        "mobilesdk_app_id": "1:684314544562:android:a8897377bc1252f1",
         "android_client_info": {
           "package_name": "g.sw2"
         }
@@ -14,14 +14,14 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDMjydpG1_gkKk1MAQ4AzbQtfhvDBT5zto"
+          "current_key": "AIzaSyB6W9AdzpBVrXuuJBC_MvBFvjrYMIrbrPw"
         }
       ],
       "services": {
         "analytics_service": {
           "status": 2,
           "analytics_property": {
-            "tracking_id": "UA-80417930-1"
+            "tracking_id": "UA-80417930-2"
           }
         },
         "appinvite_service": {

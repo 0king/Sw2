@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,15 +28,27 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.crashlytics.android.Crashlytics;
 import com.crittercism.app.Crittercism;
+import com.github.anrwatchdog.ANRError;
+import com.github.anrwatchdog.ANRWatchDog;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import g.sw2.other.CircleTransform;
 import g.sw2.other.UrlList;
 import io.fabric.sdk.android.Fabric;
 
 
-
+/*
+* 1. Crashlytics/fabric
+* 2. Google Analytics
+* 3. Mixpanel
+* 4. Crittercism
+* 5. ANR watchdog
+* */
 public class MainActivity extends AppCompatActivity
 		implements FragmentProfile.OnFragmentInteractionListener, FragmentBookmarks.OnFragmentInteractionListener,FragmentRewards.OnFragmentInteractionListener,FragmentAllContent.OnFragmentInteractionListener
 {
@@ -75,6 +88,8 @@ public class MainActivity extends AppCompatActivity
 	/* google analytics */
 	private Tracker gTracker;
 
+	String mixpanelToken = "fc4e9c7385c84486e86a36beebbe01d2";
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +102,13 @@ public class MainActivity extends AppCompatActivity
 				                       .penaltyDeath()
 				                       .build());
 
+		new ANRWatchDog().setANRListener(new ANRWatchDog.ANRListener() {
+
+			@Override
+			public void onAppNotResponding(ANRError arg0) {
+				Crashlytics.getInstance().core.logException(arg0);
+			}
+		}).start();
 
 		super.onCreate(savedInstanceState);
 
@@ -107,6 +129,17 @@ public class MainActivity extends AppCompatActivity
 
 		setContentView(R.layout.activity_main);
 
+		/* start - code to track via Mixpanel */
+		MixpanelAPI mixpanel = MixpanelAPI.getInstance(this,mixpanelToken);
+		try {
+			JSONObject props = new JSONObject();
+			props.put("Gender", "Gowd");
+			props.put("Logged in", true);
+			mixpanel.track("MainActivity - onCreate called", props);
+		} catch (JSONException e) {
+			Log.e("MYAPP", "Unable to add properties to JSONObject", e);
+		}
+		/* end - code to track via Mixpanel */
 
 		toolbar = (Toolbar) findViewById(R.id.toolbar); //toolbar.setLogo(R.mipmap.ic_launcher);
 		toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
