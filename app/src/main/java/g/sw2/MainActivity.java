@@ -36,6 +36,7 @@ import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
+import net.hockeyapp.android.metrics.MetricsManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,6 +52,7 @@ import io.fabric.sdk.android.Fabric;
 * 3. Mixpanel
 * 4. Crittercism
 * 5. ANR watchdog
+* 6. HockeyApp
 * */
 public class MainActivity extends AppCompatActivity
 		implements FragmentProfile.OnFragmentInteractionListener, FragmentBookmarks.OnFragmentInteractionListener,FragmentRewards.OnFragmentInteractionListener,FragmentAllContent.OnFragmentInteractionListener
@@ -105,6 +107,9 @@ public class MainActivity extends AppCompatActivity
 				                       .penaltyDeath()
 				                       .build());
 
+		/* Make sure the *Fabric.with()* line is after all other*3rd-party SDKs that set an *UncaughtExceptionHandler */
+		Fabric.with(this, new Crashlytics());
+
 		new ANRWatchDog().setANRListener(new ANRWatchDog.ANRListener() {
 
 			@Override
@@ -127,8 +132,6 @@ public class MainActivity extends AppCompatActivity
 		/* end screen_view_hit */
 		/* end - google analytics code */
 
-		/* Make sure the *Fabric.with()* line is after all other*3rd-party SDKs that set an *UncaughtExceptionHandler */
-		Fabric.with(this, new Crashlytics());
 
 		setContentView(R.layout.activity_main);
 
@@ -144,7 +147,9 @@ public class MainActivity extends AppCompatActivity
 		}
 		/* end - code to track via Mixpanel */
 
-		checkForHotkeyUpdates();
+		/* code for HockeyApp */
+		checkForHockeyAppUpdates();
+		MetricsManager.register(this, getApplication());//HockeyApp
 
 		toolbar = (Toolbar) findViewById(R.id.toolbar); //toolbar.setLogo(R.mipmap.ic_launcher);
 		toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
@@ -509,19 +514,19 @@ public class MainActivity extends AppCompatActivity
 		}
 	}
 
-	void checkForHotkeyUpdates(){
+	void checkForHockeyAppUpdates(){
 		// Remove this for store builds!
-		UpdateManager.register(this);//hotkeyapp code
+		UpdateManager.register(this);//HockeyApp code
 	}
 	@Override
 	public void onResume() {
 		super.onResume();
-		checkForCrashes();//hotkeyapp
+		checkForCrashes();//HockeyApp
 	}
 	@Override
 	public void onPause() {
 		super.onPause();
-		unregisterManagers();//hotkeyapp
+		unregisterManagers();//HockeyApp
 	}
 	@Override
 	public void onDestroy() {
@@ -529,10 +534,10 @@ public class MainActivity extends AppCompatActivity
 		unregisterManagers();
 	}
 	private void checkForCrashes() {
-		CrashManager.register(this);//hotkeyapp
+		CrashManager.register(this);//HockeyApp
 	}
 	private void unregisterManagers() {
-		UpdateManager.unregister();//hotkeyapp
+		UpdateManager.unregister();//HockeyApp
 	}
 
 }
