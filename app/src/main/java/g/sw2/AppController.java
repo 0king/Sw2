@@ -2,6 +2,7 @@ package g.sw2;
 
 import android.app.Application;
 
+import com.flurry.android.FlurryAgent;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
@@ -29,4 +30,14 @@ public class AppController extends Application {
 	}
 
 	/* end of code for google analytics */
+
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
+
+		new FlurryAgent.Builder()
+				.withLogEnabled(true)
+				.build(this,"8XRBMKMWCJBTWHKP3J9V");//.withListener(flurryListener)
+	}
 }

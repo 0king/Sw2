@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appsee.Appsee;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.crashlytics.android.Crashlytics;
@@ -53,6 +54,8 @@ import io.fabric.sdk.android.Fabric;
 * 4. Crittercism
 * 5. ANR watchdog
 * 6. HockeyApp
+* 7. AppSee
+* 8. Flurry
 * */
 public class MainActivity extends AppCompatActivity
 		implements FragmentProfile.OnFragmentInteractionListener, FragmentBookmarks.OnFragmentInteractionListener,FragmentRewards.OnFragmentInteractionListener,FragmentAllContent.OnFragmentInteractionListener
@@ -150,6 +153,8 @@ public class MainActivity extends AppCompatActivity
 		/* code for HockeyApp */
 		checkForHockeyAppUpdates();
 		MetricsManager.register(this, getApplication());//HockeyApp
+
+		Appsee.start("5d6183fb176f43968a3783eb064d7744");
 
 		toolbar = (Toolbar) findViewById(R.id.toolbar); //toolbar.setLogo(R.mipmap.ic_launcher);
 		toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
