@@ -54,13 +54,18 @@
         </activity>
         <activity
             android:name=".ActivityMethodology"
-            android:label="Our  Methodology">
+            android:label="Our Methodology">
         </activity>
         <activity android:name=".ActivityShareApp">
         </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="0b7ce8631edb7a072dbe7a0a98e0c5923a92f30c" />
+
+        <meta-data android:name="net.hockeyapp.android.appIdentifier"
+                   android:value="${HOCKEYAPP_APP_ID}" />
+
     </application>
 
 </manifest>

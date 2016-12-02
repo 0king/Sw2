@@ -25,6 +25,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        /* hotkeyapp analytics code */
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: "7497afb60ce94cd7b0ff068e21455fce"]
     }
     buildTypes {
         release {
@@ -61,6 +64,8 @@ dependencies {
 
 
     compile 'com.github.anrwatchdog:anrwatchdog:1.3.+'
+
+    compile 'net.hockeyapp.android:HockeySDK:4.1.1'
 
 }
 

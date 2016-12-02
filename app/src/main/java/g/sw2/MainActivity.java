@@ -34,6 +34,9 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -140,6 +143,8 @@ public class MainActivity extends AppCompatActivity
 			Log.e("MYAPP", "Unable to add properties to JSONObject", e);
 		}
 		/* end - code to track via Mixpanel */
+
+		checkForHotkeyUpdates();
 
 		toolbar = (Toolbar) findViewById(R.id.toolbar); //toolbar.setLogo(R.mipmap.ic_launcher);
 		toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
@@ -503,6 +508,33 @@ public class MainActivity extends AppCompatActivity
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.upskew.encode")));
 		}
 	}
+
+	void checkForHotkeyUpdates(){
+		// Remove this for store builds!
+		UpdateManager.register(this);//hotkeyapp code
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		checkForCrashes();//hotkeyapp
+	}
+	@Override
+	public void onPause() {
+		super.onPause();
+		unregisterManagers();//hotkeyapp
+	}
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		unregisterManagers();
+	}
+	private void checkForCrashes() {
+		CrashManager.register(this);//hotkeyapp
+	}
+	private void unregisterManagers() {
+		UpdateManager.unregister();//hotkeyapp
+	}
+
 }
 
 
