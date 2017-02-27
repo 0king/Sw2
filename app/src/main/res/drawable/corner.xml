@@ -10,16 +10,16 @@
     <!-- color = 68E8E7 sky-->
 
     <stroke
-        android:width="0.5dp"
+        android:width="1dp"
         android:color="#31dff9" >
     </stroke>
 
-    <padding
+<!--    <padding
         android:left="5dp"
         android:top="5dp"
         android:right="5dp"
         android:bottom="5dp"    >
-    </padding>
+    </padding>-->
 
     <corners
         android:radius="4dp"   >

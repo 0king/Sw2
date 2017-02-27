@@ -59,7 +59,7 @@ dependencies {
 
     compile 'com.crittercism:crittercism-android-agent:+'
 
-    compile "com.mixpanel.android:mixpanel-android:4.+"
+    compile "com.mixpanel.android:mixpanel-android:4.9.6"
     compile "com.google.android.gms:play-services:10.0.1"
 
 

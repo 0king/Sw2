@@ -7,6 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 
 /**
@@ -28,6 +32,8 @@ public class FragmentBookmarks extends Fragment {
 	private String mParam2;
 
 	private OnFragmentInteractionListener mListener;
+
+	FragmentHome fragmentHome;
 
 	public FragmentBookmarks() {
 		// Required empty public constructor
@@ -54,17 +60,25 @@ public class FragmentBookmarks extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if (getArguments() != null) {
-			mParam1 = getArguments().getString(ARG_PARAM1);
-			mParam2 = getArguments().getString(ARG_PARAM2);
-		}
+
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_bookmarks, container, false);
+		View view = inflater.inflate(R.layout.fragment_bookmarks, container, false);
+
+		ImageView imageView = (ImageView) view.findViewById(R.id.book_image);
+		TextView textView = (TextView) view.findViewById(R.id.text_view);
+
+		/*fragmentHome = new FragmentHome();
+		String cardtext = fragmentHome.getTopCardDetails().getText();
+		textView.setText(cardtext);*/
+
+		//imageView.setImageURI(Uri.parse("http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg"));
+		Glide.with(getContext()).load("http://www.telugubang.in/wp-content/uploads/2017/02/Hot-Disha-patani-at-Jio-Filmfare-Award-2017t.jpg").into(imageView);
+		return view;
 	}
 
 	// TODO: Rename method, update argument and hook method into UI event

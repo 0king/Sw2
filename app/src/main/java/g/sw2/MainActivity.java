@@ -53,10 +53,13 @@ import io.fabric.sdk.android.Fabric;
 * 3. Mixpanel
 * 4. Crittercism
 * 5. ANR watchdog
-* 6. HockeyApp
-* 7. AppSee
-* 8. Flurry
+* 6. HockeyApp x
+* 7. AppSee x
+* 8. Flurry x
 * */
+
+//todo add notifications fragment
+
 public class MainActivity extends AppCompatActivity
 		implements FragmentProfile.OnFragmentInteractionListener, FragmentBookmarks.OnFragmentInteractionListener,FragmentRewards.OnFragmentInteractionListener,FragmentAllContent.OnFragmentInteractionListener
 {
@@ -89,7 +92,7 @@ public class MainActivity extends AppCompatActivity
 	// toolbar titles respected to selected nav menu item
 	private String[] activityTitles;
 
-	// flag to load home fragment when user presses back key
+	//flag to load home fragment when user presses back key
 	private boolean shouldLoadHomeFragOnBackPress = true;
 	private Handler mHandler;
 
@@ -251,7 +254,7 @@ public class MainActivity extends AppCompatActivity
 				fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
 						android.R.anim.fade_out);
 				fragmentTransaction.replace(R.id.frame, fragment, CURRENT_TAG);
-				fragmentTransaction.commitAllowingStateLoss();
+				fragmentTransaction.commitAllowingStateLoss(); //todo check commitAllowingStateLoss
 			}
 		};
 
@@ -444,8 +447,15 @@ public class MainActivity extends AppCompatActivity
 		int id = item.getItemId();
 
 		if(id == R.id.action_rewards){
-			Toast.makeText(getApplicationContext(), "You have 0 rewards", Toast.LENGTH_SHORT).show();
+			/* This is the code that goes into bottom toolbar, the bookmark button calls getTopCardDetails and saves it */
+			FragmentHome fragment = (FragmentHome) getSupportFragmentManager().findFragmentByTag(TAG_HOME);
+			String cardId = fragment.getTopCardDetails().getCardId();
+			Toast.makeText(getApplicationContext(), cardId, Toast.LENGTH_SHORT).show();
 			return true;
+		}
+
+		if(id == R.id.action_time){
+			Toast.makeText(this, "Hello... Time", Toast.LENGTH_SHORT).show();
 		}
 
 		//noinspection SimplifiableIfStatement
@@ -461,6 +471,13 @@ public class MainActivity extends AppCompatActivity
 		//}
 
 		return super.onOptionsItemSelected(item);
+
+		/* use Switch and
+		* default:
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            return super.onOptionsItemSelected(item);
+ */
 	}
 
 	@Override
