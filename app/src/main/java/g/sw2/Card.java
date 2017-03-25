@@ -9,14 +9,16 @@ public class Card {
 	String cardId;
 	String text;
 	String mediaUrl;
+	String card_type;
 
 	//other details...
 
 
-	public Card(String cardId, String mediaUrl, String text) {
+	public Card(String cardId, String mediaUrl, String text,String card_type) {
 		this.cardId = cardId;
 		this.mediaUrl = mediaUrl;
 		this.text = text;
+		this.card_type = card_type;
 	}
 
 	public String getCardId() {
@@ -42,4 +44,6 @@ public class Card {
 	public void setText(String text) {
 		this.text = text;
 	}
+
+	public String getCardType() { return card_type;}
 }

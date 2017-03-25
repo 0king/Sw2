@@ -52,6 +52,8 @@ public class FlingCardListener implements View.OnTouchListener {
 
 	public FlingCardListener(View frame, Object itemAtPosition, float rotation_degrees, FlingListener flingListener) {
 		super();
+
+		Log.d("Zenius","FlingCardListener");
 		this.frame = frame;
 		this.objectX = frame.getX();
 		this.objectY = frame.getY();
@@ -67,6 +69,8 @@ public class FlingCardListener implements View.OnTouchListener {
 
 
 	public boolean onTouch(View view, MotionEvent event) {
+
+		Log.d("Zenius","OnTouch");
 
 		switch (event.getAction() & MotionEvent.ACTION_MASK) {
 			case MotionEvent.ACTION_DOWN:

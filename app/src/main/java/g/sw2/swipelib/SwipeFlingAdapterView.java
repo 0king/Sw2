@@ -7,6 +7,7 @@ import android.database.DataSetObserver;
 import android.graphics.PointF;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Adapter;
@@ -33,6 +34,8 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 	private OnItemClickListener mOnItemClickListener;
 	private FlingCardListener flingCardListener;
 	private PointF mLastTouchPoint;
+	private boolean layout_set = false;
+	int item_adapter =0;
 
 
 	public SwipeFlingAdapterView(Context context) {
@@ -95,25 +98,33 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 
 		mInLayout = true;
 		final int adapterCount = mAdapter.getCount();
+		Log.d("Zenius","adapterCount"+adapterCount);
 
 		if(adapterCount == 0) {
 			removeAllViewsInLayout();
 		}else {
+			Log.d("Zenius","TopCard");
 			View topCard = getChildAt(LAST_OBJECT_IN_STACK);
 			if(mActiveCard!=null && topCard!=null && topCard==mActiveCard) {
 				if (this.flingCardListener.isTouching()) {
+					Log.d("Zenius","this.flingCardListener"+LAST_OBJECT_IN_STACK);
 					PointF lastPoint = this.flingCardListener.getLastPoint();
 					if (this.mLastTouchPoint == null || !this.mLastTouchPoint.equals(lastPoint)) {
 						this.mLastTouchPoint = lastPoint;
 						removeViewsInLayout(0, LAST_OBJECT_IN_STACK);
 						layoutChildren(1, adapterCount);
+						Log.d("Zenius","this.flingCardListener.isTouching()");
 					}
 				}
 			}else{
 				// Reset the UI and set top view listener
-				removeAllViewsInLayout();
-				layoutChildren(0, adapterCount);
+				Log.d("Zenius","setTopView();"+LAST_OBJECT_IN_STACK);
+				if(layout_set == false) {
+					removeAllViewsInLayout();
+					layoutChildren(0, adapterCount);
+				}
 				setTopView();
+				item_adapter++;
 			}
 		}
 
@@ -124,11 +135,12 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 
 
 	private void layoutChildren(int startingIndex, int adapterCount){
-		while (startingIndex < Math.min(adapterCount, MAX_VISIBLE) ) {
+		while (startingIndex < adapterCount ) {
 			View newUnderChild = mAdapter.getView(startingIndex, null, this);
 			if (newUnderChild.getVisibility() != GONE) {
 				makeAndAddView(newUnderChild);
 				LAST_OBJECT_IN_STACK = startingIndex;
+				layout_set = true;
 			}
 			startingIndex++;
 		}
@@ -140,6 +152,8 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 
 		FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) child.getLayoutParams();
 		addViewInLayout(child, 0, lp, true);
+
+		Log.d("Zenius","makeAndView "+LAST_OBJECT_IN_STACK);
 
 		final boolean needToMeasure = child.isLayoutRequested();
 		if (needToMeasure) {
@@ -208,15 +222,16 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 	 */
 	private void setTopView() {
 		if(getChildCount()>0){
-
+			Log.d("Zenius","getchild "+LAST_OBJECT_IN_STACK);
 			mActiveCard = getChildAt(LAST_OBJECT_IN_STACK);
 			if(mActiveCard!=null) {
-
+				Log.d("Zenius","mActiveCard Not NULL "+LAST_OBJECT_IN_STACK+mAdapter.getItemId(0));
 				flingCardListener = new FlingCardListener(mActiveCard, mAdapter.getItem(0),
 						                                         ROTATION_DEGREES, new FlingCardListener.FlingListener() {
 
 					@Override
 					public void onCardExited() {
+						Log.d("Zenius","onCardExited");
 						mActiveCard = null;
 						mFlingListener.removeFirstObjectInAdapter();
 					}

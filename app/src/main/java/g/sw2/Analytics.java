@@ -2,13 +2,13 @@ package g.sw2;
 
 import android.content.Context;
 
-import com.crashlytics.android.Crashlytics;
+//import com.crashlytics.android.Crashlytics;
 import com.crittercism.app.Crittercism;
 import com.github.anrwatchdog.ANRError;
 import com.github.anrwatchdog.ANRWatchDog;
 import com.google.android.gms.analytics.Tracker;
 
-import io.fabric.sdk.android.Fabric;
+//import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by 5dr on 23/02/17.
@@ -37,16 +37,16 @@ public class Analytics {
 	public void init(Context context){
 
 		/* Make sure the *Fabric.with()* line is after all other*3rd-party SDKs that set an *UncaughtExceptionHandler */
-		Fabric.with(context.getApplicationContext(), new Crashlytics());
+		//Fabric.with(context.getApplicationContext(), new Crashlytics());
 
 
-		new ANRWatchDog().setANRListener(new ANRWatchDog.ANRListener() {
+		/*new ANRWatchDog().setANRListener(new ANRWatchDog.ANRListener() {
 
 			@Override
 			public void onAppNotResponding(ANRError arg0) {
 				Crashlytics.getInstance().core.logException(arg0);
 			}
-		}).start();
+		}).start();*/
 
 		Crittercism.initialize(context.getApplicationContext(),"c2dfb4f16e2641c497e1b3927716d3df00555300");
 

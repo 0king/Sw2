@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@drawable/corner">
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/corner">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,57 +14,17 @@
 
 <!-- todo set image and text height & width programmatically -->
 
-        <ImageView
-            android:id="@+id/cardImage"
+        <io.github.kexanie.library.MathView
+            android:id="@+id/formula_one"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:src="@mipmap/disha"/>
-
-        <!-- todo set textview gravity programmatically -->
-
-
-        <TextView
-            android:layout_weight="1"
-            android:id="@+id/cardText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="1dp"
-            android:textColor="@android:color/black"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:text="In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers. We continue our discussion on real numbers in this chapter. We begin with two very important properties of positive integers in Sections 1.2 and 1.3, namely the Euclid’s division algorithm and the Fundamental Theorem of Arithmetic."/>
-
-            <!-- android:scrollbars = "vertical" -->
-
-
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/bookmark"
-            android:src="@mipmap/ic_launcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/thumbnail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-<!--        <Button
-            android:id="@+id/crash_button"
-            android:layout_height="50dp"
-            android:layout_width="match_parent"
-            android:text="Force Crash!"
-            android:onClick="forceCrash"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="0"/>-->
-        <!-- android:background="@android:color/white" -->
+            android:layout_height="200dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textAlignment="center"
+            auto:engine="KaTeX"
+            android:layout_weight="0.16">
+        </io.github.kexanie.library.MathView>
 
     </LinearLayout>
 
