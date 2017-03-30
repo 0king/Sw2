@@ -1,6 +1,7 @@
 package g.sw2.views;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public abstract class BaseChallengeItemView extends FrameLayout {
     public BaseChallengeItemView(Context context, float height) {
         super(context);
         badgeContainer = (ViewGroup)findViewById(R.id.badge_content_layout);
+        Log.d("Zenius","IN Basechallenge");
         LayoutInflater.from(context).inflate(R.layout.hexagon_layout, this);
         ButterKnife.bind(this);
         setLayoutParams(new LayoutParams(-1, (int) height));
