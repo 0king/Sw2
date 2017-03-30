@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.activities;
 
 import android.animation.ArgbEvaluator;
 import android.content.Context;
@@ -27,7 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.internal.Utils;
+import g.sw2.R;
 
 
 public class OnBoardingActivity extends AppCompatActivity {

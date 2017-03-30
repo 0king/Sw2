@@ -1,11 +1,10 @@
-package g.sw2;
+package g.sw2.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,7 +14,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,24 +22,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.appsee.Appsee;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 //import com.crashlytics.android.Crashlytics;
-import com.crittercism.app.Crittercism;
-import com.github.anrwatchdog.ANRError;
-import com.github.anrwatchdog.ANRWatchDog;
-import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.mixpanel.android.mpmetrics.MixpanelAPI;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
-import net.hockeyapp.android.metrics.MetricsManager;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import g.sw2.R;
+import g.sw2.fragments.FragmentAllContent;
+import g.sw2.fragments.FragmentBookmarks;
+import g.sw2.fragments.FragmentHome;
+import g.sw2.fragments.FragmentProfile;
+import g.sw2.fragments.FragmentRewards;
 import g.sw2.other.CircleTransform;
 import g.sw2.other.UrlList;
 //import io.fabric.sdk.android.Fabric;

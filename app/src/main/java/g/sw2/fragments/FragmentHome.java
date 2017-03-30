@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,6 +22,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import g.sw2.Card;
+import g.sw2.R;
 import g.sw2.swipelib.SwipeFlingAdapterView;
 import io.github.kexanie.library.MathView;
 

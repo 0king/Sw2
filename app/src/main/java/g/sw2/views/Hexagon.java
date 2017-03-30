@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.views;
 
 public class Hexagon extends HexagonPiece {
     public Hexagon() {

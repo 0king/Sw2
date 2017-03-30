@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import g.sw2.R;
 
 
 /**

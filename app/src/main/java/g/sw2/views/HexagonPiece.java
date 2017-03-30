@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.views;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;

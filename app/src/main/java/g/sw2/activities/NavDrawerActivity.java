@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import g.sw2.R;
 
 public class NavDrawerActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {

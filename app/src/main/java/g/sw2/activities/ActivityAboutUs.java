@@ -1,15 +1,17 @@
-package g.sw2;
+package g.sw2.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class ActivityMethodology extends AppCompatActivity {
+import g.sw2.R;
+
+public class ActivityAboutUs extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_methodology);
+		setContentView(R.layout.activity_about_us);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 

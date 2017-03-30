@@ -5,7 +5,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="g.sw2.OnBoardingActivity">
+    tools:context="g.sw2.activities.OnBoardingActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"

@@ -3,6 +3,7 @@
     <color name="colorPrimary">#31dff9</color>
     <color name="colorPrimaryDark">#09cfe5</color> <!-- setStatusBarColor() -->
     <color name="colorAccent">#FF4081</color>
+    <color name="locked_badge_background">#e5e5e5</color>
 
 
     <color name="colorNavBar">#95e5f9</color>

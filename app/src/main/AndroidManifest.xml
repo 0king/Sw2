@@ -27,7 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,28 +36,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".NavDrawerActivity"
+            android:name=".activities.NavDrawerActivity"
             android:label="@string/title_activity_nav_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ActivityAboutUs" />
+        <activity android:name=".activities.ActivityAboutUs" />
         <activity
-            android:name=".ActivityLogin"
+            android:name=".activities.ActivityLogin"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".ActivityMethodology"
+            android:name=".activities.ActivityMethodology"
             android:label="Our Methodology" />
-        <activity android:name=".ActivityShareApp" />
+        <activity android:name=".activities.ActivityShareApp" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -67,10 +63,10 @@
             android:value="${HOCKEYAPP_APP_ID}" />
 
         <activity
-            android:name=".OnBoardingActivity"
+            android:name=".activities.OnBoardingActivity"
             android:label="@string/title_activity_on_boarding"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SlideUpActivity" />
+        <activity android:name=".activities.SlideUpActivity" />
     </application>
 
 </manifest>

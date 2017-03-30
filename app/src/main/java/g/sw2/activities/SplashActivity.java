@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

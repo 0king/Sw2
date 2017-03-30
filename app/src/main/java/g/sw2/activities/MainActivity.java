@@ -1,19 +1,32 @@
-package g.sw2;
+package g.sw2.activities;
 
 import android.graphics.Color;
+import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
-public class MainActivity extends AppCompatActivity {
+import g.sw2.R;
+import g.sw2.fragments.FragmentAllContent;
+import g.sw2.fragments.FragmentBookmarks;
+import g.sw2.fragments.FragmentHome;
+import g.sw2.fragments.FragmentProfile;
+import g.sw2.fragments.FragmentRewards;
+import g.sw2.fragments.FragmentSession;
 
+public class MainActivity extends AppCompatActivity {
+    private Handler mHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        mHandler = new Handler();
 
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
 
@@ -76,17 +89,71 @@ public class MainActivity extends AppCompatActivity {
 //        bottomNavigation.setNotification(notification, 1);
 
 // Set listeners
-//        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
-//            @Override
-//            public boolean onTabSelected(int position, boolean wasSelected) {
-//                // Do something cool here...
-//                return true;
-//            }
-//        });
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                // Do something cool here...
+                loadHomeFragment(position);
+                Log.d("Zenius","Positon"+position);
+                return true;
+            }
+        });
 //        bottomNavigation.setOnNavigationPositionListener(new AHBottomNavigation.OnNavigationPositionListener() {
 //            @Override public void onPositionChange(int y) {
 //                // Manage the new y position
 //            }
 //        });
+    }
+
+    private void loadHomeFragment(final int position) {
+
+        // Sometimes, when fragment has huge data, screen seems hanging
+        // when switching between navigation menus
+        // So using runnable, the fragment is loaded with cross fade effect
+        // This effect can be seen in GMail app
+        Runnable mPendingRunnable = new Runnable() {
+            @Override
+            public void run() {
+                // update the main content by replacing fragments
+                Fragment fragment = getHomeFragment(position);
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                        android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.frame_main, fragment, "session");
+                fragmentTransaction.commitAllowingStateLoss(); //todo check commitAllowingStateLoss
+            }
+        };
+
+        // If mPendingRunnable is not null, then add to the message queue
+        if (mPendingRunnable != null) {
+            mHandler.post(mPendingRunnable);
+        }
+
+
+        // refresh toolbar menu
+        invalidateOptionsMenu();
+    }
+
+    private Fragment getHomeFragment(int position) {
+        switch (position) {
+			/* card-view transferrred from activity to fragment */
+            case 0:
+                FragmentSession sessionFragment = new FragmentSession();
+                return sessionFragment;
+            case 1:
+                FragmentProfile profileFragment = new FragmentProfile();
+                return profileFragment;
+            case 2:
+                FragmentBookmarks bookmarksFragment = new FragmentBookmarks();
+                return bookmarksFragment;
+            case 3:
+                FragmentRewards etcFragment = new FragmentRewards();
+                return etcFragment;
+            case 4:
+                FragmentAllContent allContentFragment = new FragmentAllContent();
+                return allContentFragment;
+            default:
+                return new FragmentHome();
+        }
     }
 }

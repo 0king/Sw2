@@ -11,7 +11,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="g.sw2.NavDrawerActivity"
+    tools:context="g.sw2.activities.NavDrawerActivity"
     tools:showIn="@layout/app_bar_nav_drawer">
 
 </RelativeLayout>

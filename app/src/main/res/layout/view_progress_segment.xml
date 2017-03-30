@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1.0">
+    <View android:layout_width="5dp" android:layout_height="match_parent" android:layout_weight="48.0" />
+    <View android:layout_gravity="left|right|center_horizontal|fill_horizontal|center|fill|start|end" android:id="@+id/list_item_stroke" android:background="@color/locked_badge_background" android:layout_width="1dp" android:layout_height="match_parent" android:layout_weight="1.5" />
+    <View android:layout_width="5dp" android:layout_height="match_parent" android:layout_weight="48.0" />
+</LinearLayout>
