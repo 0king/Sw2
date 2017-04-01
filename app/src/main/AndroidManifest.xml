@@ -54,6 +54,11 @@
             android:name=".activities.ActivityMethodology"
             android:label="Our Methodology" />
         <activity android:name=".activities.ActivityShareApp" />
+        <activity
+            android:name=".activities.SessionActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
 
         <meta-data
             android:name="io.fabric.ApiKey"

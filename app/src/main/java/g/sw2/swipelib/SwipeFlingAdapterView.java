@@ -119,10 +119,10 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 			}else{
 				// Reset the UI and set top view listener
 				Log.d("Zenius","setTopView();"+LAST_OBJECT_IN_STACK);
-				if(layout_set == false) {
+
 					removeAllViewsInLayout();
 					layoutChildren(0, adapterCount);
-				}
+
 				setTopView();
 				item_adapter++;
 			}

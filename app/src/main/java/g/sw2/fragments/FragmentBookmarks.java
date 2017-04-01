@@ -35,7 +35,7 @@ public class FragmentBookmarks extends Fragment {
 
 	private OnFragmentInteractionListener mListener;
 
-	FragmentHome fragmentHome;
+	//FragmentHome fragmentHome;
 
 	public FragmentBookmarks() {
 		// Required empty public constructor

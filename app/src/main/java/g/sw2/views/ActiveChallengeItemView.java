@@ -4,7 +4,10 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import g.sw2.R;
 
 
 public class ActiveChallengeItemView extends BaseChallengeItemView implements OnTouchListener {
@@ -29,12 +32,17 @@ public class ActiveChallengeItemView extends BaseChallengeItemView implements On
         this.badgeView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, -1);
         layoutParams.setMargins(0, 30, 0, 30);
-        this.badgeContainer.setLayoutParams(layoutParams);
-        this.badgeContainer.removeAllViews();
-        this.badgeContainer.addView(this.badgeView);
-        this.badgeContainer.setClickable(true);
-        this.badgeContainer.setOnTouchListener(this);
-        this.topLineTextView.setOnTouchListener(this);
+        badgeContainer = (ViewGroup)findViewById(R.id.badge_content_layout);
+        badgeContainer.setLayoutParams(layoutParams);
+        badgeContainer.removeAllViews();
+        badgeContainer.addView(this.badgeView);
+        badgeContainer.setClickable(true);
+        badgeContainer.setOnTouchListener(this);
+        badgeContainer.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                    delegate.lockedChallengeTapped();
+            }});
+//        topLineTextView.setOnTouchListener(this);
 
     }
 

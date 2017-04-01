@@ -1,5 +1,6 @@
 package g.sw2.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -14,12 +15,12 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import g.sw2.R;
 import g.sw2.fragments.FragmentAllContent;
 import g.sw2.fragments.FragmentBookmarks;
-import g.sw2.fragments.FragmentHome;
+
 import g.sw2.fragments.FragmentProfile;
 import g.sw2.fragments.FragmentRewards;
 import g.sw2.fragments.FragmentSession;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentSession.OnViewSelected {
     private Handler mHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 // Set current item programmatically
         bottomNavigation.setCurrentItem(0);
+        loadHomeFragment(0);
 
 // Customize notification (title, background, typeface)
         bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
@@ -153,7 +155,13 @@ public class MainActivity extends AppCompatActivity {
                 FragmentAllContent allContentFragment = new FragmentAllContent();
                 return allContentFragment;
             default:
-                return new FragmentHome();
+                return new FragmentSession();
         }
+    }
+
+    @Override
+    public void onViewSelected(int viewId) {
+        Intent intent = new Intent(this, SessionActivity.class);
+        startActivity(intent);
     }
 }

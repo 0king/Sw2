@@ -33,7 +33,6 @@ import net.hockeyapp.android.UpdateManager;
 import g.sw2.R;
 import g.sw2.fragments.FragmentAllContent;
 import g.sw2.fragments.FragmentBookmarks;
-import g.sw2.fragments.FragmentHome;
 import g.sw2.fragments.FragmentProfile;
 import g.sw2.fragments.FragmentRewards;
 import g.sw2.other.CircleTransform;
@@ -268,8 +267,8 @@ public class TestActivity extends AppCompatActivity
 		switch (navItemIndex) {
 			/* card-view transferrred from activity to fragment */
 			case 0:
-				FragmentHome homeFragment = new FragmentHome();
-				return homeFragment;
+//				FragmentHome homeFragment = new FragmentHome();
+			//	return homeFragment;
 			case 1:
 				FragmentProfile profileFragment = new FragmentProfile();
 				return profileFragment;
@@ -283,7 +282,7 @@ public class TestActivity extends AppCompatActivity
 				FragmentAllContent allContentFragment = new FragmentAllContent();
 				return allContentFragment;
 			default:
-				return new FragmentHome();
+				return new FragmentBookmarks();
 		}
 	}
 
@@ -441,13 +440,13 @@ public class TestActivity extends AppCompatActivity
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 
-		if(id == R.id.action_rewards){
-			/* This is the code that goes into bottom toolbar, the bookmark button calls getTopCardDetails and saves it */
-			FragmentHome fragment = (FragmentHome) getSupportFragmentManager().findFragmentByTag(TAG_HOME);
-			String cardId = fragment.getTopCardDetails().getCardId();
-			Toast.makeText(getApplicationContext(), cardId, Toast.LENGTH_SHORT).show();
-			return true;
-		}
+//		if(id == R.id.action_rewards){
+//			/* This is the code that goes into bottom toolbar, the bookmark button calls getTopCardDetails and saves it */
+//			FragmentHome fragment = (FragmentHome) getSupportFragmentManager().findFragmentByTag(TAG_HOME);
+//			String cardId = fragment.getTopCardDetails().getCardId();
+//			Toast.makeText(getApplicationContext(), cardId, Toast.LENGTH_SHORT).show();
+//			return true;
+//		}
 
 		if(id == R.id.action_time){
 			Toast.makeText(this, "Hello... Time", Toast.LENGTH_SHORT).show();

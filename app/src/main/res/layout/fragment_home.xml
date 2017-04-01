@@ -1,9 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
+             android:id="@+id/frame_card_layout"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              xmlns:app="http://schemas.android.com/apk/res-auto"
-             tools:context="g.sw2.fragments.FragmentHome">
+           >
 
 
     <g.sw2.swipelib.SwipeFlingAdapterView
@@ -12,11 +13,19 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:padding="4dp"
-        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_marginTop="?attr/actionBarSize"
         app:rotation_degrees="30"
         app:max_visible="4"
         app:min_adapter_stack="6">
 
     </g.sw2.swipelib.SwipeFlingAdapterView>
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/toolbar4" />
 
 </FrameLayout>

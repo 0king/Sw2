@@ -1,10 +1,11 @@
-package g.sw2.fragments;
+package g.sw2.activities;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,41 +25,27 @@ import java.util.ArrayList;
 
 import g.sw2.Card;
 import g.sw2.R;
+import g.sw2.fragments.FragmentAnimation;
 import g.sw2.swipelib.SwipeFlingAdapterView;
 import io.github.kexanie.library.MathView;
 
 
-public class FragmentHome extends Fragment {
+public class SessionActivity extends AppCompatActivity {
 
 	SwipeFlingAdapterView swipeView;
 	ArrayAdapter<String> arrayAdapter;
 	ArrayList<String> itemList;//todo create and use card object instead of String
 	int i;
-
 	TextView cardText;
-	//ArrayList<String> arrayOfUrls;
-	//WebAdapter webAdapter;
-
 	ArrayList<Card> cardList;
 	CardAdapter cardAdapter;
 
 
-	public FragmentHome() {
-		// Required empty public constructor
-	}
-
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.fragment_home);
 
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-		swipeView = (SwipeFlingAdapterView) view.findViewById(R.id.swipecards);
+		swipeView = (SwipeFlingAdapterView) findViewById(R.id.swipecards);
 
 
 		cardList = new ArrayList<>();
@@ -76,7 +63,7 @@ public class FragmentHome extends Fragment {
 
         //todo create a default image space, show image loading there
 
-		cardAdapter = new CardAdapter(getContext(), cardList);
+		cardAdapter = new CardAdapter(this, cardList);
 		swipeView.setAdapter(cardAdapter);
 		swipeView.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
 			@Override
@@ -107,14 +94,14 @@ public class FragmentHome extends Fragment {
 				//arrayAdapter.notifyDataSetChanged();
 				cardAdapter.notifyDataSetChanged();
 
-                FragmentAnimation animfrag = new FragmentAnimation();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                if(itemsInAdapter < 1) {
-                    fragmentTransaction.replace(R.id.frame, animfrag);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
+//                FragmentAnimation animfrag = new FragmentAnimation();
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                if(itemsInAdapter < 1) {
+//                    fragmentTransaction.replace(R.id.frame, animfrag);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
+//                }
 				//++i;
 			}
 
@@ -139,8 +126,6 @@ public class FragmentHome extends Fragment {
 				throw new RuntimeException("OnClickListener: This is a crash");
 			}
 		});*/
-
-		return view;
 
 	}
 

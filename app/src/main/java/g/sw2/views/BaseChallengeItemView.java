@@ -25,7 +25,7 @@ public abstract class BaseChallengeItemView extends FrameLayout {
 
     public BaseChallengeItemView(Context context, float height) {
         super(context);
-        badgeContainer = (ViewGroup)findViewById(R.id.badge_content_layout);
+
         Log.d("Zenius","IN Basechallenge");
         LayoutInflater.from(context).inflate(R.layout.hexagon_layout, this);
         ButterKnife.bind(this);
