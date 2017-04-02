@@ -1,6 +1,7 @@
 package g.sw2.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -65,6 +66,7 @@ public class SessionActivity extends AppCompatActivity {
 
 		cardAdapter = new CardAdapter(this, cardList);
 		swipeView.setAdapter(cardAdapter);
+        swipeView.setMaxVisible(cardAdapter.getCount());
 		swipeView.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
 			@Override
 			public void removeFirstObjectInAdapter() {
@@ -76,33 +78,22 @@ public class SessionActivity extends AppCompatActivity {
 
 			@Override
 			public void onLeftCardExit(Object o) {
-				//Toast.makeText(getContext(),"left",Toast.LENGTH_SHORT).show();
-				//cardList.remove(0);
 				cardAdapter.notifyDataSetChanged();
 			}
 
 			@Override
 			public void onRightCardExit(Object o) {
-				//cardList.remove(0);
 				cardAdapter.notifyDataSetChanged();
 			}
 
 			@Override
 			public void onAdapterAboutToEmpty(int itemsInAdapter) {
-				//itemList.add("Android ".concat(String.valueOf(i)));
-				//cardList.add(new Card("Math".concat(String.valueOf(i)),"http://www.telugubang.in/wp-content/uploads/2017/02/Hot-Disha-patani-at-Jio-Filmfare-Award-2017t.jpg","Android ".concat(String.valueOf(i)),"TEXT_IMAGE"));
-				//arrayAdapter.notifyDataSetChanged();
 				cardAdapter.notifyDataSetChanged();
+                if(itemsInAdapter ==0) {
+                    Intent intent = new Intent(SessionActivity.this, PostSessionActivity.class);
+                    startActivity(intent);
+                }
 
-//                FragmentAnimation animfrag = new FragmentAnimation();
-//                FragmentManager fragmentManager = getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                if(itemsInAdapter < 1) {
-//                    fragmentTransaction.replace(R.id.frame, animfrag);
-//                    fragmentTransaction.addToBackStack(null);
-//                    fragmentTransaction.commit();
-//                }
-				//++i;
 			}
 
 			@Override

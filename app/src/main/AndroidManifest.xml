@@ -39,9 +39,8 @@
             android:name=".activities.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activities.NavDrawerActivity"
             android:label="@string/title_activity_nav_drawer"
@@ -56,9 +55,13 @@
         <activity android:name=".activities.ActivityShareApp" />
         <activity
             android:name=".activities.SessionActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:clearTaskOnLaunch="true"
+            android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".activities.PostSessionActivity"
+            android:clearTaskOnLaunch="true"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -72,6 +75,7 @@
             android:label="@string/title_activity_on_boarding"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.SlideUpActivity" />
+
     </application>
 
 </manifest>

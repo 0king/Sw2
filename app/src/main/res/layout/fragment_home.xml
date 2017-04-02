@@ -16,7 +16,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         app:rotation_degrees="30"
         app:max_visible="4"
-        app:min_adapter_stack="6">
+        app:min_adapter_stack="1">
 
     </g.sw2.swipelib.SwipeFlingAdapterView>
 

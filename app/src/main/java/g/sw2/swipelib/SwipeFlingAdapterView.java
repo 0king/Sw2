@@ -22,7 +22,7 @@ import g.sw2.R;
 
 public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 	private int MAX_VISIBLE = 4;
-	private int MIN_ADAPTER_STACK = 6;
+	private int MIN_ADAPTER_STACK = 1;
 	private float ROTATION_DEGREES = 15.f;
 
 	private Adapter mAdapter;
@@ -116,13 +116,15 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 						Log.d("Zenius","this.flingCardListener.isTouching()");
 					}
 				}
-			}else{
+			}else {
 				// Reset the UI and set top view listener
-				Log.d("Zenius","setTopView();"+LAST_OBJECT_IN_STACK);
-
+				Log.d("Zenius", "setTopView();" + LAST_OBJECT_IN_STACK);
+				if(layout_set == false) {
 					removeAllViewsInLayout();
 					layoutChildren(0, adapterCount);
-
+				}else{
+					LAST_OBJECT_IN_STACK--;
+				}
 				setTopView();
 				item_adapter++;
 			}
