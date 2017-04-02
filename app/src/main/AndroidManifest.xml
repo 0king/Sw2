@@ -55,7 +55,7 @@
         <activity android:name=".activities.ActivityShareApp" />
         <activity
             android:name=".activities.SessionActivity"
-            android:clearTaskOnLaunch="true"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity

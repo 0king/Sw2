@@ -354,24 +354,17 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
-                    case R.id.nav_home:
-                        navItemIndex = 0;
-                        CURRENT_TAG = TAG_HOME;
-                        break;
-                    case R.id.nav_profile:
-                        navItemIndex = 1;
-                        CURRENT_TAG = TAG_PROFILE;
-                        break;
+
                     case R.id.nav_bookmarks:
-                        navItemIndex = 2;
+                        navItemIndex = 0;
                         CURRENT_TAG = TAG_BOOKMARKS;
                         break;
                     case R.id.nav_activity:
-                        navItemIndex = 3;
+                        navItemIndex = 1;
                         CURRENT_TAG = TAG_ACTIVITY;
                         break;
                     case R.id.nav_feedback:
-                        navItemIndex = 4;
+                        navItemIndex = 2;
                         CURRENT_TAG = TAG_FEEDBACK;
                         break;
                     case R.id.nav_about_us:

@@ -11,14 +11,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="g.sw2.activities.PostSessionActivity">
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/postsessionimage"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="114dp"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        />
 
     <TextView
         android:text="Tap to Continue"
@@ -26,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="42dp"
         android:id="@+id/tapcontinue"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/selector"/>
 </RelativeLayout>

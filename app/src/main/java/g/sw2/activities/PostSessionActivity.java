@@ -10,7 +10,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
+import java.io.IOException;
+
 import g.sw2.R;
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 public class PostSessionActivity extends AppCompatActivity {
 
@@ -18,13 +22,21 @@ public class PostSessionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_session);
-        ImageView imageview = (ImageView)findViewById(R.id.postsessionimage);
+        GifImageView mGigImageView = (GifImageView) findViewById(R.id.postsessionimage);
 
-        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imageview);
+        GifDrawable gifDrawable = null;
+        try {
+            gifDrawable = new GifDrawable(getResources(), R.mipmap.tickmark);
+            gifDrawable.setLoopCount(1);
+            gifDrawable.setSpeed(1.5f);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mGigImageView.setImageDrawable(gifDrawable);
 
-        Glide.with(this).load(R.mipmap.tickmark).into(imageViewTarget);
 
         TextView txt = (TextView)findViewById(R.id.tapcontinue);
+        txt.setFocusable(true);
         txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -12,10 +12,8 @@
 
     <!-- -->
     <!-- Navigation Drawer menu labels -->
-    <string name="nav_home">Home</string>
-    <string name="nav_profile">Profile</string>
     <string name="nav_bookmarks">Bookmarks</string>
-    <string name="nav_activity">Daily Activity</string>
+    <string name="nav_practice">Practice Exercises</string>
     <string name="nav_method">Our methodology</string> <!-- our beliefs-->
     <string name="nav_purpose">Purpose of the app</string>
     <string name="nav_feedback">Submit feedback</string>
