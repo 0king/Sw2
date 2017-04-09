@@ -47,7 +47,7 @@ public class SessionActivity extends AppCompatActivity {
 		setContentView(R.layout.fragment_home);
 
 		swipeView = (SwipeFlingAdapterView) findViewById(R.id.swipecards);
-
+		swipeView.bringToFront();
 
 		cardList = new ArrayList<>();
 		cardList.add(new Card("123","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers","TEXT"));
