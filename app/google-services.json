@@ -1,35 +1,56 @@
 {
   "project_info": {
-    "project_number": "684314544562",
-    "project_id": "firebase-epsilon"
+    "project_number": "651611255225",
+    "firebase_url": "https://zzzz-ad795.firebaseio.com",
+    "project_id": "zzzz-ad795",
+    "storage_bucket": "zzzz-ad795.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:684314544562:android:a8897377bc1252f1",
+        "mobilesdk_app_id": "1:651611255225:android:a8897377bc1252f1",
         "android_client_info": {
           "package_name": "g.sw2"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "651611255225-3pjkt5uhkrgnp4ftk5b9k50vjjooq9k1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "g.sw2",
+            "certificate_hash": "60bea689dfc732d965eb4b5a3753f543482bb162"
+          }
+        },
+        {
+          "client_id": "651611255225-iptd28uib238gj48huqv0mtu0dl39khc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyB6W9AdzpBVrXuuJBC_MvBFvjrYMIrbrPw"
+          "current_key": "AIzaSyC478zY8ceNGbxOkPe34qllO7ZtjWxzX7E"
         }
       ],
       "services": {
         "analytics_service": {
+          /* analytics_service object added from Google Analytics' google-services.json file */
           "status": 2,
           "analytics_property": {
             "tracking_id": "UA-80417930-2"
           }
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651611255225-iptd28uib238gj48huqv0mtu0dl39khc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

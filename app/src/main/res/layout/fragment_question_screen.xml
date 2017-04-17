@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blue_grey">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle_white">
+
+        <TextView
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/tv_question"/>
+
+        <Button
+            style="@style/OptionButtonStyle"
+            android:id="@+id/button_option1"/>
+
+        <Button
+            android:id="@+id/button_option2"
+            style="@style/OptionButtonStyle"/>
+
+        <Button
+            style="@style/OptionButtonStyle"
+            android:id="@+id/button_option3"/>
+
+        <Button
+            style="@style/OptionButtonStyle"
+            android:id="@+id/button_option4"/>
+
+        <Button
+            style="@style/OptionButtonStyle"
+            android:id="@+id/button_option5"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

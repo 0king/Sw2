@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="locked_badge_background">#e5e5e5</color>
 
+    <color name="colorPrimaryLight">#e5fdff</color>
 
     <color name="colorNavBar">#95e5f9</color>
     <color name="indicator_unselected">#4D000000</color>
@@ -35,5 +36,7 @@
     <color name="a">#31dff9</color>
     <color name="colorLightSky">#75c1ff</color>
     <color name="colorLightSky1">#d1f9ff</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
 

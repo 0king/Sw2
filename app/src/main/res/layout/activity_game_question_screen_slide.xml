@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="g.sw2.game_memory.ActivityGameQuestionScreenSlide">
+
+
+    <g.sw2.game_memory.ViewPagerNonSwipeable
+        android:id="@+id/view_pager_non_swipe_question_slide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </g.sw2.game_memory.ViewPagerNonSwipeable>
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/circle_indicator_view_pager_question_slide"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:ci_animator="@animator/indicator_animator"
+        app:ci_drawable="@drawable/all_background_shape_red_circle"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

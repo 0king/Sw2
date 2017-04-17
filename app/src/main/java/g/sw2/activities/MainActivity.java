@@ -4,16 +4,13 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -30,7 +27,6 @@ import g.sw2.R;
 import g.sw2.fragments.FragmentAllContent;
 import g.sw2.fragments.FragmentAllContents;
 import g.sw2.fragments.FragmentBookmarks;
-
 import g.sw2.fragments.FragmentPerformance;
 import g.sw2.fragments.FragmentProfile;
 import g.sw2.fragments.FragmentRewards;
@@ -75,8 +71,9 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_main);
+	
+	
+	    setContentView(R.layout.activity_main);
 
         mHandler = new Handler();
         loadBottomNavigation();
@@ -113,10 +110,10 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
 
 // Create items
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem("Session", R.mipmap.ic_workout_24dp);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem("Performance", R.mipmap.ic_performance_24dp);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem("All Contents", R.mipmap.ic_all_contents_black_24dp);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem("Menu", R.mipmap.ic_list_black_24dp);
+	    AHBottomNavigationItem item1 = new AHBottomNavigationItem("Training", R.mipmap.ic_workout_24dp);
+	    AHBottomNavigationItem item2 = new AHBottomNavigationItem("Progress", R.mipmap.ic_performance_24dp);
+	    AHBottomNavigationItem item3 = new AHBottomNavigationItem("All Subjects", R.mipmap.ic_all_contents_black_24dp);
+	    AHBottomNavigationItem item4 = new AHBottomNavigationItem("Others", R.mipmap.ic_list_black_24dp);
 
 // Add items
         bottomNavigation.addItem(item1);

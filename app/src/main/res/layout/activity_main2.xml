@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="g.sw2.exp.Main2Activity">
+
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="155dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sign_in_message"
+        android:text="Sign Out" android:layout_below="@+id/sign_in_button"
+        android:layout_centerHorizontal="true" android:layout_marginTop="97dp"/>
+
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/button_signin"
+            android:text="sign in" android:layout_alignTop="@+id/button_signout"
+            android:layout_toStartOf="@+id/sign_in_button"/>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/button_signout"
+            android:text="sign out" android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/sign_in_message" android:layout_marginBottom="50dp"/>
+</RelativeLayout>

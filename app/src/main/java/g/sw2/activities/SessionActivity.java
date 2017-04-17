@@ -3,9 +3,6 @@ package g.sw2.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +23,6 @@ import java.util.ArrayList;
 
 import g.sw2.Card;
 import g.sw2.R;
-import g.sw2.fragments.FragmentAnimation;
 import g.sw2.swipelib.SwipeFlingAdapterView;
 import io.github.kexanie.library.MathView;
 
@@ -45,6 +41,8 @@ public class SessionActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_home);
+		
+		//getSupportActionBar().hide();
 
 		swipeView = (SwipeFlingAdapterView) findViewById(R.id.swipecards);
 
@@ -60,10 +58,8 @@ public class SessionActivity extends AppCompatActivity {
         cardList.add(new Card("567","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers","TEXT_IMAGE"));
         cardList.add(new Card("678","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers","IMAGE"));
         cardList.add(new Card("890","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers","TEXT"));
-
-
-        //todo create a default image space, show image loading there
-
+		
+		
 		cardAdapter = new CardAdapter(this, cardList);
 		swipeView.setAdapter(cardAdapter);
         swipeView.setMaxVisible(cardAdapter.getCount());
@@ -78,11 +74,13 @@ public class SessionActivity extends AppCompatActivity {
 
 			@Override
 			public void onLeftCardExit(Object o) {
+				//cardList.remove(0);
 				cardAdapter.notifyDataSetChanged();
 			}
 
 			@Override
 			public void onRightCardExit(Object o) {
+				//cardList.remove(0);
 				cardAdapter.notifyDataSetChanged();
 			}
 

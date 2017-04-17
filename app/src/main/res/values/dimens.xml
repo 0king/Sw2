@@ -14,4 +14,22 @@
     <dimen name="activity_margin_half">8dp</dimen>
     <dimen name="activity_margin_content">24dp</dimen>
     <dimen name="button_corners">20dp</dimen>
+
+
+    <!-- item cards -->
+    <dimen name="cards_margin_top">60dp</dimen>
+
+    <dimen name="top_card_margin_right">15dp</dimen>
+    <dimen name="top_card_margin_left">15dp</dimen>
+    <dimen name="top_card_margin_bottom">20dp</dimen>
+
+    <dimen name="bottom1_card_margin_right">25dp</dimen>
+    <dimen name="bottom1_card_margin_left">25dp</dimen>
+    <dimen name="bottom1_card_margin_bottom">14dp</dimen>
+
+    <dimen name="bottom2_card_margin_right">35dp</dimen>
+    <dimen name="bottom2_card_margin_left">35dp</dimen>
+    <dimen name="bottom2_card_margin_bottom">8dp</dimen>
+
+
 </resources>
