@@ -13,10 +13,6 @@ public class ContentManager {
 	
 	private static ContentManager instance;
 	
-	private ContentManager() {
-		// nothing to do this time
-	}
-	
 	/**
 	 * The Static initializer constructs the instance at class
 	 * loading time; this is to simulate a more involved
@@ -27,11 +23,20 @@ public class ContentManager {
 		instance = new ContentManager();
 	}
 	
+	private ContentManager() {
+		// nothing to do this time
+	}
+	
 	/**
 	 * Static 'instance' method
 	 */
 	public static ContentManager getInstance() {
 		return instance;
+	}
+	
+	
+	public void loadSessionData() {
+		
 	}
 	
 	

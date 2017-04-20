@@ -9,10 +9,10 @@
 
     <!-- color = 68E8E7 sky-->
 
-    <stroke
-        android:width="1dp"
-        android:color="#31dff9" >
-    </stroke>
+    <!--    <stroke
+            android:width="1dp"
+            android:color="#31dff9" >
+        </stroke>-->
 
 <!--    <padding
         android:left="5dp"
@@ -22,7 +22,7 @@
     </padding>-->
 
     <corners
-        android:radius="5dp"   >
+        android:radius="10dp">
     </corners>
 
 </shape>

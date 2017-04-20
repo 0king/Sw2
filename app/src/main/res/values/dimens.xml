@@ -16,20 +16,20 @@
     <dimen name="button_corners">20dp</dimen>
 
 
-    <!-- item cards -->
+    <!-- item cards: top card and two background cards -->
     <dimen name="cards_margin_top">60dp</dimen>
 
-    <dimen name="top_card_margin_right">15dp</dimen>
-    <dimen name="top_card_margin_left">15dp</dimen>
-    <dimen name="top_card_margin_bottom">20dp</dimen>
+    <dimen name="top_card_margin_right">10dp</dimen>
+    <dimen name="top_card_margin_left">10dp</dimen>
+    <dimen name="top_card_margin_bottom">15dp</dimen>
 
-    <dimen name="bottom1_card_margin_right">25dp</dimen>
-    <dimen name="bottom1_card_margin_left">25dp</dimen>
-    <dimen name="bottom1_card_margin_bottom">14dp</dimen>
+    <dimen name="bottomer_card_margin_right">15dp</dimen>
+    <dimen name="bottomer_card_margin_left">15dp</dimen>
+    <dimen name="bottomer_card_margin_bottom">11dp</dimen>
 
-    <dimen name="bottom2_card_margin_right">35dp</dimen>
-    <dimen name="bottom2_card_margin_left">35dp</dimen>
-    <dimen name="bottom2_card_margin_bottom">8dp</dimen>
+    <dimen name="bottomest_card_margin_right">20dp</dimen>
+    <dimen name="bottomest_card_margin_left">20dp</dimen>
+    <dimen name="bottomest_card_margin_bottom">8dp</dimen>
 
 
 </resources>

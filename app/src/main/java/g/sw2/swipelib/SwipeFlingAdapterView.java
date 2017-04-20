@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.FrameLayout;
 
-
 import g.sw2.R;
 
 /**
@@ -21,10 +20,10 @@ import g.sw2.R;
  */
 
 public class SwipeFlingAdapterView extends BaseFlingAdapterView {
+	int item_adapter = 0;
 	private int MAX_VISIBLE = 4;
 	private int MIN_ADAPTER_STACK = 3;
 	private float ROTATION_DEGREES = 15.f;
-
 	private Adapter mAdapter;
 	private int LAST_OBJECT_IN_STACK = 0;
 	private onFlingListener mFlingListener;
@@ -35,7 +34,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 	private FlingCardListener flingCardListener;
 	private PointF mLastTouchPoint;
 	private boolean layout_set = false;
-	int item_adapter =0;
 
 
 	public SwipeFlingAdapterView(Context context) {
@@ -317,7 +315,24 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 	public LayoutParams generateLayoutParams(AttributeSet attrs) {
 		return new FrameLayout.LayoutParams(getContext(), attrs);
 	}
-
+	
+	
+	public interface OnItemClickListener {
+		void onItemClicked(int itemPosition, Object dataObject);
+	}
+	
+	
+	public interface onFlingListener {
+		void removeFirstObjectInAdapter();
+		
+		void onLeftCardExit(Object dataObject);
+		
+		void onRightCardExit(Object dataObject);
+		
+		void onAdapterAboutToEmpty(int itemsInAdapter);
+		
+		void onScroll(float scrollProgressPercent);
+	}
 
 	private class AdapterDataSetObserver extends DataSetObserver {
 		@Override
@@ -330,19 +345,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 			requestLayout();
 		}
 
-	}
-
-
-	public interface OnItemClickListener {
-		void onItemClicked(int itemPosition, Object dataObject);
-	}
-
-	public interface onFlingListener {
-		void removeFirstObjectInAdapter();
-		void onLeftCardExit(Object dataObject);
-		void onRightCardExit(Object dataObject);
-		void onAdapterAboutToEmpty(int itemsInAdapter);
-		void onScroll(float scrollProgressPercent);
 	}
 
 }

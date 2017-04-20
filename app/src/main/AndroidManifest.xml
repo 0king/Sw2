@@ -42,11 +42,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".activities.NavDrawerActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_nav_drawer"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".activities.ActivityAboutUs"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
@@ -103,6 +98,10 @@
         <activity android:name=".game_memory.ActivityGameQuestionScreenSlide">
         </activity>
         <activity android:name=".game_memory.ActivityMemoryGameResult">
+        </activity>
+        <activity android:name=".activities.ActivityScienceBehindZenius">
+        </activity>
+        <activity android:name=".activities.ActivityBookmarks">
         </activity>
     </application>
 

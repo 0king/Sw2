@@ -117,7 +117,25 @@ public class SessionActivity extends AppCompatActivity {
 		});*/
 
 	}
-
+	
+	public Card getTopCardDetails() {
+		//Card topCard = new Card();
+//		if(cardAdapter == null) {
+//			cardList = new ArrayList<>();
+//			cardList.add(new Card("123","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
+//			cardList.add(new Card("456","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
+//			cardList.add(new Card("567","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
+//			cardList.add(new Card("678","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
+//			cardList.add(new Card("890","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
+//
+//			cardAdapter = new CardAdapter(getContext(), cardList);
+//		}
+		return cardAdapter.getItem(0);
+	}
+	
+	public void forceCrash(View view) {
+		throw new RuntimeException("forceCrash: This is a crash");
+	}
 
 	public class CardAdapter extends ArrayAdapter<Card>{
 
@@ -228,27 +246,6 @@ public class SessionActivity extends AppCompatActivity {
 
 		}
 
-	}
-
-	public Card getTopCardDetails(){
-		//Card topCard = new Card();
-//		if(cardAdapter == null) {
-//			cardList = new ArrayList<>();
-//			cardList.add(new Card("123","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//			cardList.add(new Card("456","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//			cardList.add(new Card("567","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//			cardList.add(new Card("678","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//			cardList.add(new Card("890","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//
-//			cardAdapter = new CardAdapter(getContext(), cardList);
-//		}
-	return cardAdapter.getItem(0);
-	}
-
-
-
-	public void forceCrash(View view) {
-		throw new RuntimeException("forceCrash: This is a crash");
 	}
 
 }

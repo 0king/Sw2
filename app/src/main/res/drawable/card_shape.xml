@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle"   >
+    android:shape="rectangle">
 
     <solid
-        android:color="#ffffff" >
+        android:color="#ffffff">
     </solid>
 
     <!-- color = 68E8E7 sky-->
 
     <stroke
         android:width="1dp"
-        android:color="#31dff9" >
+        android:color="#31dff9">
     </stroke>
 
     <!--    <padding
@@ -22,7 +22,7 @@
         </padding>-->
 
     <corners
-        android:radius="5dp"   >
+        android:radius="5dp">
     </corners>
 
 </shape>

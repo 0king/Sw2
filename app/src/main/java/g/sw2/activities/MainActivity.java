@@ -16,12 +16,16 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import g.sw2.R;
 import g.sw2.fragments.FragmentAllContent;
@@ -31,37 +35,32 @@ import g.sw2.fragments.FragmentPerformance;
 import g.sw2.fragments.FragmentProfile;
 import g.sw2.fragments.FragmentRewards;
 import g.sw2.fragments.FragmentSession;
-import g.sw2.other.CircleTransform;
 import g.sw2.other.UrlList;
 
 public class MainActivity extends AppCompatActivity implements FragmentSession.OnViewSelected{
-
+    
+    // tags used to attach the fragments
+    private static final String TAG_HOME = "home";
+    private static final String TAG_PROFILE = "profile";
+    private static final String TAG_BOOKMARKS = "bookmarks";
+    private static final String TAG_EXERCISES = "activity";
+    private static final String TAG_METHOD = "method";
+    private static final String TAG_FEEDBACK = "feedback";
+    private static final String TAG_SHARE = "share";
+    // index to identify current nav menu item
+    public static int navItemIndex = 0;
+    //private static final String urlProfileImg = "http://www.kimyakariyerim.com/uploads/no.jpg";
+    public static String CURRENT_TAG = TAG_HOME;
     String fragment_name;
     private NavigationView navigationView;
     private DrawerLayout drawer;
     private View navHeader;
     private ImageView imgNavHeaderBg, imgProfile;
     private TextView txtName, txtWebsite;
-
+    private ProgressBar progressBarNavHeader;
     // urls to load navigation header background image
     // and profile image
     private String urlNavHeaderBg;
-    private static final String urlProfileImg = "http://www.kimyakariyerim.com/uploads/no.jpg";
-
-    // index to identify current nav menu item
-    public static int navItemIndex = 0;
-
-    // tags used to attach the fragments
-    private static final String TAG_HOME = "home";
-    private static final String TAG_PROFILE = "profile";
-    private static final String TAG_BOOKMARKS = "bookmarks";
-    private static final String TAG_ACTIVITY = "activity";
-    private static final String TAG_METHOD = "method";
-    private static final String TAG_FEEDBACK = "feedback";
-    private static final String TAG_SHARE = "share";
-    public static String CURRENT_TAG = TAG_HOME;
-
-
     // toolbar titles respected to selected nav menu item
     private String[] activityTitles;
 
@@ -71,26 +70,29 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-	
-	
 	    setContentView(R.layout.activity_main);
 
         mHandler = new Handler();
         loadBottomNavigation();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView)findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);//by default, the nav drawer sets black as tint color
 
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
-        txtName = (TextView) navHeader.findViewById(R.id.name);
-        txtWebsite = (TextView) navHeader.findViewById(R.id.website);
+        //txtName = (TextView) navHeader.findViewById(R.id.name);
+        //txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
-        imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
+        //imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
+    
+        //LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //inflater.inflate(R.layout.nav_header_main,navigationView,false);
+        progressBarNavHeader = (ProgressBar) findViewById(R.id.progress_bar_nav_header);//not required
+        //LayoutInflater inflater = getLayoutInflater();
+        //progressBarNavHeader = (ProgressBar) inflater.inflate(R.layout.progress_bar_circle_small, null);
 
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
-
-        //todo move all network ops into AsyncTask
 
         // load nav menu header data
         loadNavHeader();
@@ -231,8 +233,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
             case 2:
                 FragmentAllContents allcontentsFragment = new FragmentAllContents();
                 return allcontentsFragment;
-
-
+    
             default:
                 return new FragmentSession();
         }
@@ -246,27 +247,53 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
 
     private void loadNavHeader () {
         // name, website
-        txtName.setText("Durga Ranjan");
-        txtWebsite.setText("www.getzenius.com");
+        //txtName.setText("Durga Ranjan");
+        //txtWebsite.setText("www.getzenius.com");
 
         urlNavHeaderBg = UrlList.coverPicChooser();
-
         // loading header background image
+    
+        //showProgressBar();
         Glide.with(this).load(urlNavHeaderBg)
+                .listener(new RequestListener<String, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        //progressBarNavHeader.setVisibility(View.GONE);//this is giving null pointer exception on progress bar
+                        //hideProgressBar();
+                        return false;
+                    }
+            
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        //progressBarNavHeader.setVisibility(View.GONE);
+                        //hideProgressBar();
+                        return false;
+                    }
+                })
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgNavHeaderBg);
-
+    
+    
         // Loading profile image
-        Glide.with(this).load(urlProfileImg)
+        /*Glide.with(this).load(urlProfileImg)
                 .crossFade()
                 .thumbnail(0.5f)
                 .bitmapTransform(new CircleTransform(this))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgProfile);
+                .into(imgProfile);*/
 
         // showing dot next to notifications label
         //navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
+    }
+    
+    void showProgressBar() {
+        progressBarNavHeader = new ProgressBar(this);
+        progressBarNavHeader.setVisibility(View.VISIBLE);
+    }
+    
+    void hideProgressBar() {
+        progressBarNavHeader.setVisibility(View.INVISIBLE);
     }
 
     private void loadNavigationBarFragment() {
@@ -355,33 +382,31 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
                     case R.id.nav_bookmarks:
                         navItemIndex = 0;
                         CURRENT_TAG = TAG_BOOKMARKS;
-                        break;
-                    case R.id.nav_activity:
+                        startActivity(new Intent(MainActivity.this, ActivityBookmarks.class));
+                        drawer.closeDrawers();
+                        return true;
+                    case R.id.nav_exercises:
                         navItemIndex = 1;
-                        CURRENT_TAG = TAG_ACTIVITY;
-                        break;
+                        CURRENT_TAG = TAG_EXERCISES;
+                        startActivity(new Intent(MainActivity.this, ActivityScienceBehindZenius.class));//todo create activity exercises
+                        drawer.closeDrawers();
+                        return true;
+                    case R.id.nav_science_behind_zenius:
+                        startActivity(new Intent(MainActivity.this, ActivityScienceBehindZenius.class));
+                        drawer.closeDrawers();
+                        return true;
                     case R.id.nav_feedback:
                         navItemIndex = 2;
                         CURRENT_TAG = TAG_FEEDBACK;
-                        break;
-                    case R.id.nav_about_us:
-                        // launch new intent instead of loading fragment
-                        startActivity(new Intent(MainActivity.this, ActivityAboutUs.class));
+                        sendFeedbackViaEmail();
                         drawer.closeDrawers();
                         return true;
-                    case R.id.nav_method:
-                        // launch new intent instead of loading fragment
-                        //startActivity(new Intent(MainActivity.this, ActivityShareApp.class));
-
-                        //share the app
-                        //shareApp();
-
-                        //send feedback to developer
-                        //sendFeedbackViaEmail();
-
-                        //rate the app in playstore
+                    case R.id.nav_share:
+                        shareApp();
+                        drawer.closeDrawers();
+                        return true;
+                    case R.id.nav_rate:
                         rateApp();
-
                         drawer.closeDrawers();
                         return true;
                     default:

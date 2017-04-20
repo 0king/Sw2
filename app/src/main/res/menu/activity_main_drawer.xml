@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- androidhive -->
-
     <group android:checkableBehavior="single">
 
         <item
             android:id="@+id/nav_bookmarks"
-            android:icon="@mipmap/ic_bookmark_black_24dp"
+            android:icon="@mipmap/bookmark_ribbon_skycolor_material_48"
             android:title="@string/nav_bookmarks" />
 
         <item
-            android:id="@+id/nav_activity"
-            android:icon="@mipmap/ic_lightbulb_outline_black_24dp"
+            android:id="@+id/nav_exercises"
+            android:icon="@mipmap/brain_skycolor_material_48"
             android:title="@string/nav_practice" />
 
         <item
-            android:id="@+id/nav_method"
-            android:icon="@mipmap/ic_new_releases_black_24dp"
+            android:id="@+id/nav_science_behind_zenius"
+            android:icon="@mipmap/graduation_cap_material_skycolor_48"
             android:title="@string/nav_method" />
 
         <item
             android:id="@+id/nav_feedback"
-            android:icon="@mipmap/ic_email_black_24dp"
+            android:icon="@mipmap/feedback_skycolor_material_48"
             android:title="@string/nav_feedback" />
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@mipmap/share_skycolor_48px"
+            android:title="@string/nav_share"/>
+
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@mipmap/like_illed_skycolor_material_48"
+            android:title="@string/nav_rate"/>
+
     </group>
 
-    <item android:title="Other">
+    <!--<item android:title="Other">
         <menu>
             <item
                 android:id="@+id/nav_about_us"
@@ -41,6 +50,6 @@
                 android:title="@string/nav_rate" />
 
         </menu>
-    </item>
+    </item>-->
 
 </menu>

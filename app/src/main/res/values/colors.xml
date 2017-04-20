@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#31dff9</color>
-    <color name="colorPrimaryDark">#09cfe5</color> <!-- setStatusBarColor() -->
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#5bd6ff</color>
+    <color name="colorPrimaryDark">#5bc2ff</color> <!-- setStatusBarColor() -->
+    <color name="colorAccent">#d0f248</color>
     <color name="locked_badge_background">#e5e5e5</color>
 
-    <color name="colorPrimaryLight">#e5fdff</color>
+    <color name="colorPrimaryLight">#eafaff</color>
 
     <color name="colorNavBar">#95e5f9</color>
     <color name="indicator_unselected">#4D000000</color>

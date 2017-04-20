@@ -1,4 +1,4 @@
-package g.sw2.activities;
+package g.sw2.exp;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -15,16 +15,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-//import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.Tracker;
 
 import net.hockeyapp.android.CrashManager;
@@ -35,8 +32,9 @@ import g.sw2.fragments.FragmentAllContent;
 import g.sw2.fragments.FragmentBookmarks;
 import g.sw2.fragments.FragmentProfile;
 import g.sw2.fragments.FragmentRewards;
-import g.sw2.other.CircleTransform;
 import g.sw2.other.UrlList;
+
+//import com.crashlytics.android.Crashlytics;
 //import io.fabric.sdk.android.Fabric;
 
 
@@ -57,21 +55,7 @@ public class TestActivity extends AppCompatActivity
 		implements FragmentProfile.OnFragmentInteractionListener, FragmentBookmarks.OnFragmentInteractionListener,FragmentRewards.OnFragmentInteractionListener,FragmentAllContent.OnFragmentInteractionListener
 {
 
-	private NavigationView navigationView;
-	private DrawerLayout drawer;
-	private View navHeader;
-	private ImageView imgNavHeaderBg, imgProfile;
-	private TextView txtName, txtWebsite;
-	private Toolbar toolbar;
-
-	// urls to load navigation header background image
-	// and profile image
-	private String urlNavHeaderBg;
 	private static final String urlProfileImg = "http://www.kimyakariyerim.com/uploads/no.jpg";
-
-	// index to identify current nav menu item
-	public static int navItemIndex = 0;
-
 	// tags used to attach the fragments
 	private static final String TAG_HOME = "home";
 	private static final String TAG_PROFILE = "profile";
@@ -80,20 +64,26 @@ public class TestActivity extends AppCompatActivity
 	private static final String TAG_METHOD = "method";
 	private static final String TAG_FEEDBACK = "feedback";
 	private static final String TAG_SHARE = "share";
+	// index to identify current nav menu item
+	public static int navItemIndex = 0;
 	public static String CURRENT_TAG = TAG_HOME;
-
+	String mixpanelToken = "fc4e9c7385c84486e86a36beebbe01d2";
+	private NavigationView navigationView;
+	private DrawerLayout drawer;
+	private View navHeader;
+	private ImageView imgNavHeaderBg, imgProfile;
+	private TextView txtName, txtWebsite;
+	private Toolbar toolbar;
+	// urls to load navigation header background image
+	// and profile image
+	private String urlNavHeaderBg;
 	// toolbar titles respected to selected nav menu item
 	private String[] activityTitles;
-
 	//flag to load home fragment when user presses back key
 	private boolean shouldLoadHomeFragOnBackPress = true;
 	private Handler mHandler;
-
 	/* google analytics */
 	private Tracker gTracker;
-
-	String mixpanelToken = "fc4e9c7385c84486e86a36beebbe01d2";
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -162,10 +152,10 @@ public class TestActivity extends AppCompatActivity
 
 		// Navigation view header
 		navHeader = navigationView.getHeaderView(0);
-		txtName = (TextView) navHeader.findViewById(R.id.name);
-		txtWebsite = (TextView) navHeader.findViewById(R.id.website);
+		//txtName = (TextView) navHeader.findViewById(R.id.name);
+		//txtWebsite = (TextView) navHeader.findViewById(R.id.website);
 		imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
-		imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
+		//imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
 
 		// load toolbar titles from string resources
 		activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
@@ -193,10 +183,10 @@ public class TestActivity extends AppCompatActivity
 	 * name, website, notifications action view (dot)
 	 */
 	private void loadNavHeader() {
-		// name, website
+		/*// name, website
 		txtName.setText("Durga Ranjan");
 		txtWebsite.setText("www.getzenius.com");
-
+*/
 		urlNavHeaderBg = UrlList.coverPicChooser();
 
 		// loading header background image
@@ -206,12 +196,12 @@ public class TestActivity extends AppCompatActivity
 				.into(imgNavHeaderBg);
 
 		// Loading profile image
-		Glide.with(this).load(urlProfileImg)
+		/*Glide.with(this).load(urlProfileImg)
 				.crossFade()
 				.thumbnail(0.5f)
 				.bitmapTransform(new CircleTransform(this))
 				.diskCacheStrategy(DiskCacheStrategy.ALL)
-				.into(imgProfile);
+				.into(imgProfile);*/
 
 		// showing dot next to notifications label
 		//navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
@@ -310,7 +300,7 @@ public class TestActivity extends AppCompatActivity
 						navItemIndex = 0;
 						CURRENT_TAG = TAG_BOOKMARKS;
 						break;
-					case R.id.nav_activity:
+					case R.id.nav_exercises:
 						navItemIndex = 1;
 						CURRENT_TAG = TAG_ACTIVITY;
 						break;
@@ -318,12 +308,12 @@ public class TestActivity extends AppCompatActivity
 						navItemIndex = 2;
 						CURRENT_TAG = TAG_FEEDBACK;
 						break;
-					case R.id.nav_about_us:
+					/*case R.id.nav_about_us:
 						// launch new intent instead of loading fragment
 						startActivity(new Intent(TestActivity.this, ActivityAboutUs.class));
 						drawer.closeDrawers();
-						return true;
-					case R.id.nav_method:
+						return true;*/
+					case R.id.nav_science_behind_zenius:
 						// launch new intent instead of loading fragment
 						//startActivity(new Intent(MainActivity.this, ActivityShareApp.class));
 
@@ -407,8 +397,8 @@ public class TestActivity extends AppCompatActivity
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		//inflate menu_actionbar to get buttons on actionbar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.menu_actionbar, menu);
+		//MenuInflater inflater = getMenuInflater();
+		//inflater.inflate(R.menu.menu_actionbar, menu);
 
 		//AndroidHive:-
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -441,7 +431,7 @@ public class TestActivity extends AppCompatActivity
 //			return true;
 //		}
 
-		if(id == R.id.action_time){
+		/*if(id == R.id.action_time){
 			Toast.makeText(this, "Hello... Time", Toast.LENGTH_SHORT).show();
 		}
 
@@ -450,7 +440,7 @@ public class TestActivity extends AppCompatActivity
 			Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
 			return true;
 		}
-
+*/
 		// user is in notifications fragment
 		// and selected 'Mark all as Read'
 		//if (id == R.id.action_mark_all_read) {
