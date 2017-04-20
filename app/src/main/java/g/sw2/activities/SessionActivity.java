@@ -197,14 +197,14 @@ public class SessionActivity extends AppCompatActivity {
                 ImageView img = (ImageView)convertView.findViewById(R.id.imageview);
                 //img.setImageURI(Uri.parse(card.getMediaUrl()));
                 Glide.with(getContext()).load(card.getMediaUrl()).into(img);
-                img.setImageResource(R.mipmap.grumpy);
+	            img.setImageResource(R.mipmap.disha);
             }else if(type.equals("TEXT_IMAGE")){
                 if (convertView == null) {
                     convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.text_image, parent, false);
                 }
 
                 ImageView img = (ImageView)convertView.findViewById(R.id.text_image);
-                img.setImageResource(R.mipmap.grumpy);
+	            img.setImageResource(R.mipmap.disha);
 
                 MathView cardText = null  ;
                 cardText= (MathView) convertView.findViewById(R.id.text_image_text);

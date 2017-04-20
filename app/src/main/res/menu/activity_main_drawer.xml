@@ -5,32 +5,32 @@
 
         <item
             android:id="@+id/nav_bookmarks"
-            android:icon="@mipmap/bookmark_ribbon_skycolor_material_48"
+            android:icon="@mipmap/ic_bookmark_ribbon_skycolor_material_48"
             android:title="@string/nav_bookmarks" />
 
         <item
             android:id="@+id/nav_exercises"
-            android:icon="@mipmap/brain_skycolor_material_48"
+            android:icon="@mipmap/ic_brain_skycolor_material_48"
             android:title="@string/nav_practice" />
 
         <item
             android:id="@+id/nav_science_behind_zenius"
-            android:icon="@mipmap/graduation_cap_material_skycolor_48"
+            android:icon="@mipmap/ic_graduation_cap_material_skycolor_48"
             android:title="@string/nav_method" />
 
         <item
             android:id="@+id/nav_feedback"
-            android:icon="@mipmap/feedback_skycolor_material_48"
+            android:icon="@mipmap/ic_feedback_skycolor_material_48"
             android:title="@string/nav_feedback" />
 
         <item
             android:id="@+id/nav_share"
-            android:icon="@mipmap/share_skycolor_48px"
+            android:icon="@mipmap/ic_share_skycolor_48px"
             android:title="@string/nav_share"/>
 
         <item
             android:id="@+id/nav_rate"
-            android:icon="@mipmap/like_illed_skycolor_material_48"
+            android:icon="@mipmap/ic_like_filled_skycolor_material_48"
             android:title="@string/nav_rate"/>
 
     </group>

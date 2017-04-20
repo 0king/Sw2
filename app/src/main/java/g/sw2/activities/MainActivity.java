@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
 
 // Create items
-	    AHBottomNavigationItem item1 = new AHBottomNavigationItem("Training", R.mipmap.ic_workout_24dp);
-	    AHBottomNavigationItem item2 = new AHBottomNavigationItem("Progress", R.mipmap.ic_performance_24dp);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem("Training", R.mipmap.ic_dumbbell_skycolor_material_48);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem("Progress", R.mipmap.ic_performance_24dp);
 	    AHBottomNavigationItem item3 = new AHBottomNavigationItem("All Subjects", R.mipmap.ic_all_contents_black_24dp);
 	    AHBottomNavigationItem item4 = new AHBottomNavigationItem("Others", R.mipmap.ic_list_black_24dp);
 

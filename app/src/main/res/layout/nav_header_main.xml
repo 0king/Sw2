@@ -25,7 +25,7 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/positive_thinking"/>
+        android:src="@mipmap/image_default_nav_header_positive_thinking"/>
 
     <!--<LinearLayout
         android:layout_width="wrap_content"
