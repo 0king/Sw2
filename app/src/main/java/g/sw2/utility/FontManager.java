@@ -1,4 +1,4 @@
-package g.sw2.other;
+package g.sw2.utility;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -11,12 +11,6 @@ public class FontManager {
 
 
 	private static FontManager instance;
-	private Typeface chargen;
-	private Typeface easports;
-	private Typeface minecraft;
-
-	private Typeface afl;
-	private Typeface aflsolid;
 	Typeface idroid;
 	Typeface  android7;
 	Typeface digital;
@@ -28,12 +22,24 @@ public class FontManager {
 	Typeface regular;
 	Typeface extrabold;
 	Typeface zee;
-    private Typeface fontSemiBold;
+	private Typeface chargen;
+	private Typeface easports;
+	private Typeface minecraft;
+	private Typeface afl;
+	private Typeface aflsolid;
+	private Typeface fontSemiBold;
 
 
 
 
 	private FontManager() {
+	}
+	
+	public static FontManager get() {
+		if (instance == null) {
+			instance = new FontManager();
+		}
+		return instance;
 	}
 
 	public Typeface getFontChargen() {
@@ -47,6 +53,7 @@ public class FontManager {
 	public Typeface getFontMinecraft() {
 		return this.minecraft;
 	}
+	
 	public Typeface getFontAfl() {
 		return this.afl;
 	}
@@ -54,51 +61,54 @@ public class FontManager {
 	public Typeface getFontAflsolid() {
 		return this.aflsolid;
 	}
+	
 	public Typeface getFontIdroid() {
 		return this.idroid;
 	}
+	
 	public Typeface getFontAndroid7() {
 		return this.android7;
 	}
+	
 	public Typeface getFontDigital() {
 		return this.digital;
 	}
+	
 	public Typeface getFontDistrict() {
 		return this.district;
 	}
+	
 	public Typeface getFontGasalt() {
 		return this.gasalt;
 	}
+	
 	public Typeface getFontOxin() {
 		return this.oxin;
 	}
+	
 	public Typeface getFontBold() {
 		return this.bold;
 	}
-    public Typeface getFontLight() {
+	
+	public Typeface getFontLight() {
         return this.light;
     }
-    public Typeface getFontRegular() {
+	
+	public Typeface getFontRegular() {
         return this.regular;
     }
-    public Typeface getFontExtraBold() {
+	
+	public Typeface getFontExtraBold() {
         return this.extrabold;
     }
-    public Typeface getFontZee() {
+	
+	public Typeface getFontZee() {
         return this.zee;
     }
-    public Typeface getFontSemiBold() {
+	
+	public Typeface getFontSemiBold() {
         return this.fontSemiBold;
     }
-
-
-
-	public static FontManager get() {
-		if (instance == null) {
-			instance = new FontManager();
-		}
-		return instance;
-	}
 
 	public void initFonts(Context context) {
 		this.chargen = Typeface.createFromAsset(context.getAssets(), "fonts/chargen.ttf");

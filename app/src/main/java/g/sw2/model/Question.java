@@ -1,4 +1,4 @@
-package g.sw2.other;
+package g.sw2.model;
 
 /**
  * Created by kushroxx on 26/11/16.
