@@ -37,6 +37,8 @@
     <color name="colorLightSky">#75c1ff</color>
     <color name="colorLightSky1">#d1f9ff</color>
 
+    <color name="colorPaleSky">#a3d8e2</color>
+
     <color name="black_overlay">#66000000</color>
 </resources>
 

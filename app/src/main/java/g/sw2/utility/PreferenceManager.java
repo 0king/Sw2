@@ -9,21 +9,19 @@ import android.content.SharedPreferences;
 
 
 public class PreferenceManager {
-    public static final String PREF_COINS_COUNT = "coins_count";
-    public static final String PREF_CORRECT_COUNT = "correct_count";
-    public static final String PREF_CURRENT_LEVEL = "current_level";
-    public static final String PREF_JSON_STRING = "json_string";
     
-    public static final String PREF_TIMER_COUNT = "timer_count";
-    
-    public static final String PREF_DAILY_REWARD = "daily_reward";
-    public static final String PREF_FIRST_LAUNCH = "first_launch";
+    public static final String PREF_FIRST_INSTALL = "first_install";
+    public static final String PREF_CURRENT_VERSION_FIRST_INSTALL = "version_first_install";
     public static final String PREF_LAUNCH_COUNT = "launch_count";
-    public static final String PREF_LEVEL_DATA = "level_data";
-    public static final String PREF_QUESTIONS_ORDER = "questions_order";
-    public static final String PREF_RATE_ENABLED = "rate_enabled";
     public static final String PREF_SOUND_ENABLED = "sound_enabled";
     public static final String PREF_ALREADY_CACHED = "cached";
+    
+    public static final String PREF_TODAY_DATE = "today_date";
+    public static final String PREF_TODAY_DURATION = "today_time_duration";
+    public static final String PREF_DB_HAS_CHANGED = "true";
+    //public static final String PREF_FIRST_INSTALL_DATE = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+    
+    
     private static PreferenceManager instance;
     private SharedPreferences.Editor editor;
     private SharedPreferences preferences;

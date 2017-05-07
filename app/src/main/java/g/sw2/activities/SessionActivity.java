@@ -3,6 +3,7 @@ package g.sw2.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import g.sw2.Card;
 import g.sw2.R;
 import g.sw2.swipelib.SwipeFlingAdapterView;
+import g.sw2.utility.TimeCounter;
 import io.github.kexanie.library.MathView;
 
 
@@ -36,6 +38,8 @@ public class SessionActivity extends AppCompatActivity {
 	TextView cardText;
 	ArrayList<Card> cardList;
 	CardAdapter cardAdapter;
+	
+	long startTime, endTime;
 
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +140,21 @@ public class SessionActivity extends AppCompatActivity {
 	public void forceCrash(View view) {
 		throw new RuntimeException("forceCrash: This is a crash");
 	}
-
+	
+	@Override
+	protected void onResume() {//dont do in onStart
+		super.onResume();
+		startTime = SystemClock.uptimeMillis();
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		endTime = SystemClock.uptimeMillis();
+		long duration = endTime - startTime;
+		TimeCounter.INSTANCE.updateTimeCounter(duration);
+	}
+	
 	public class CardAdapter extends ArrayAdapter<Card>{
 
 		//todo use view holder
@@ -247,5 +265,4 @@ public class SessionActivity extends AppCompatActivity {
 		}
 
 	}
-
 }

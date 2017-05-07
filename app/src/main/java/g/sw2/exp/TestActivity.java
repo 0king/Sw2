@@ -24,9 +24,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.analytics.Tracker;
 
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.UpdateManager;
-
 import g.sw2.R;
 import g.sw2.fragments.FragmentAllContent;
 import g.sw2.fragments.FragmentBookmarks;
@@ -113,7 +110,7 @@ public class TestActivity extends AppCompatActivity
 
 		/* start - google analytics code */
 		// Obtain the shared Tracker instance.
-//		AppController application = (AppController) getApplication();
+//		ZeniusApp application = (ZeniusApp) getApplication();
 //		gTracker = application.getDefaultTracker();
 //		gTracker.setScreenName("MainActivity");
 //		/* start screen_view_hit */
@@ -512,11 +509,12 @@ public class TestActivity extends AppCompatActivity
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.upskew.encode")));
 		}
 	}
-
-	void checkForHockeyAppUpdates(){
-		// Remove this for store builds!
-		UpdateManager.register(this);//HockeyApp code
-	}
+	
+	/*
+		void checkForHockeyAppUpdates(){
+			// Remove this for store builds!
+			UpdateManager.register(this);//HockeyApp code
+		}*/
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -532,13 +530,13 @@ public class TestActivity extends AppCompatActivity
 		super.onDestroy();
 		//unregisterManagers();
 	}
-	private void checkForCrashes() {
+	/*private void checkForCrashes() {
 		CrashManager.register(this);//HockeyApp
 	}
 	private void unregisterManagers() {
 		UpdateManager.unregister();//HockeyApp
 	}
-
+*/
 }
 
 

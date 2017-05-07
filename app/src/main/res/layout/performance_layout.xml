@@ -5,219 +5,276 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="g.sw2.fragments.FragmentPerformance"
+    android:background="@drawable/round_rect"
     android:fillViewport="true"
-    android:background="@drawable/round_rect">
-
+    tools:context="g.sw2.fragments.FragmentPerformance">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
-        <LinearLayout
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+
+        <!-- Name and stars UI: -->
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@mipmap/dr"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:text="Durga Ranjan"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPaleSky"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <!-- empty view -->
+                        <View android:layout_width="wrap_content"
+                              android:layout_height="match_parent"
+                              android:layout_weight="1"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/star"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/star"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/star"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/star"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/star"/>
+
+                        <!-- empty view -->
+                        <View android:layout_width="wrap_content"
+                              android:layout_height="match_parent"
+                              android:layout_weight="1"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <!-- Score, % increase and line chart: -->
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:scaleType="centerCrop"
-                app:srcCompat="@mipmap/dr"
-                android:layout_gravity="center"/>
+            android:layout_marginTop="5dp"
+            android:elevation="10dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Score"
+                            android:textColor="@color/colorPaleSky"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                        />
+                        <TextView
+                            android:id="@+id/score_current_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="417"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                        />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Week"
+                            android:textColor="@color/colorPaleSky"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/week_performance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+30%"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- Use px in place of dp for divider view -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorPaleSky"/> <!-- android:background="?android:attr/listDivider"-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|top"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:text="Habit strength:"
+                    android:textColor="@color/colorPaleSky"
+                    android:textStyle="bold"/>
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/score_line_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_margin="5dp"
+                    android:padding="5dp">
+                </com.github.mikephil.charting.charts.LineChart>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:elevation="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/avg_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Durga Ranjan"
-                    android:textSize="20sp"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal">
-
-                    <!-- empty view -->
-                    <View android:layout_width="wrap_content"
-                          android:layout_height="match_parent"
-                          android:layout_weight="1"/>
-
-                    <ImageView
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/star"/>
-                    <ImageView
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/star"/>
-                    <ImageView
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/star"/>
-                    <ImageView
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/star"/>
-                    <ImageView
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/star"/>
-
-                    <!-- empty view -->
-                    <View android:layout_width="wrap_content"
-                          android:layout_height="match_parent"
-                          android:layout_weight="1"/>
-
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1">
-                <TextView
-                    android:text="Score"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="5dp"
+                    android:text="Your average study time = 100m"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/last7days"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                />
-                <TextView
-                    android:id="@+id/score_current_value"
-                    android:text="417"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1">
-                <TextView
-                    android:text="Week"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/week_performance"
-                    android:text="+30%"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <android.support.v7.widget.CardView
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_margin="15dp"
-                android:text="Habit strength:"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <com.github.mikephil.charting.charts.LineChart
-                android:layout_margin="10dp"
-                android:id="@+id/score_line_chart"
-                android:layout_width="match_parent"
-                android:layout_height="200dp">
-
-            </com.github.mikephil.charting.charts.LineChart>
-        </android.support.v7.widget.CardView>
-
-        <TextView
-            android:id="@+id/avg_time"
-            android:text="Your average study time = 100m"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"/>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_margin="15dp"
-                android:text="Last 7 days:"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                    android:layout_below="@id/avg_time"
+                    android:layout_gravity="center|top"
+                    android:layout_margin="5dp"
+                    android:text="Last 7 days:"
+                    android:textColor="@color/colorPaleSky"
+                    android:textStyle="bold"/>
             <com.github.mikephil.charting.charts.BarChart
-                android:layout_margin="10dp"
                 android:id="@+id/time_bar_chart"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
-
+                android:layout_height="230dp"
+                android:layout_margin="5dp"
+                android:padding="5dp">
             </com.github.mikephil.charting.charts.BarChart>
+            </LinearLayout>
         </android.support.v7.widget.CardView>
 
 
         <android.support.v7.widget.CardView
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:elevation="10dp">
             <TextView
-                android:text="History:"
-                android:layout_margin="15dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:text="History:"
+                android:textColor="@color/colorPaleSky"
+                android:textStyle="bold"/>
             <com.prolificinteractive.materialcalendarview.MaterialCalendarView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/calendarView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:mcv_showOtherDates="other_months"
-                app:mcv_selectionColor="#f00"
+                android:layout_margin="5dp"
+                android:padding="5dp"
                 app:mcv_arrowColor="#fff"
-                app:mcv_tileSize="40dp"
-                android:layout_margin="10dp"
-                android:padding="10dp"/>
+                app:mcv_selectionColor="#f00"
+                app:mcv_showOtherDates="other_months"
+                app:mcv_tileSize="40dp"/>
             <!-- app:mcv_showOtherDates="out_of_range" -->
         </android.support.v7.widget.CardView>
 
 
         <Button
             android:id="@+id/button"
-            android:text="CLICK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="buttonClick"/>
+            android:onClick="buttonClick"
+            android:text="CLICK"/>
 
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="button2Click"
+            android:text="CLICK 2"/>
 
         <!-- empty view -->
         <TextView

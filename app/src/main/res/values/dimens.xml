@@ -17,7 +17,7 @@
 
 
     <!-- item cards: top card and two background cards -->
-    <dimen name="cards_margin_top">60dp</dimen>
+    <dimen name="cards_margin_top">10dp</dimen>
 
     <dimen name="top_card_margin_right">10dp</dimen>
     <dimen name="top_card_margin_left">10dp</dimen>

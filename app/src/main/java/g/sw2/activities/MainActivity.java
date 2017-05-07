@@ -1,7 +1,10 @@
 package g.sw2.activities;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -26,6 +30,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+
+import java.util.List;
 
 import g.sw2.R;
 import g.sw2.fragments.FragmentAllContent;
@@ -36,6 +42,7 @@ import g.sw2.fragments.FragmentProfile;
 import g.sw2.fragments.FragmentRewards;
 import g.sw2.fragments.FragmentSession;
 import g.sw2.other.UrlList;
+import g.sw2.utility.TimeUtilities;
 
 public class MainActivity extends AppCompatActivity implements FragmentSession.OnViewSelected{
     
@@ -67,6 +74,19 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     //flag to load home fragment when user presses back key
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
+	
+	public static boolean isMailClientPresent(Context context) {
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("text/html");
+		final PackageManager packageManager = context.getPackageManager();
+		List<ResolveInfo> list = packageManager.queryIntentActivities(intent, 0);
+		
+		if (list.size() == 0)
+			return false;
+		else
+			return true;
+	}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -244,9 +264,9 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         Intent intent = new Intent(this, SessionActivity.class);
         startActivity(intent);
     }
-
-    private void loadNavHeader () {
-        // name, website
+	
+	private void loadNavHeader() {
+		// name, website
         //txtName.setText("Durga Ranjan");
         //txtWebsite.setText("www.getzenius.com");
 
@@ -291,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         progressBarNavHeader = new ProgressBar(this);
         progressBarNavHeader.setVisibility(View.VISIBLE);
     }
-    
+
     void hideProgressBar() {
         progressBarNavHeader.setVisibility(View.INVISIBLE);
     }
@@ -362,7 +382,6 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         }
     }
 
-
     private void selectNavMenu() {
         navigationView.getMenu().getItem(navItemIndex).setChecked(true);
     }
@@ -429,7 +448,6 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         });
     }
 
-
     void shareApp() {
         try {
             Intent sendIntent = new Intent();
@@ -443,10 +461,16 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         }
 
     }
-
-    void sendFeedbackViaEmail() {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + "contact@getzenius.com"));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for Zenius");
+	
+	void sendFeedbackViaEmail() {
+		
+		if (!isMailClientPresent(getBaseContext())) {
+			Toast.makeText(this, "No email client found!", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + "contact@getzenius.com"));
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for Zenius");
         //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
         //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, body); //If you are using HTML in your body text
         startActivity(Intent.createChooser(emailIntent, "Select mail app:-"));
@@ -485,6 +509,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     public void onResume() {
         super.onResume();
         //checkForCrashes();//HockeyApp
+	    TimeUtilities.checkAppFirstTimeInstalled(this.getBaseContext());
     }
 
     @Override
@@ -498,4 +523,6 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         super.onDestroy();
         //unregisterManagers();
     }
+	
+	
 }

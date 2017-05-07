@@ -2,11 +2,9 @@ package g.sw2;
 
 import android.content.Context;
 
-//import com.crashlytics.android.Crashlytics;
-import com.crittercism.app.Crittercism;
-import com.github.anrwatchdog.ANRError;
-import com.github.anrwatchdog.ANRWatchDog;
 import com.google.android.gms.analytics.Tracker;
+
+//import com.crashlytics.android.Crashlytics;
 
 //import io.fabric.sdk.android.Fabric;
 
@@ -17,11 +15,9 @@ import com.google.android.gms.analytics.Tracker;
 public class Analytics {
 
 	private static Analytics instance;
-
+	String mixpanelToken = "fc4e9c7385c84486e86a36beebbe01d2";
 	/* google analytics */
 	private Tracker gTracker;
-
-	String mixpanelToken = "fc4e9c7385c84486e86a36beebbe01d2";
 
 	private Analytics(){
 
@@ -47,8 +43,8 @@ public class Analytics {
 				Crashlytics.getInstance().core.logException(arg0);
 			}
 		}).start();*/
-
-		Crittercism.initialize(context.getApplicationContext(),"c2dfb4f16e2641c497e1b3927716d3df00555300");
+		
+		//Crittercism.initialize(context.getApplicationContext(),"c2dfb4f16e2641c497e1b3927716d3df00555300");
 
 
 	}
