@@ -9,6 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -22,6 +26,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import g.sw2.Card;
 import g.sw2.R;
 import g.sw2.swipelib.SwipeFlingAdapterView;
@@ -40,11 +46,21 @@ public class SessionActivity extends AppCompatActivity {
 	CardAdapter cardAdapter;
 	
 	long startTime, endTime;
+	
+	@BindView(R.id.iv_show_options)
+	ImageView ivShowOptions;
+	
+	@BindView(R.id.ll_all_options)
+	View llAllOptions;
+	
+	Animation animFadeOut, animFadeIn, animFadeSlide;
+	Animation animInFromRight;
 
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_home);
+		ButterKnife.bind(this);
 		
 		//getSupportActionBar().hide();
 
@@ -119,7 +135,49 @@ public class SessionActivity extends AppCompatActivity {
 				throw new RuntimeException("OnClickListener: This is a crash");
 			}
 		});*/
-
+		
+		
+		animFadeOut = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fade_out);
+		animFadeIn = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fade_in);
+		animFadeSlide = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fade_in_slide_left);//not using it, remove it
+		//animInFromRight = inFromRightAnimation();
+		//animFadeOut.setAnimationListener();
+		
+		ivShowOptions.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ivShowOptions.startAnimation(animFadeOut);
+				ivShowOptions.setVisibility(View.GONE);
+				llAllOptions.setVisibility(View.VISIBLE);
+				//llAllOptions.startAnimation(inFromRightAnimation());
+				llAllOptions.startAnimation(animFadeSlide);
+				//to avoid this problem: android view gone still clickable:-
+				//clearAnimation()
+				//setClickable(false)
+				//setFillAfter(false)
+			}
+		});
+		
+		llAllOptions.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				llAllOptions.startAnimation(animFadeOut);
+				ivShowOptions.startAnimation(animFadeIn);
+				ivShowOptions.setVisibility(View.VISIBLE);
+				llAllOptions.setVisibility(View.GONE);
+			}
+		});
+		
+		
+	}
+	
+	private Animation inFromRightAnimation() {
+		
+		Animation inFromRight = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, +1.0f, Animation.RELATIVE_TO_PARENT, 0.0f,
+				                                              Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f);
+		inFromRight.setDuration(700);
+		inFromRight.setInterpolator(new AccelerateInterpolator());
+		return inFromRight;
 	}
 	
 	public Card getTopCardDetails() {
@@ -191,10 +249,19 @@ public class SessionActivity extends AppCompatActivity {
                         "here and I will help you\n" +
                         "become a genius.\n <center>";
                 //ImageView cardImage = (ImageView) convertView.findViewById(R.id.cardImage);
+	
+	            String longText = "Let’s get you started by\n" +
+			                              "providing some invaluable study tips specific to Mathematics.\n" +
+			                              "\n" +
+			                              "1. Master the Key Concepts. You don’t need to memorize the formulas, but it is very necessary that you understand how the formula was created.\n" +
+			                              "2. Practice, Practice & More Practice. It is impossible to study maths properly by just reading and listening.\n" +
+			                              "3. Review Errors\n" +
+			                              "4. Practice Practice Practice - From Newton to Bopdeva, everyone became great only after enough practice. Only through hard work and dedication is greatness achieved. However, we dont like to to do thses things, but we do crave for topping the exam. So decide your priority what do you want - comfort or rank?\n" +
+			                              "\n";
 
                 // Populate the data into the template view using the data object
-                cardText.setText(tex);
-                WebSettings webSettings = cardText.getSettings();
+	            cardText.setText(longText);
+	            WebSettings webSettings = cardText.getSettings();
                 webSettings.setJavaScriptEnabled(true);
                 webSettings.setAppCacheEnabled( true );
                 webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
@@ -265,4 +332,6 @@ public class SessionActivity extends AppCompatActivity {
 		}
 
 	}
+	
+	
 }

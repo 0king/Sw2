@@ -1,99 +1,168 @@
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frame_card_layout"
+    android:id="@+id/cl_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryLight"
-    android:orientation="vertical"
     tools:context=".activities.SessionActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="40dp"
-        android:theme="?attr/actionBarTheme">
-        <LinearLayout
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryLight"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <ProgressBar
+            android:id="@+id/indeterminate_horizontal_progress"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/colorPrimary"
+            android:indeterminate="true"/>
+
+        <FrameLayout
+            android:id="@+id/parentFrameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ProgressBar
-                android:id="@+id/indeterminate_horizontal_progress"
-                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+            android:layout_marginBottom="80dp"
+            android:layout_marginTop="60dp">
+            <!-- background cards UI: -->
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:indeterminate="true"/>
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/bottomest_card_margin_bottom"
+                    android:layout_marginLeft="@dimen/bottomest_card_margin_left"
+                    android:layout_marginRight="@dimen/bottomest_card_margin_right"
+                    android:layout_marginTop="@dimen/cards_margin_top"
+                    android:background="@drawable/card_item_stack_dark_grey_color"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/bottomer_card_margin_bottom"
+                    android:layout_marginLeft="@dimen/bottomer_card_margin_left"
+                    android:layout_marginRight="@dimen/bottomer_card_margin_right"
+                    android:layout_marginTop="@dimen/cards_margin_top"
+                    android:background="@drawable/card_item_stack_grey_color"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"/>
+
+            </FrameLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/top_card_margin_bottom"
+                android:layout_marginLeft="@dimen/top_card_margin_left"
+                android:layout_marginRight="@dimen/top_card_margin_right"
+                android:layout_marginTop="@dimen/cards_margin_top"
+                android:elevation="5dp"
+                app:cardCornerRadius="4dp">
+                <g.sw2.swipelib.SwipeFlingAdapterView
+                    android:id="@+id/swipecards"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:padding="2dp"
+                    app:max_visible="4"
+                    app:min_adapter_stack="3"
+                    app:rotation_degrees="30">
+                </g.sw2.swipelib.SwipeFlingAdapterView>
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_gravity="end|center"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <LinearLayout
+            android:id="@+id/ll_all_options"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_rect_all_options_bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <View
+                android:id="@+id/fillerView0"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="4"
-                app:srcCompat="@mipmap/expand_card"/>
-
-        </LinearLayout>
-
-    </android.support.v7.widget.Toolbar>
-
-    <FrameLayout
-        android:id="@+id/parentFrameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp">
-        <!-- background cards UI: -->
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/bottomest_card_margin_bottom"
-                android:layout_marginLeft="@dimen/bottomest_card_margin_left"
-                android:layout_marginRight="@dimen/bottomest_card_margin_right"
-                android:layout_marginTop="@dimen/cards_margin_top"
-                android:background="@drawable/card_item_stack_dark_grey_color"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/bottomer_card_margin_bottom"
-                android:layout_marginLeft="@dimen/bottomer_card_margin_left"
-                android:layout_marginRight="@dimen/bottomer_card_margin_right"
-                android:layout_marginTop="@dimen/cards_margin_top"
-                android:background="@drawable/card_item_stack_grey_color"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"/>
-
-        </FrameLayout>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/top_card_margin_bottom"
-            android:layout_marginLeft="@dimen/top_card_margin_left"
-            android:layout_marginRight="@dimen/top_card_margin_right"
-            android:layout_marginTop="@dimen/cards_margin_top"
-            android:elevation="20dp"
-            app:cardCornerRadius="10dp">
-            <g.sw2.swipelib.SwipeFlingAdapterView
-                android:id="@+id/swipecards"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:padding="2dp"
-                app:max_visible="4"
-                app:min_adapter_stack="3"
-                app:rotation_degrees="30">
-            </g.sw2.swipelib.SwipeFlingAdapterView>
-        </android.support.v7.widget.CardView>
-    </FrameLayout>
-</LinearLayout>
+                app:srcCompat="@mipmap/expand_card"/>
+            <View
+                android:id="@+id/fillerView1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/ic_pin_skycolor_material_48"/>
+            <View
+                android:id="@+id/fillerView2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/ic_bookmark_ribbon_skycolor_material_48"/>
+            <View
+                android:id="@+id/fillerView3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_show_options"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="This image works as abstraction for the all options menu available for a card"
+            android:src="@mipmap/back_dark_red_48"
+            android:visibility="visible"/>
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
