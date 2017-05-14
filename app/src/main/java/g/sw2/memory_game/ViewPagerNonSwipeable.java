@@ -1,4 +1,4 @@
-package g.sw2.game_memory;
+package g.sw2.memory_game;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

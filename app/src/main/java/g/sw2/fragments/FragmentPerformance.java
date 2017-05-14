@@ -52,9 +52,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import g.sw2.R;
-import g.sw2.activities.ActivityShowTimeSpent;
 import g.sw2.database.DatabaseManager;
-import g.sw2.game_memory.ActivityGameScreenSlide;
+import g.sw2.exp.NetworkingActivity;
+import g.sw2.memory_game.ActivityGameScreenSlide;
 import g.sw2.utility.QueryDb;
 
 /**
@@ -106,7 +106,7 @@ public class FragmentPerformance extends Fragment {
 	
 	@OnClick(R.id.button2)
 	void button2Click(View v) {
-		startActivity(new Intent(getContext(), ActivityShowTimeSpent.class));
+		startActivity(new Intent(getContext(), NetworkingActivity.class));
 	}
 	
 	void setUpDailyStudyTimeBarChart() {

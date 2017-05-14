@@ -1,4 +1,4 @@
-package g.sw2.game_memory;
+package g.sw2.memory_game;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +25,14 @@ public class ActivityGameScreenSlide extends FragmentActivity {
 	private AdapterViewPagerSlideGame mScreenSlidePagerAdapter;
 	
 	private Unbinder unbinder;//for ButterKnife
+	private Runnable next = new Runnable() {
+		@Override
+		public void run() {
+			//Log.d("Zenius","aa gelu: ");
+			moveToNextPage();
+			slideRepeatHandler.postDelayed(this, 3000);
+		}
+	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +50,6 @@ public class ActivityGameScreenSlide extends FragmentActivity {
 		
 		
 	}
-	
-	private Runnable next = new Runnable() {
-		@Override
-		public void run() {
-			//Log.d("Zenius","aa gelu: ");
-			moveToNextPage();
-			slideRepeatHandler.postDelayed(this, 3000);
-		}
-	};
 	
 	@Override
 	protected void onResume() {

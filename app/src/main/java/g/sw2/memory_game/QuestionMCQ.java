@@ -1,4 +1,4 @@
-package g.sw2.game_memory;
+package g.sw2.memory_game;
 
 import java.util.List;
 

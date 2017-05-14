@@ -61,7 +61,7 @@ public class TestActivity extends AppCompatActivity
 	private static final String TAG_METHOD = "method";
 	private static final String TAG_FEEDBACK = "feedback";
 	private static final String TAG_SHARE = "share";
-	// index to identify current nav menu item
+	// index to identify current nav menu card_item_latex_text
 	public static int navItemIndex = 0;
 	public static String CURRENT_TAG = TAG_HOME;
 	String mixpanelToken = "fc4e9c7385c84486e86a36beebbe01d2";
@@ -74,7 +74,7 @@ public class TestActivity extends AppCompatActivity
 	// urls to load navigation header background image
 	// and profile image
 	private String urlNavHeaderBg;
-	// toolbar titles respected to selected nav menu item
+	// toolbar titles respected to selected nav menu card_item_latex_text
 	private String[] activityTitles;
 	//flag to load home fragment when user presses back key
 	private boolean shouldLoadHomeFragOnBackPress = true;
@@ -208,7 +208,7 @@ public class TestActivity extends AppCompatActivity
 	 * selected from navigation menu
 	 */
 	private void loadHomeFragment() {
-		// selecting appropriate nav menu item
+		// selecting appropriate nav menu card_item_latex_text
 		selectNavMenu();
 
 		// set toolbar title
@@ -242,8 +242,8 @@ public class TestActivity extends AppCompatActivity
 		if (mPendingRunnable != null) {
 			mHandler.post(mPendingRunnable);
 		}
-
-		//Closing drawer on item click
+		
+		//Closing drawer on card_item_latex_text click
 		drawer.closeDrawers();
 
 		// refresh toolbar menu
@@ -282,14 +282,14 @@ public class TestActivity extends AppCompatActivity
 	}
 
 	private void setUpNavigationView() {
-		//Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
+		//Setting Navigation View Item Selected Listener to handle the card_item_latex_text click of the navigation menu
 		navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-			// This method will trigger on item Click of navigation menu
+			
+			// This method will trigger on card_item_latex_text Click of navigation menu
 			@Override
 			public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-				//Check to see which item was being clicked and perform appropriate action
+				
+				//Check to see which card_item_latex_text was being clicked and perform appropriate action
 				switch (menuItem.getItemId()) {
 					//Replacing the main content with ContentFragment Which is our Inbox View;
 
@@ -328,8 +328,8 @@ public class TestActivity extends AppCompatActivity
 					default:
 						navItemIndex = 0;
 				}
-
-				//Checking if the item is in checked state or not, if not make it in checked state
+				
+				//Checking if the card_item_latex_text is in checked state or not, if not make it in checked state
 				if (menuItem.isChecked()) {
 					menuItem.setChecked(false);
 				} else {
@@ -415,7 +415,7 @@ public class TestActivity extends AppCompatActivity
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
+		// Handle action bar card_item_latex_text clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
@@ -450,7 +450,7 @@ public class TestActivity extends AppCompatActivity
 		* default:
             // If we got here, the user's action was not recognized.
             // Invoke the superclass to handle it.
-            return super.onOptionsItemSelected(item);
+            return super.onOptionsItemSelected(card_item_latex_text);
  */
 	}
 
@@ -463,7 +463,7 @@ public class TestActivity extends AppCompatActivity
 		try{
 			Intent sendIntent = new Intent();
 			sendIntent.setAction(Intent.ACTION_SEND);
-			sendIntent.setType("text/plain");
+			sendIntent.setType("card_item_image/plain");
 			sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Zenius - Smarter way to study");
 			sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey check out my app at: https://play.google.com/store/apps/details?id=com.google.android.apps.plus");
 			startActivity(sendIntent);
@@ -477,7 +477,7 @@ public class TestActivity extends AppCompatActivity
 		Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + "contact@getzenius.com"));
 		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for Zenius");
 		//emailIntent.putExtra(Intent.EXTRA_TEXT, body);
-		//emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, body); //If you are using HTML in your body text
+		//emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, body); //If you are using HTML in your body card_item_image
 		startActivity(Intent.createChooser(emailIntent, "Select mail app:-"));
 
 /*		Intent emailIntent = new Intent(Intent.ACTION_SENDTO);

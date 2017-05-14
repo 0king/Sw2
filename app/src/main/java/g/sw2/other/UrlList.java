@@ -22,6 +22,33 @@ public class UrlList {
 			"https://s-media-cache-ak0.pinimg.com/736x/b5/3b/0f/b53b0fb4921620c21f7c34ee4d5a4a20.jpg",//expert was a beginner
 			"https://s-media-cache-ak0.pinimg.com/736x/7f/08/49/7f08499d219335b3953eb8712b77db49.jpg",//stay positive work hard make it happen
 			"https://www.brainyquote.com/photos_tr/en/a/aristotle/379604/aristotle1.jpg",//quality is habit
+			"https://www.walldevil.com/wallpapers/a75/chess-piece-mirror-pawn-king.jpg",
+			"http://fakebuddhaquotes.com/wp-content/uploads/2015/04/drop-by-drop.jpg",
+			"http://2.bp.blogspot.com/-DFy5NZXof9Q/UT9BQjbOBpI/AAAAAAAAP74/jjX4lMTFBJg/s640/Funny+quotes%252C+Inspirational+quotes%252C+Life+quotes%252C+Love+quotes%252C+quotes%252C+Wise+quotes%252C++%2528560%2529.jpg",
+			"http://cdn-media-1.lifehack.org/wp-content/files/2015/06/677f5353ef0b2c0f292d1fe8cdfa32e0.jpg",
+			"https://4.bp.blogspot.com/-iXGC8E3QBfY/Uzug02seOrI/AAAAAAAAHPA/apDJDNmcseM/s1600/buddhist-quotes-on-thoughts-image.jpg",
+			"http://static.yourtango.com/cdn/farfuture/nlZjBI6508hOjlRycV-zhhYJx6VNKMxHtjiHggcpAT0/mtime:1484403796/sites/default/files/styles/body_image_default/public/2016%20Oct/8changequotes.jpg",//growth is painful, change is painful but...stuck...
+			"https://pbs.twimg.com/media/C9TZDDcWsAAfMPW.jpg",//all change is not growth
+			"https://cdn-webimages.wimages.net/05203aafb6d492680c23ec7a598fcfb797ac14-wide-thumbnail.jpg?v=3",//stay silent than prove you're fool
+			"https://pics.onsizzle.com/dont-be-so-quick-to-believe-what-you-hear-because-13539897.png",
+			"http://static.yourtango.com/cdn/farfuture/P9GJBv3odbX6veose7MOqmcZ5fumZ9rPBaHBapckPP0/mtime:1484403783/sites/default/files/styles/body_image_default/public/2016%20Oct/7changequotes.jpg",//if it does not challenge you, wont change you
+			"http://static.yourtango.com/cdn/farfuture/GN9WJ-Uny-T-pRNCRLRqlF0l85Fe7TOQzClFXiQeKLY/mtime:1484403674/sites/default/files/styles/body_image_default/public/2016%20Oct/2changequotes.jpg",//life gets beetter by change not chance
+			"http://static.yourtango.com/cdn/farfuture/9DFfHsbLNRRwb088M5uc_mKp1lBA15lkdVAM2FVWjtg/mtime:1484403815/sites/default/files/styles/body_image_default/public/2016%20Oct/10changequotes.jpg",//progress impossible without change
+			"http://static.yourtango.com/cdn/farfuture/GwW7TXpgSIv_4sfNAKe-opWOlSyZFcCIgrD_P7wgu84/mtime:1484403756/sites/default/files/styles/body_image_default/public/2016%20Oct/6changequotes.jpg",//start changing within you not outside
+			"http://cdn.quotesgram.com/img/86/88/252400784-why-do-we-fall-batman-movie-quotes-sayings-pictures.jpg",
+			"https://lh6.googleusercontent.com/-SIpEsn_EbPc/Uw_yweKVryI/AAAAAAAAHgQ/2MOoqe-8uhc/w506-h750/batman.png",//rise everytime we fall
+			"https://weneedfun.com/wp-content/uploads/2016/03/Batman-Quotes-8.jpg",//what i do defines me
+			"http://inspirationboost.com/wp-content/uploads/2013/04/JD-Houston-Change-Quotes.jpg",//do smth youve never done,
+			"http://media.lifehack.org/wp-content/files/2014/12/changeplannotgoal.jpg",//change the plan, never goal
+			"http://www.zarias.com/wp-content/uploads/2016/02/37250216-quotes-about-change.jpg",//change is law of nature
+			"http://quoteamo.com/wp-content/uploads/2016/11/being-positive-wont-guarantee-you-will-succeed.jpg",
+			"http://media.lifehack.org/wp-content/files/2014/12/EmilysQuotes.Com-moving-on-intelligence-comfort1.jpg",//comfort zone is beutifull place
+			"http://www.savingadvice.com/articles/wp-content/uploads/2013/08/uncomforatble.jpg",//if you want to change yuo have to be uncomfortable
+			"http://cdn.quotesgram.com/small/35/46/214471869-564292_10151162785653162_1388865845_n.jpg",//crazy people think, change
+			"https://www.brainyquote.com/photos/n/nelsonmandela157855.jpg",//education can change-mandela
+			"http://static.yourtango.com/cdn/farfuture/B4NzdbhNf-VZM85juX0p2jq593VJ4F_ZaKjvb1YU_Ec/mtime:1484403746/sites/default/files/styles/body_image_default/public/2016%20Oct/5changequotes.jpg",//we cannot become what we want to become by remaining what we are
+			"http://messages.365greetings.com/wp-content/uploads/2013/04/batman-begins-quotes1.jpg",//what i do defines me
+			"https://addicted2success.com/wp-content/uploads/2015/01/The-Buddha-Quote.jpg",//the fool who knows his fool is wise
 			"https://s-media-cache-ak0.pinimg.com/originals/a4/d3/40/a4d340f895d9d32066817e81c5740ae8.jpg",//work hard dream big
 			"https://s-media-cache-ak0.pinimg.com/736x/f7/2d/23/f72d23e7d51d47775b01404cb509b2d5.jpg",//push harder than yesterday for diff tomm
 			"https://www.brainyquote.com/photos_tr/en/w/winstonchurchill/143691/winstonchurchill1.jpg",//never give up - churchill
@@ -67,7 +94,7 @@ public class UrlList {
 			"http://www.quotemaster.org/images/36/3633238a3ceffab443789ed3429042da.jpg",//if you chase 2 rabbit both will escape
 			"http://www.quotehd.com/imagequotes/authors72/rig-veda-quote-the-main-factor-behind-success-is-self-control.jpg",
 			"http://cdn-media-2.lifehack.org/wp-content/files/2015/07/Learning-Quotes-2-of-16.jpg",//learn as if you will live foreever
-			"http://www.hippoquotes.com/img/brain-quotes/quote,inspiration,motivation,quotes,word,text-a0e965d06c10025618939b4f85a5910a_h.jpg",//what we think we become
+			"http://www.hippoquotes.com/img/brain-quotes/quote,inspiration,motivation,quotes,word,card_item_image-a0e965d06c10025618939b4f85a5910a_h.jpg",//what we think we become
 			"http://www.thequotepedia.com/images/108/mastering-others-is-strength-mastering-yourself-is-true-power-brain-quote.png",//mastering one self is true power
 			"http://img.picturequotes.com/2/9/8870/brain-power-improves-by-brain-use-just-as-our-bodily-strength-grows-with-exercise-quote-1.jpg",//brain improves by brain use
 			"https://weneedfun.com/wp-content/uploads/2016/08/Intelligence-Quotes-2.png",//intelligence = ability to change

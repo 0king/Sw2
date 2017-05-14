@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.model;
 
 /**
  * Created by 5dr on 13/12/16.

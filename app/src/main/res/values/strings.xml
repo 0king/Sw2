@@ -18,7 +18,7 @@
     <string name="nav_purpose">Purpose of the app</string>
     <string name="nav_feedback">Submit feedback</string>
     <string name="nav_up_features">Upcoming features</string>
-    <string name="nav_share">Share the app</string>
+    <string name="nav_share">Share the Wisdom</string>
     <string name="nav_rate">Rate the app</string>
     <string name="nav_about_us">About Us</string>
     <string name="nav_settings">Settings</string> <!-- notification settings -->

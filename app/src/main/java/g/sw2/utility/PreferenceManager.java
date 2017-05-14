@@ -20,9 +20,12 @@ public class PreferenceManager {
     public static final String PREF_TODAY_DURATION = "today_time_duration";
     public static final String PREF_DB_HAS_CHANGED = "true";
     //public static final String PREF_FIRST_INSTALL_DATE = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-    
-    
-    private static PreferenceManager instance;
+	
+	public static final String PREF_SERVER_MATH10_FILE_HAS_CHANGED = "true";
+	public static final String PREF_SERVER_MATH10_FILE_DOWNLOADED = "false";
+	
+	
+	private static PreferenceManager instance;
     private SharedPreferences.Editor editor;
     private SharedPreferences preferences;
     

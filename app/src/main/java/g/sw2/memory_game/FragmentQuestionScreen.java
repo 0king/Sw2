@@ -1,4 +1,4 @@
-package g.sw2.game_memory;
+package g.sw2.memory_game;
 
 
 import android.graphics.Color;
@@ -24,16 +24,12 @@ import g.sw2.utility.ContentManager;
 public class FragmentQuestionScreen extends Fragment implements View.OnClickListener {
 	
 	private static final String TAG = "FragmentQuestionScreen";
-	
+	@BindView(R.id.tv_question)
+	TextView tvQuestionText;
 	private ActivityGameQuestionScreenSlide parentActivity;
 	private String colorList[] = {"#ff0015", "#f200ff", "#00aeff", "#00ff15", "#f6ff00"};//red, purple,blue,green,yellow
 	private int indexOfArrayColor;
-	
 	private QuestionMCQ questionMCQ;//todo initialization
-	
-	@BindView(R.id.tv_question)
-	TextView tvQuestionText;
-	
 	private Button[] buttonQuestionOptions;
 	
 	

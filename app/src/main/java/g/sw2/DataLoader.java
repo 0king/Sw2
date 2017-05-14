@@ -3,8 +3,6 @@ package g.sw2;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
 
 import g.sw2.model.DataInfo;
@@ -46,9 +44,9 @@ public class DataLoader extends AsyncTask<Void, Void, Void> {
 				String jsonString = response.body().string();
 				if (!BuildConfig.FLAVOR.equals(jsonString)) {
 					
-					DataLoader.this.dataInfo = (DataInfo) new GsonBuilder().create().fromJson(jsonString, DataInfo.class);
+					//DataLoader.this.dataInfo = (DataInfo) new GsonBuilder().create().fromJson(jsonString, DataInfo.class);//gives error, so commented
 					
-					Log.e("Zenius", "ClaasLevel  " + DataLoader.this.dataInfo.getClassLevel());
+					//Log.e("Zenius", "ClaasLevel  " + DataLoader.this.dataInfo.getClassLevel());
 					
 				}
 				

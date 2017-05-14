@@ -1,5 +1,6 @@
 package g.sw2.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,9 +9,18 @@ import java.util.List;
 
 public class Chapter {
 	
-	private String chapter_name;
-	private String chapter_number;
 	private String chapter_id;
+	private String chapter_name = "";
+	private String chapter_duration = "";
+	private String chapter_image_url = "";
+	//private List<String> chapter_learning_objectives=new ArrayList<>();
+	private String chapter_learning_objectives = "";
+	private String chapter_summary = "";
+	private List<Topic> topics_list = new ArrayList<>();
+	
+	
+	/*others:*/
+	/*private String chapter_number;
 	private String chapter_importance;
 	private String chapter_time_expected;
 	private String chapter_average_time_taken_by_users;
@@ -21,14 +31,11 @@ public class Chapter {
 	private String chapter_rating;
 	private String chapter_author;
 	private String chapter_created;
-	private String chapter_image_url;
 	private String chapter_comments;
 	private String chapter_user_feedback;
 	private String chapter_user_interaction;
-	private List<String> chapter_learning_objectives;
-	private String total_number_of_topics;
+	private String total_number_of_topics;*/
 	
-	private List<Topic> topic_list;
 	
 	public String getChapter_name() {
 		return chapter_name;

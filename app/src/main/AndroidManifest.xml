@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!-- To auto-complete the email card_item_image field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
@@ -31,7 +31,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
@@ -93,17 +92,19 @@
             android:name="net.hockeyapp.android.appIdentifier"
             android:value="${HOCKEYAPP_APP_ID}"/>
 
-        <activity android:name=".game_memory.ActivityGameScreenSlide">
+        <activity android:name=".memory_game.ActivityGameScreenSlide">
         </activity>
-        <activity android:name=".game_memory.ActivityGameQuestionScreenSlide">
+        <activity android:name=".memory_game.ActivityGameQuestionScreenSlide">
         </activity>
-        <activity android:name=".game_memory.ActivityMemoryGameResult">
+        <activity android:name=".memory_game.ActivityMemoryGameResult">
         </activity>
         <activity android:name=".activities.ActivityScienceBehindZenius">
         </activity>
         <activity android:name=".activities.ActivityBookmarks">
         </activity>
         <activity android:name=".activities.ActivityShowTimeSpent">
+        </activity>
+        <activity android:name=".exp.NetworkingActivity">
         </activity>
     </application>
 

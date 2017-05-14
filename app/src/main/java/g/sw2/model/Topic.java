@@ -1,6 +1,6 @@
 package g.sw2.model;
 
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Kush Agrawal on 4/4/2017.
@@ -8,9 +8,19 @@ import java.util.List;
 
 public class Topic {
 	
-	private String topic_name;
-	private String topic_number;
+	private String topic_name = "";
 	private String topic_id;
+	private String topic_image_url = "";
+	//private List<String> topic_summary=new ArrayList<>();
+	private String topic_summary = "";
+	private String topic_duration = "";
+	
+	@SerializedName("all_cards_list")
+	private AllCardsList all_cards_list;
+	//private List<AllCardsList> all_cards;
+	
+	/*
+	private String topic_number;
 	private String topic_importance;
 	private String topic_difficulty;
 	private String topic_study_time_expected;
@@ -18,7 +28,6 @@ public class Topic {
 	private String topic_author;
 	private String topic_created;
 	private String topic_updated;
-	private String topic_image_url;
 	private String topic_comments;
 	private List<String> topic_parents;
 	private List<String> topic_siblings;
@@ -30,10 +39,9 @@ public class Topic {
 	private List<String> topic_end_gyan;
 	private String topic_start_game;
 	private String topic_end_game;
-	private List<String> topic_summary;
 	private List<String> topic_related_tricks;
 	private List<String> topic_related_extra_information;
-	
-	private List<Cards> all_cards;
+	*/
+
 }
 

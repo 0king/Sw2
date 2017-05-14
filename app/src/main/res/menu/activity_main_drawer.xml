@@ -35,21 +35,21 @@
 
     </group>
 
-    <!--<item android:title="Other">
+    <!--<card_item_latex_text android:title="Other">
         <menu>
-            <item
+            <card_item_latex_text
                 android:id="@+id/nav_about_us"
                 android:title="@string/nav_about_us" />
 
-            <item
+            <card_item_latex_text
                 android:id="@+id/nav_share"
                 android:title="@string/nav_share" />
 
-            <item
+            <card_item_latex_text
                 android:id="@+id/nav_rate"
                 android:title="@string/nav_rate" />
 
         </menu>
-    </item>-->
+    </card_item_latex_text>-->
 
 </menu>

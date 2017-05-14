@@ -3,23 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="g.sw2.game_memory.FragmentGameScreen"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="g.sw2.memory_game.FragmentGameScreen">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="15dp"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
 
         <ImageView
-            android:layout_weight="1"
-            android:src="@mipmap/alia"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/alia"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,10 +28,10 @@
 
 
         <ImageView
-            android:layout_weight="1"
-            android:src="@mipmap/disha"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/disha"/>
 
 
         <TextView

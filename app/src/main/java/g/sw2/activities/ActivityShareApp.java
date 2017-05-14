@@ -13,7 +13,7 @@ public class ActivityShareApp extends AppCompatActivity {
 		try{
 			Intent sendIntent = new Intent();
 			sendIntent.setAction(Intent.ACTION_SEND);
-			sendIntent.setType("text/plain");
+			sendIntent.setType("card_item_image/plain");
 			sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Zenius - Smarter way to study");
 			sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey check out my app at: https://play.google.com/store/apps/details?id=com.google.android.apps.plus");
 			startActivity(sendIntent);
@@ -22,8 +22,8 @@ public class ActivityShareApp extends AppCompatActivity {
 		}
 
 		/*
-       Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-       sharingIntent.setType("text/plain");
+	   Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+       sharingIntent.setType("card_item_image/plain");
        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "APP NAME (Open it in Google Play Store to Download the Application)");
 	   sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, appURL);
        startActivity(Intent.createChooser(sharingIntent, "Share via"));

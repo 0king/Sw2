@@ -1,4 +1,4 @@
-package g.sw2.game_memory;
+package g.sw2.memory_game;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

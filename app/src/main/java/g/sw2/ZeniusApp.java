@@ -2,6 +2,7 @@ package g.sw2;
 
 import android.app.Application;
 
+import com.androidnetworking.AndroidNetworking;
 import com.facebook.stetho.Stetho;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
@@ -64,5 +65,7 @@ public class ZeniusApp extends Application {
 		/*new FlurryAgent.Builder()
 				.withLogEnabled(true)
 				.build(this,"8XRBMKMWCJBTWHKP3J9V");//.withListener(flurryListener)*/
+		
+		AndroidNetworking.initialize(getApplicationContext());
 	}
 }

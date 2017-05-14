@@ -26,7 +26,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
-    <!--  <item name="android:windowContentOverlay">@null</item> -->
+    <!--  <card_item_latex_text name="android:windowContentOverlay">@null</card_item_latex_text> -->
 
     <style name="ActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>

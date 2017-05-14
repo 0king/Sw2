@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     private static final String TAG_METHOD = "method";
     private static final String TAG_FEEDBACK = "feedback";
     private static final String TAG_SHARE = "share";
-    // index to identify current nav menu item
-    public static int navItemIndex = 0;
+	// index to identify current nav menu card_item_latex_text
+	public static int navItemIndex = 0;
     //private static final String urlProfileImg = "http://www.kimyakariyerim.com/uploads/no.jpg";
     public static String CURRENT_TAG = TAG_HOME;
     String fragment_name;
@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     // urls to load navigation header background image
     // and profile image
     private String urlNavHeaderBg;
-    // toolbar titles respected to selected nav menu item
-    private String[] activityTitles;
+	// toolbar titles respected to selected nav menu card_item_latex_text
+	private String[] activityTitles;
 
     //flag to load home fragment when user presses back key
     private boolean shouldLoadHomeFragOnBackPress = true;
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
 	
 	public static boolean isMailClientPresent(Context context) {
 		Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.setType("text/html");
+		intent.setType("card_item_image/html");
 		final PackageManager packageManager = context.getPackageManager();
 		List<ResolveInfo> list = packageManager.queryIntentActivities(intent, 0);
 		
@@ -161,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
 
 // Display color under navigation bar (API 21+)
 // Don't forget these lines in your style-v21
-// <item name="android:windowTranslucentNavigation">true</item>
-// <item name="android:fitsSystemWindows">true</item>
+// <card_item_latex_text name="android:windowTranslucentNavigation">true</card_item_latex_text>
+// <card_item_latex_text name="android:fitsSystemWindows">true</card_item_latex_text>
         bottomNavigation.setTranslucentNavigationEnabled(true);
 
 // Manage titles
@@ -173,14 +173,14 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
 // Use colored navigation with circle reveal effect
         bottomNavigation.setColored(true);
 
-// Set current item programmatically
+// Set current card_item_latex_text programmatically
         bottomNavigation.setCurrentItem(0);
         loadBottomToolbarFragment(0);
 
 // Customize notification (title, background, typeface)
         bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
 
-// Add or remove notification for each item
+// Add or remove notification for each card_item_latex_text
         //bottomNavigation.setNotification("1", 3);
 // OR
 //        AHNotification notification = new AHNotification.Builder()
@@ -317,8 +317,8 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     }
 
     private void loadNavigationBarFragment() {
-        // selecting appropriate nav menu item
-        selectNavMenu();
+	    // selecting appropriate nav menu card_item_latex_text
+	    selectNavMenu();
 
         // set toolbar title
         //setToolbarTitle();
@@ -351,9 +351,9 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         if (mPendingRunnable != null) {
             mHandler.post(mPendingRunnable);
         }
-
-        //Closing drawer on item click
-        drawer.closeDrawers();
+	
+	    //Closing drawer on card_item_latex_text click
+	    drawer.closeDrawers();
 
         // refresh toolbar menu
         invalidateOptionsMenu();
@@ -387,15 +387,15 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     }
 
     private void setUpNavigationView() {
-        //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-            // This method will trigger on item Click of navigation menu
-            @Override
+	    //Setting Navigation View Item Selected Listener to handle the card_item_latex_text click of the navigation menu
+	    navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+	
+	        // This method will trigger on card_item_latex_text Click of navigation menu
+	        @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                //Check to see which item was being clicked and perform appropriate action
-                switch (menuItem.getItemId()) {
+	
+	            //Check to see which card_item_latex_text was being clicked and perform appropriate action
+		        switch (menuItem.getItemId()) {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
 
                     case R.id.nav_bookmarks:
@@ -431,9 +431,9 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
                     default:
                         navItemIndex = 0;
                 }
-
-                //Checking if the item is in checked state or not, if not make it in checked state
-                if (menuItem.isChecked()) {
+	
+	            //Checking if the card_item_latex_text is in checked state or not, if not make it in checked state
+		        if (menuItem.isChecked()) {
                     menuItem.setChecked(false);
                 } else {
                     menuItem.setChecked(true);
@@ -452,8 +452,8 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         try {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.setType("text/plain");
-            sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Zenius - Smarter way to study");
+	        sendIntent.setType("card_item_image/plain");
+	        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Zenius - Smarter way to study");
             sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey check out my app at: https://play.google.com/store/apps/details?id=com.google.android.apps.plus");
             startActivity(sendIntent);
         } catch (Exception e) {
@@ -472,8 +472,8 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
 		Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + "contact@getzenius.com"));
 		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback for Zenius");
         //emailIntent.putExtra(Intent.EXTRA_TEXT, body);
-        //emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, body); //If you are using HTML in your body text
-        startActivity(Intent.createChooser(emailIntent, "Select mail app:-"));
+		//emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, body); //If you are using HTML in your body card_item_image
+		startActivity(Intent.createChooser(emailIntent, "Select mail app:-"));
 
 /*		Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
 		emailIntent.setData(Uri.parse("mailto: abc@xyz.com"));

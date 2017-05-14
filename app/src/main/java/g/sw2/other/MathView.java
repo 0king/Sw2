@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -59,6 +57,10 @@ public class MathView extends WebView {
 
         return new Theme(loader).makeChunk(template);
     }
+	
+	public String getText() {
+		return mText;
+	}
 
     public void setText(String text) {
         mText = text;
@@ -68,11 +70,7 @@ public class MathView extends WebView {
         String TAG_CONFIG = "config";
         chunk.set(TAG_FORMULA, mText);
         chunk.set(TAG_CONFIG, mConfig);
-        this.loadDataWithBaseURL(null, chunk.toString(), "text/html", "utf-8", "about:blank");
-    }
-
-    public String getText() {
-        return mText;
+	    this.loadDataWithBaseURL(null, chunk.toString(), "card_item_image/html", "utf-8", "about:blank");
     }
 
     /**

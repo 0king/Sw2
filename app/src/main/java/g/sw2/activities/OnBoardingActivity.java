@@ -31,8 +31,11 @@ import g.sw2.R;
 
 
 public class OnBoardingActivity extends AppCompatActivity {
-
-    /**
+	
+	public static final String PREF_USER_FIRST_TIME = "user_first_time";
+	static final String TAG = "PagerActivity";
+	private static final String PREFERENCES_FILE = "materialsample_settings";
+	/**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
      * {@link FragmentPagerAdapter} derivative, which will keep every
@@ -41,27 +44,17 @@ public class OnBoardingActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
     ImageButton mNextBtn;
     Button mSkipBtn, mFinishBtn;
-
     ImageView zero, one, two;
     ImageView[] indicators;
-
     int lastLeftValue = 0;
-
     CoordinatorLayout mCoordinator;
-    public static final String PREF_USER_FIRST_TIME = "user_first_time";
-    private static final String PREFERENCES_FILE = "materialsample_settings";
-
-
-    static final String TAG = "PagerActivity";
-
     int page = 0;   //  to track page position
+	/**
+	 * The {@link ViewPager} that will host the section contents.
+	 */
+	private ViewPager mViewPager;
 
     public static String readSharedSetting(Context ctx, String settingName, String defaultValue) {
         SharedPreferences sharedPref = ctx.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
@@ -225,8 +218,8 @@ public class OnBoardingActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+	    // Handle action bar card_item_latex_text clicks here. The action bar will
+	    // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
