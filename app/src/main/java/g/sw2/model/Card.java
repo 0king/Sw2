@@ -2,6 +2,9 @@ package g.sw2.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 5dr on 25/02/17.
  */
@@ -10,7 +13,7 @@ public class Card {
 	
 	/* data, core values*/
 	@SerializedName("card_id")
-	private String cardId;
+	private long cardId;
 	@SerializedName("card_text")
 	private String mainText = "";
 	@SerializedName("card_media_url")
@@ -22,14 +25,15 @@ public class Card {
 	
 	/* format */
 	@SerializedName("card_design_format")
-	private String designFormat = "card_item_image";//image,card_item_image,card_item_image+image,video+card_item_image,etc
+	private String designFormat = "text";//image,card_item_image,card_item_image+image,video+card_item_image,etc
 	@SerializedName("card_is_latex")
-	private String isLatex = "no";
+	private boolean isLatex = false;
+	private String card_image_type = "portrait";
 	
 	
 	/* styling */
 	@SerializedName("card_background_color")
-	private String bgColor = "white";
+	private String bgColor = "#ffffff";
 	@SerializedName("card_font_type")
 	private String fontType = "ubuntu";
 	@SerializedName("card_text_alignment")
@@ -37,19 +41,21 @@ public class Card {
 	@SerializedName("card_gravity")
 	private String cardGravity = "center";
 	@SerializedName("card_text_color")
-	private String textColor = "black";
+	private String textColor = "#000000";
 	@SerializedName("card_text_style")
 	private String textStyle = "normal";//normal, bold, italics
+	private int card_font_size = 11;
+	
 	
 	/* structure */
 	@SerializedName("card_heading")
 	private String heading1 = "";
 	@SerializedName("card_contains_input_field")
-	private String containsInputField = "no";
+	private boolean containsInputField = false;
 	@SerializedName("card_extra_bottom_information")
 	private String extraInfo = "";
 	@SerializedName("card_contains_buttons")
-	private String containsButtons = "no";
+	private boolean containsButtons = false;
 	@SerializedName("card_button1_name")
 	private String btn1Name = "";
 	@SerializedName("card_button2_name")
@@ -58,36 +64,26 @@ public class Card {
 	private String btn3Name;
 	
 	/* other data required by chapter and topic cards*/
-	private String duration = "";
-	private String chapterLearningObjectives = "";
+	private int duration = 0;
+	private List<Card> chapter_learning_objectives = new ArrayList<>();
+	private List<Card> chapter_summary = new ArrayList<>();
+	private int chapter_duration = 0;
+	private String chapter_image_url = "";
 	
 	
 	//public Card(){}
 	
-	public Card(String id, String text, String designFormat, String duration, String imageUrl, String chapterLearningObjectives) {
+	public Card(long id, String text, String designFormat, int duration, String imageUrl, List<Card> chapterLearningObjectives, List<Card> chapter_summary) {
 		this.cardId = id;
 		this.mainText = text;
 		this.designFormat = designFormat;
 		this.duration = duration;
 		this.imageUrl = imageUrl;
-		this.chapterLearningObjectives = chapterLearningObjectives;
+		this.chapter_learning_objectives = chapterLearningObjectives;
+		this.chapter_summary = chapter_summary;
 	}
-
-	public Card(String cardId, String mediaUrl, String text,String card_type) {
-		this.cardId = cardId;
-		this.mediaUrl = mediaUrl;
-		this.mainText = text;
-		this.designFormat = card_type;
-	}
-
-	public String getCardId() {
-		return cardId;
-	}
-
-	public void setCardId(String cardId) {
-		this.cardId = cardId;
-	}
-
+	
+	
 	public String getMediaUrl() {
 		return mediaUrl;
 	}
@@ -130,14 +126,6 @@ public class Card {
 	
 	public void setDesignFormat(String designFormat) {
 		this.designFormat = designFormat;
-	}
-	
-	public String getIsLatex() {
-		return isLatex;
-	}
-	
-	public void setIsLatex(String isLatex) {
-		this.isLatex = isLatex;
 	}
 	
 	public String getBgColor() {
@@ -196,13 +184,7 @@ public class Card {
 		this.heading1 = heading1;
 	}
 	
-	public String getContainsInputField() {
-		return containsInputField;
-	}
 	
-	public void setContainsInputField(String containsInputField) {
-		this.containsInputField = containsInputField;
-	}
 	
 	public String getExtraInfo() {
 		return extraInfo;
@@ -212,13 +194,6 @@ public class Card {
 		this.extraInfo = extraInfo;
 	}
 	
-	public String getContainsButtons() {
-		return containsButtons;
-	}
-	
-	public void setContainsButtons(String containsButtons) {
-		this.containsButtons = containsButtons;
-	}
 	
 	public String getBtn1Name() {
 		return btn1Name;
@@ -245,22 +220,6 @@ public class Card {
 	}
 	
 	
-	public String getDuration() {
-		return duration;
-	}
-	
-	public void setDuration(String duration) {
-		this.duration = duration;
-	}
-	
-	public String getChapterLearningObjectives() {
-		return chapterLearningObjectives;
-	}
-	
-	public void setChapterLearningObjectives(String chapterLearningObjectives) {
-		this.chapterLearningObjectives = chapterLearningObjectives;
-	}
-	
 	public String getCard_text_above() {
 		return card_text_above;
 	}
@@ -275,5 +234,93 @@ public class Card {
 	
 	public void setCard_text_below(String card_text_below) {
 		this.card_text_below = card_text_below;
+	}
+	
+	public long getCardId() {
+		return cardId;
+	}
+	
+	public void setCardId(long cardId) {
+		this.cardId = cardId;
+	}
+	
+	public boolean isLatex() {
+		return isLatex;
+	}
+	
+	public void setLatex(boolean latex) {
+		isLatex = latex;
+	}
+	
+	public String getCard_image_type() {
+		return card_image_type;
+	}
+	
+	public void setCard_image_type(String card_image_type) {
+		this.card_image_type = card_image_type;
+	}
+	
+	public int getCard_font_size() {
+		return card_font_size;
+	}
+	
+	public void setCard_font_size(int card_font_size) {
+		this.card_font_size = card_font_size;
+	}
+	
+	public boolean isContainsInputField() {
+		return containsInputField;
+	}
+	
+	public void setContainsInputField(boolean containsInputField) {
+		this.containsInputField = containsInputField;
+	}
+	
+	public boolean isContainsButtons() {
+		return containsButtons;
+	}
+	
+	public void setContainsButtons(boolean containsButtons) {
+		this.containsButtons = containsButtons;
+	}
+	
+	public int getDuration() {
+		return duration;
+	}
+	
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+	
+	public List<Card> getChapter_learning_objectives() {
+		return chapter_learning_objectives;
+	}
+	
+	public void setChapter_learning_objectives(List<Card> chapter_learning_objectives) {
+		this.chapter_learning_objectives = chapter_learning_objectives;
+	}
+	
+	public List<Card> getChapter_summary() {
+		return chapter_summary;
+	}
+	
+	public void setChapter_summary(List<Card> chapter_summary) {
+		this.chapter_summary = chapter_summary;
+	}
+	
+	public int getChapter_duration() {
+		return chapter_duration;
+	}
+	
+	public void setChapter_duration(int chapter_duration) {
+		this.chapter_duration = chapter_duration;
+	}
+	
+	public String getChapter_image_url() {
+		return chapter_image_url;
+	}
+	
+	public void setChapter_image_url(String chapter_image_url) {
+		this.chapter_image_url = chapter_image_url;
 	}
 }

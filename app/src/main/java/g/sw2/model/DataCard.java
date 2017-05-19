@@ -5,6 +5,8 @@ package g.sw2.model;
  */
 
 public class DataCard {
+	
+	/* not using this class, delete it*/
 
 	static int cardId;
 	private String imageUrl;

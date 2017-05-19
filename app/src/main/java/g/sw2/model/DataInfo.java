@@ -8,6 +8,7 @@ import java.util.List;
 
 public class DataInfo {
 	
+	/* not using this class, delete it */
 	private String class_level;
 	private String board;
 	private String language_of_communication;

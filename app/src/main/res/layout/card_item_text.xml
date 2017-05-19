@@ -4,12 +4,28 @@
               android:layout_height="match_parent"
               android:layout_gravity="center"
               android:background="@drawable/corner"
+              android:gravity="center"
               android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvSimpleText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="6dp"
+        android:gravity="start"
+        android:text="Hello hello Hello hello
+        Hello hello Hello hello Hello hello Hello hello Hello hello
+Hello hello Hello hello o hello Hello hello Hello hello Hello hello
+Hello hello Hello hello o hello Hello hello Hello hello Hello hello
+Hello hello Hello hello o hello Hello hello Hello hello Hello hello
+Hello hello Hello hello o hello Hello hello Hello hello Hello hello
+Hello hello Helello Hello hello
+Hello hello Hello hello o hello Hello hello Hello hello Hello hello
+Hello hello Hello hello o hello Hello hello Hello hello Hello hello
+Hello hello Hello hello o hello Hello hello Hello hello Hello hello
+Hello hello Hello hello o hello Hello hello Hello hello Hello hello Hello hello Hello hello "
+        android:textColor="#000"
+        android:textSize="21sp"/>
 
 </LinearLayout>

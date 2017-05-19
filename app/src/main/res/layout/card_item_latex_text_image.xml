@@ -18,8 +18,7 @@
             android:id="@+id/text_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_weight="0.16">
+            android:layout_weight="1">
         </ImageView>
 
         <io.github.kexanie.library.MathView
@@ -27,9 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:layout_weight="0.16"
+            android:layout_weight="1"
             android:textAlignment="center"
             auto:engine="KaTeX">
         </io.github.kexanie.library.MathView>

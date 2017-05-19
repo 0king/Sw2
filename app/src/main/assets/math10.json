@@ -1,0 +1,385 @@
+[
+  {
+    "chapter_id": 1,
+    "chapter_name": "Chapter 1\nReal numbers",
+    "chapter_duration": 120,
+    "chapter_image_url": "http://msgarciamath.edublogs.org/files/2014/08/Real-Numbers-2kh7cdt.png",
+    "chapter_learning_objectives": [
+      {
+        "card_id": 996950,
+        "card_design_format": "image",
+        "card_image_type": "landscape",
+        "card_image_url": "http://media1.santabanta.com/full1/Architecture/Roads/roads-29a.jpg"
+      },
+      {
+        "card_id": 997000,
+        "card_design_format": "image",
+        "card_image_url": "http://wallup.net/wp-content/uploads/2016/01/253295-digital_art-portrait_display-simple_background-minimalism-space-universe-planet-stars-astronaut-spacesuit-helmet-flag-monochrome-moon.jpg"
+      },
+      {
+        "card_id": 998000,
+        "card_text_font": "zemkhi",
+        "card_font_size": 14,
+        "card_text_alignment": "center",
+        "card_text_style": "bold",
+        "card_text_color": "#3c3f42",
+        "card_background_color": "#005050",
+        "card_text": "Greetings, user’s name!!!\nI am your study guide\nand assistant.\nI will help you study better,\nWork better,\nFocus better,\nAnd perform consistently.\nJust be honest with your\ncommitments you make\nhere and I will help you\nbecome a genius."
+      }
+    ],
+    "chapter_summary": [
+      {
+        "card_id": 998050,
+        "card_design_format": "image",
+        "card_image_type": "landscape",
+        "card_image_url": "https://i.ytimg.com/vi/qkxLNSwop7c/maxresdefault.jpg"
+      },
+      {
+        "card_id": 998900,
+        "card_font_type": "ubuntu",
+        "card_font_size": 11,
+        "card_text": "Let’s get you started by providing some invaluable study tips specific to Mathematics.\n1. Master the Key Concepts. You don’t need to memorize the formulas, but it is very necessary that you understand how the formula was created.\nFor example:-"
+      }
+    ],
+    "topics_list": [
+      {
+        "topic_id": 1,
+        "topic_duration": 30,
+        "topic_name": "Fundamental theorem of Arithmetic",
+        "topic_image_url": "http://mathworld.wolfram.com/images/eps-gif/PrimeSpiral_1000.gif",
+        "card_design_format": "topic_cover",
+        "card_image_type": "square",
+        "topic_learning_goals": [
+          {
+            "card_id": 998901,
+            "card_font_size": 30,
+            "card_text": "Topic Learning Goals:..."
+          }
+        ],
+        "topic_summary": [
+          {
+            "card_id": 998950,
+            "card_text": "Summary 1 - FTA is a very hot and interesting topic."
+          },
+          {
+            "card_id": 999000,
+            "card_text": "Summary 2 - FTA is a very hot and interesting topic. FTA is a very hot and interesting topic. FTA is a very hot and interesting topic. FTA is a very hot and interesting topic. FTA is a very hot and interesting topic. FTA is a very hot and interesting topic."
+          }
+        ],
+        "all_cards_list": {
+          "study_cards_list": [
+            {
+              "card_id": 1000000,
+              "card_background_color": "yellow",
+              "card_font_type": "ubuntu",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_text": "Let's get you started by providing some invaluable study tips specific to Mathematics. \n 1. Master the Key Concepts. You dont need to memorize the formulas, but it is very necessary that you understand how the formula was created. \n For example:-"
+            },
+            {
+              "card_id": 1000050,
+              "card_text": "TEST TESTTEST TEST TEST TESTTEST TESTTEST TESTTEST TEST TEST TESTTEST TESTTEST TESTTEST TEST TEST TESTTEST TEST\nTEST TESTTEST TEST TEST TESTTEST TEST"
+            },
+            {
+              "card_id": 1000100,
+              "card_background_color": "yellow",
+              "card_font_type": "ubuntu",
+              "card_font_size": 11,
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_text": "2. Practice, Practice & More Practice. \nIt is impossible to study maths properly by just reading and listening. "
+            },
+            {
+              "card_id": 1000150,
+              "card_background_color": "yellow",
+              "card_font_type": "ubuntu",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_text": "3. Review Errors\nFor example:-"
+            },
+            {
+              "card_id": 1000200,
+              "card_background_color": "yellow",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_font_type": "ubuntu",
+              "card_text": "4. Practice Practice Practice - \nFrom ###bNewton###bn to ###bBopdeva###bn, everyone became great only after enough practice. Only through hard work and dedication is greatness achieved. However, we dont like to to do thses things, but we do crave for topping the exam. So decide your priority what do you want - comfort or rank?"
+            },
+            {
+              "card_id": 1000250,
+              "card_background_color": "green",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_font_type": "ubuntu",
+              "card_font_size": 14,
+              "card_text": "Try to make your own questions. So difficult that others find it hard to find solution to"
+            },
+            {
+              "card_id": 1000300,
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_font_type": "ubuntu",
+              "card_font_size": 14,
+              "card_text": "What you will gain (with maths)..."
+            },
+            {
+              "card_id": 1000350,
+              "card_text": "What you will lose (if dont study maths):-"
+            },
+            {
+              "card_id": 1000450,
+              "card_design_format": "text_with_bg_image",
+              "card_image_url": "http://purcolour.com/wp-content/uploads/2016/01/banner-powder2.jpg",
+              "card_image_type": "landscape",
+              "card_text": "Remember, Creativity is not a talent. It is a way of operating.",
+              "card_font_size": 18
+            },
+            {
+              "card_id": 1000500,
+              "card_text": "How to think like a mathematician…."
+            },
+            {
+              "card_id": 1000550,
+              "card_design_format": "image",
+              "card_background_color": "orange",
+              "card_gravity": "center",
+              "card_image_url": "https://4.bp.blogspot.com/-qbu_7Ie3UhQ/V1to4JpPcXI/AAAAAAAAKPQ/3LGTX7j9FHILcEq33Kqg7S1xGrIF2-xOwCLcB/s1600/einstein.jpg",
+              "card_image_type": "landscape"
+            },
+            {
+              "card_id": 1000600,
+              "card_text": "I will ask for your time commitments and be honest with it daily."
+            },
+            {
+              "card_id": 1000650,
+              "card_design_format": "text_image",
+              "card_image_url": "http://www.punjabigraphics.com/images/164/You-Will-Never-Find-Time-For-Anything-If-You-Want-Time-You-Must-Make-It.jpg",
+              "card_text": "Enter time you want to study Daily = \n (recommended min = 120 minutes)",
+              "card_contains_input_field": true,
+              "card_input_field_name": "Enter your time commitment"
+            },
+            {
+              "card_id": 1000700,
+              "card_text": "The good thing about this chapter is it will take only 60 minutes to understand the concepts and I Recommend another 60 minutes for practice."
+            },
+            {
+              "card_id": 1000750,
+              "card_is_latex": true,
+              "card_text": "This chapter is a small chapter And the main points can be summed up as: \n1. Euclid’s Division algorithm \n2. Fundamental Theorem of Arithmetic \n3. root 2 is irrational \n4. Theorem 1.5 - x can be expressed in the form p/q; q is of the form 2^n5^m"
+            },
+            {
+              "card_id": 1000800,
+              "card_design_format": "topic_cover",
+              "card_heading": "Euclid’s division algorithm",
+              "card_text_alignment": "bottom_left",
+              "card_font_type": "titanone_regular",
+              "card_image_url": "http://www.clipartbest.com/cliparts/9cp/x7q/9cpx7qKoi.png",
+              "card_font_size": 18,
+              "card_text": "Euclid’s division algorithm"
+            },
+            {
+              "card_id": 1000801,
+              "card_is_latex": true,
+              "card_design_format": "text_image",
+              "card_text": "1. This come from string. You can insert inline formula:\n \\(ax^2 + bx + c = 0\\) \n or displayed formula:\n $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$ \n or displayed formula:\n $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$ \nor displayed formula:\n $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$ \n or displayed formula:\n $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$"
+            },
+            {
+              "card_id": 1000802,
+              "card_is_latex": true,
+              "card_text": "2. This come from string. You can insert inline formula:\n \\(ax^2 + bx + c = 0\\) \n or displayed formula:\n $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$ \n or displayed formula:\n $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$ \nor displayed formula:\n $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$ \n or displayed formula:\n $$\\sum_{i=0}^n i^2 = \\frac{(n^2+n)(2n+1)}{6}$$"
+            },
+            {
+              "card_id": 1000850,
+              "card_text_alignment": "left",
+              "card_text": "Euclid’s division algorithm, as the name suggests, has to do with divisibility of integers. While, the Fundamental Theorem of Arithmetic has to do something with multiplication of positive integers. Let’s see..."
+            },
+            {
+              "card_id": 1000900,
+              "card_text": "For example, ***(GUIDE - mental calc.)*** \n455 = 42 × 10 + 35 \n42 = 35 × 1 + 7 \n35 = 7 × 5 + 0 \nSuppose that a pie has 9 slices and they are to be divided evenly among 4 people. Using Euclidean division, 9 divided by 4 is 2 with remainder 1. In other words, each person receives 2 slices of pie, and there is 1 slice left over.",
+              "card_extra_bottom_information": "Always try to Mentally calculate the values, slowly this will become a habit, you'll be able to do large multiplications in head, which will make you faster and smarter.",
+              "card_extra_bottom_info_type": "lightning_strike"
+            },
+            {
+              "card_id": 1000950,
+              "card_text": "The Euclidean Algorithm is a technique for quickly finding the GCD of two integers. \nWhen asked to find the HCF of 10 and 8, what do you do? \nHCF(10,8)=? \n10=2 x 5 \n8 = 2 x 2 x 2\nWe see that 2 is the maximum common divisor.\nTherefore, HCF(10,8) = 2 \nNow, what if I asked you to compute \nHCF (85642743584, 547945029888) = ?"
+            },
+            {
+              "card_id": 1001000,
+              "card_text": "Well, in this case, factorisation method will be too inefficient. We will try to understand EDA using an example. \nHCF(49,21) = ?"
+            },
+            {
+              "card_id": 1001050,
+              "card_design_format": "video",
+              "card_text_alignment": "left",
+              "card_gravity": "center",
+              "card_media_url": "https://www.youtube.com/watch?v=0nFkQ4cQhME&t=287s",
+              "card_text": "Video 1.1 HCF method explained"
+            },
+            {
+              "card_id": 1001100,
+              "card_text": "The steps of the algorithm (to find HCF of two positive integers A and B, A>B) can be stated as:"
+            },
+            {
+              "card_id": 1001150,
+              "card_text": "1. Divide A by B to find Q and R, such that A=B.Q+R, 0<=R<B"
+            },
+            {
+              "card_id": 1001200,
+              "card_text": "2. Divide A by B to find Q and R, such that A=B.Q+R, 0<=R<B"
+            },
+            {
+              "card_id": 1001250,
+              "card_text": "3. Divide A by B to find Q and R, such that A=B.Q+R, 0<=R<B"
+            },
+            {
+              "card_id": 1001300,
+              "card_design_format": "text_image_text",
+              "card_image_url": "https://ka-perseus-images.s3.amazonaws.com/6b6e1950ccd637d77235017c258b86378a4cba54.png",
+              "card_text_above": "The following diagram also illustrates why HCF(A,B) = HCF(B,R)",
+              "card_text_below": "Here, C = A-B \n And, R is A-n*B"
+            },
+            {
+              "card_id": 1001350,
+              "card_text": "Now we’ll try to find HCF (85642743584, 547945029888) = ? \nStep 1: A = 547945029888, B = 85642743584. \n547945029888 = 85642743584 x 6 + 34,088,568,384 \nStep 2: Since R!=0, we need to repeat step 1. New A =  85642743584, new B = 34,088,568,384. \n85642743584 = 34,088,568,384 x 2 + 17,465,606,816"
+            },
+            {
+              "card_id": 1001400,
+              "card_text": "continued..."
+            },
+            {
+              "card_id": 1001450,
+              "card_text": "Example \n HCF(364,637)"
+            }
+          ],
+          "exercise_cards_list": [
+            {
+              "card_id": 1001500,
+              "card_design_format": "text",
+              "card_question_format": "MCQ",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_is_latex": "",
+              "card_question": "Find GCD - 110, 490",
+              "card_number_of_options": 4,
+              "card_answer_options": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "card_correct_answer": "3",
+              "card_is_gift_question": "",
+              "card_question_positive_score": 10,
+              "card_question_negative_score": 5
+            },
+            {
+              "card_id": 1001550,
+              "card_design_format": "text",
+              "card_question_format": "MCQ",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_is_latex": "",
+              "card_question": "Find GCD - 867,255",
+              "card_number_of_options": 4,
+              "card_answer_options": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "card_correct_answer": "2",
+              "card_is_gift_question": "",
+              "card_question_positive_score": 10,
+              "card_question_negative_score": 5
+            },
+            {
+              "card_id": 1001500,
+              "card_design_format": "text",
+              "card_question_format": "MCQ",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_is_latex": "",
+              "card_question": "Find GCD - 110, 490",
+              "card_number_of_options": 4,
+              "card_answer_options": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "card_correct_answer": "3",
+              "card_is_gift_question": "",
+              "card_question_positive_score": 10,
+              "card_question_negative_score": 5
+            },
+            {
+              "card_id": 1001500,
+              "card_design_format": "text",
+              "card_question_format": "MCQ",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_is_latex": "",
+              "card_question": "Find integers x and y that satisfy: \ngcd(60,26) = 60 * x + 26 * y",
+              "card_number_of_options": 4,
+              "card_answer_options": [
+                "x=1,y=2",
+                "x=2,y=4",
+                "x=6,y=0",
+                "x=9,y=7"
+              ],
+              "card_correct_answer": "3",
+              "card_is_gift_question": "",
+              "card_question_positive_score": 10,
+              "card_question_negative_score": 5
+            },
+            {
+              "card_id": 1001500,
+              "card_design_format": "text",
+              "card_question_format": "MCQ",
+              "card_text_alignment": "center",
+              "card_gravity": "center",
+              "card_is_latex": "",
+              "card_question": "What is the largest positive integer n such that n^3 + 100 is divisible by n + 10?",
+              "card_number_of_options": 4,
+              "card_answer_options": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "card_correct_answer": "3",
+              "card_is_gift_question": "",
+              "card_question_positive_score": 10,
+              "card_question_negative_score": 5
+            }
+          ]
+        }
+      },
+      {
+        "topic_name": "HCF",
+        "topic_id": "",
+        "topic_duration": "",
+        "topic_image_url": "",
+        "topic_summary": "",
+        "all_cards_list": {
+          "study_cards_list": [],
+          "exercise_cards_list": []
+        }
+      },
+      {
+        "topic_name": "Irrational Numbers",
+        "topic_id": "",
+        "topic_duration": "",
+        "topic_image_url": "",
+        "topic_summary": "",
+        "all_cards_list": {
+          "study_cards_list": [],
+          "exercise_cards_list": []
+        }
+      }
+    ]
+  },
+  {
+    "chapter_name": ""
+  }
+]

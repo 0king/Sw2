@@ -87,6 +87,7 @@ dependencies {
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
     releaseCompile 'com.readystatesoftware.chuck:library-no-op:1.0.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    //compile files('libs/YouTubeAndroidPlayerApi.jar')
 }
 
 /* added for google analytics and firebase */
