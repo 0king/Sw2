@@ -12,9 +12,9 @@ import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,7 +42,6 @@ import g.sw2.fragments.FragmentProfile;
 import g.sw2.fragments.FragmentRewards;
 import g.sw2.fragments.FragmentSession;
 import g.sw2.other.UrlList;
-import g.sw2.utility.TimeUtilities;
 
 public class MainActivity extends AppCompatActivity implements FragmentSession.OnViewSelected{
     
@@ -74,18 +73,18 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
     //flag to load home fragment when user presses back key
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
-	
-	public static boolean isMailClientPresent(Context context) {
-		Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.setType("card_item_image/html");
-		final PackageManager packageManager = context.getPackageManager();
-		List<ResolveInfo> list = packageManager.queryIntentActivities(intent, 0);
-		
-		if (list.size() == 0)
-			return false;
-		else
-			return true;
-	}
+    
+    public static boolean isMailClientPresent(Context context) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("card_item_image/html");
+        final PackageManager packageManager = context.getPackageManager();
+        List<ResolveInfo> list = packageManager.queryIntentActivities(intent, 0);
+        
+        if (list.size() == 0)
+            return false;
+        else
+            return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         bottomNavigation.addItem(item4);
 
 // Set background color
-        bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
+        bottomNavigation.setDefaultBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.colorPrimaryDark));
 
 // Disable the translation inside the CoordinatorLayout
         bottomNavigation.setBehaviorTranslationEnabled(false);
@@ -199,8 +198,6 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
                     loadBottomToolbarFragment(position);
                 else
                     drawer.openDrawer(Gravity.RIGHT);
-
-                Log.d("Zenius","Positon"+position);
                 return true;
             }
         });
@@ -258,14 +255,14 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
                 return new FragmentSession();
         }
     }
-
+    
     @Override
     public void onViewSelected(int viewId) {
         Intent intent = new Intent(this, SessionActivity.class);
         startActivity(intent);
     }
-	
-	private void loadNavHeader() {
+    
+    private void loadNavHeader() {
 		// name, website
         //txtName.setText("Durga Ranjan");
         //txtWebsite.setText("www.getzenius.com");
@@ -306,7 +303,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         // showing dot next to notifications label
         //navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
     }
-    
+
     void showProgressBar() {
         progressBarNavHeader = new ProgressBar(this);
         progressBarNavHeader.setVisibility(View.VISIBLE);
@@ -447,7 +444,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
             }
         });
     }
-
+    
     void shareApp() {
         try {
             Intent sendIntent = new Intent();
@@ -456,17 +453,17 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
 	        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Zenius - Smarter way to study");
             sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey check out my app at: https://play.google.com/store/apps/details?id=com.google.android.apps.plus");
             startActivity(sendIntent);
-        } catch (Exception e) {
-            //...
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, "Something went wrong :(", Toast.LENGTH_SHORT).show();
         }
 
     }
-	
+
 	void sendFeedbackViaEmail() {
 		
 		if (!isMailClientPresent(getBaseContext())) {
-			Toast.makeText(this, "No email client found!", Toast.LENGTH_SHORT).show();
-			return;
+            Toast.makeText(this, "No email app found! contact@getzenius.com", Toast.LENGTH_SHORT).show();
+            return;
 		}
 		
 		Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + "contact@getzenius.com"));
@@ -489,7 +486,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
 		emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
 		startActivity(Intent.createChooser(emailIntent, "Send mail..."));*/
     }
-
+    
     void rateApp() {
         //Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
         Uri uri = Uri.parse("market://details?id=" + "com.upskew.encode");
@@ -504,24 +501,19 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         }
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
-        //checkForCrashes();//HockeyApp
-	    TimeUtilities.checkAppFirstTimeInstalled(this.getBaseContext());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        //unregisterManagers();//HockeyApp
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //unregisterManagers();
     }
 	
 	

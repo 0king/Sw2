@@ -23,7 +23,7 @@ public class DataLoader extends AsyncTask<Void, Void, Void> {
 	@Override
 	protected Void doInBackground(Void... voids) {
 		Request request = new Request.Builder()
-				                  .url("https://s3.ap-south-1.amazonaws.com/0kingg/data.json")
+				                  .url("https://s3.ap-south-1.amazonaws.com/0kingg/math10.json")
 				                  .build();
 		
 		OkHttpClient client;

@@ -1,6 +1,6 @@
 package g.sw2.model;
 
-import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
 /**
  * Created by Kush Agrawal on 4/4/2017.
@@ -8,14 +8,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class Topic {
 	
-	private String topic_name = "";
-	private String topic_id;
-	private String topic_image_url = "";
-	//private List<String> topic_summary=new ArrayList<>();
-	private String topic_summary = "";
-	private String topic_duration = "";
+	/* using this class */
 	
-	@SerializedName("all_cards_list")
+	private String topic_name = "";
+	private long topic_id;
+	private String topic_image_url = "";
+	private List<Card> topic_summary;
+	private List<Card> topic_learning_goals;
+	private int topic_duration = 0;
 	private AllCardsList all_cards_list;
 	//private List<AllCardsList> all_cards;
 	

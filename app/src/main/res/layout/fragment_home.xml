@@ -73,13 +73,12 @@
                 android:layout_marginRight="@dimen/top_card_margin_right"
                 android:layout_marginTop="@dimen/cards_margin_top"
                 android:elevation="5dp"
-                app:cardCornerRadius="4dp">
+                app:cardCornerRadius="2dp">
                 <g.sw2.swipelib.SwipeFlingAdapterView
                     android:id="@+id/swipecards"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white"
-                    android:padding="2dp"
                     app:max_visible="4"
                     app:min_adapter_stack="3"
                     app:rotation_degrees="30">
@@ -162,6 +161,66 @@
             android:contentDescription="This image works as abstraction for the all options menu available for a card"
             android:src="@mipmap/back_dark_red_48"
             android:visibility="visible"/>
+        <ImageView
+            android:id="@+id/ivFlash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/ll_all_options"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/flash_on"/>
+        <ImageView
+            android:id="@+id/ivFrog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/ll_all_options"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_knitted_frog_green"/>
+        <ImageView
+            android:id="@+id/ivOctopus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/ll_all_options"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_octopus_sky"/>
+
+        <ImageView
+            android:id="@+id/ivGiftGem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/ll_all_options"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_diamond_filled_sky_50"/>
+
+
+        <ImageView
+            android:id="@+id/ivMoreInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/ll_all_options"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_info_green"/>
+
+
+        <ImageView
+            android:id="@+id/ivSperpower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/ll_all_options"
+            android:visibility="gone"
+            app:srcCompat="@mipmap/ic_physics_filled_black_50"/>
+
     </RelativeLayout>
 
 

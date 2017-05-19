@@ -2,6 +2,7 @@ package g.sw2.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,12 +36,18 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Type;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,45 +58,33 @@ import g.sw2.model.Topic;
 import g.sw2.swipelib.SwipeFlingAdapterView;
 import g.sw2.utility.TimeCounter;
 import io.github.kexanie.library.MathView;
-import okhttp3.OkHttpClient;
 
 
 public class SessionActivity extends AppCompatActivity {
-
+	
+	private static final int YT_RECOVERY_REQUEST = 3;//youtube video view
 	SwipeFlingAdapterView swipeView;
-	ArrayAdapter<String> arrayAdapter;
-	ArrayList<String> itemList;//todo create and use card object instead of String
-	int i;
-	TextView cardText;
 	ArrayList<Card> cardList = new ArrayList<Card>();
 	ArrayList<Chapter> chapterList;
 	ArrayList<Topic> topicList;
 	CardAdapter cardAdapter;
-	
 	long startTime, endTime;
-	
 	@BindView(R.id.iv_show_options)
 	ImageView ivShowOptions;
-	
 	@BindView(R.id.ll_all_options)
 	View llAllOptions;
-	
 	Animation animFadeOut, animFadeIn, animFadeSlide;
 	Animation animInFromRight;
-	
-	OkHttpClient okHttpClient;
-	
 	File mathJsonFile;
 	String mathString;//complete file converted to string
 	
-
-
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_home);
 		ButterKnife.bind(this);
 		
-		readMathJsonFile();
+		readMathFileFromAssets();
+		//readMathJsonFile();
 		//fillData();
 		//getSupportActionBar().hide();
 
@@ -105,30 +101,32 @@ public class SessionActivity extends AppCompatActivity {
 		try {
 			for (int i = 0; i < mathChaptersList.length(); i++) {
 				JSONObject chapter = mathChaptersList.getJSONObject(i);
-				String chapterId = chapter.getString("chapter_id");
+				long chapterId = chapter.getLong("chapter_id");
 				String chapterName = chapter.getString("chapter_name");
-				String chapterDuration = chapter.getString("chapter_duration");
+				int chapterDuration = chapter.getInt("chapter_duration");
 				String chapterImageUrl = chapter.getString("chapter_image_url");
-				String chapterLearningObjectives = chapter.getString("chapter_learning_objectives");
 				
-				Card chapterCard = new Card(chapterId, chapterName, "CHAPTER_COVER", chapterDuration, chapterImageUrl, chapterLearningObjectives);
-				//chapterCard.setCardId(chapterId);
+				Type listType = new TypeToken<ArrayList<Card>>() {
+				}.getType();
+				JSONArray objs = chapter.getJSONArray("chapter_learning_objectives");
+				List<Card> chapLearningObjectives = new Gson().fromJson(objs.toString(), listType);
+				JSONArray summary = chapter.getJSONArray("chapter_summary");
+				List<Card> chapSummary = new Gson().fromJson(summary.toString(), listType);
+				
+				Card chapterCard = new Card(chapterId, chapterName, "CHAPTER_COVER", chapterDuration, chapterImageUrl, chapLearningObjectives, chapSummary);
+				//chapterCard.setCardId(chapterId);//this gives error
 				//chapterCard.setMainText(chapterName);
 				//chapterCard.setDesignFormat("CHAPTER_COVER");
-				//chapterCard.setDuration(chapterDuration);
-				//chapterCard.setImageUrl(chapterImageUrl);
-				//chapterCard.setChapterLearningObjectives(chapterLearningObjectives);
 				cardList.add(chapterCard);
 				
 				JSONArray topicsList = chapter.getJSONArray("topics_list");
 				for (int j = 0; j < topicsList.length(); j++) {
 					JSONObject topic = topicsList.getJSONObject(j);
-					Card topicCard = new Card(topic.getString("topic_id"), topic.getString("topic_name"), "TOPIC_COVER", topic.getString("topic_duration"), topic.getString("topic_image_url"), topic.getString("topic_summary"));
-					//topicCard.setCardId(topic.getString("topic_id"));
-					//topicCard.setMainText(topic.getString("topic_name"));
-					//topicCard.setDuration(topic.getString("topic_duration"));
-					//topicCard.setImageUrl(topic.getString("topic_image_url"));
-					//topicCard.setChapterLearningObjectives(topic.getString("topic_summary"));
+					JSONArray tObjs = topic.getJSONArray("topic_learning_goals");
+					List<Card> topicGoals = new Gson().fromJson(tObjs.toString(), listType);
+					JSONArray tSumm = topic.getJSONArray("topic_summary");
+					List<Card> topicSummary = new Gson().fromJson(tSumm.toString(), listType);
+					Card topicCard = new Card(topic.getLong("topic_id"), topic.getString("topic_name"), "TOPIC_COVER", topic.getInt("topic_duration"), topic.getString("topic_image_url"), topicGoals, topicSummary);
 					cardList.add(topicCard);
 					
 					JSONObject allCardsList = topic.getJSONObject("all_cards_list");
@@ -139,7 +137,7 @@ public class SessionActivity extends AppCompatActivity {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.d("durga", e.toString(), e);
 		}
 		
 		
@@ -248,6 +246,7 @@ public class SessionActivity extends AppCompatActivity {
 		
 	}
 	
+	
 	void fillData() {
 		BufferedReader reader = null;
 		File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "math10.json");
@@ -284,22 +283,41 @@ public class SessionActivity extends AppCompatActivity {
 		}
 	}
 	
-	public boolean isExternalStorageWritable() {
-		String state = Environment.getExternalStorageState();
-		if (Environment.MEDIA_MOUNTED.equals(state)) {
-			return true;
+	private void readMathFileFromAssets() {
+		try {
+			InputStream inputStream = getAssets().open("math10.json");
+			int size = inputStream.available();
+			byte[] buffer = new byte[size];
+			inputStream.read(buffer);
+			inputStream.close();
+			mathString = new String(buffer, "UTF-8");
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
 		}
-		return false;
 	}
 	
-	public boolean isExternalStorageReadable() {
-		String state = Environment.getExternalStorageState();
-		if (Environment.MEDIA_MOUNTED.equals(state) ||
-				    Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-			return true;
+	
+	private File createFileFromInputStream() throws IOException {
+		AssetManager assetManager = getAssets();
+		InputStream inputStream = assetManager.open("math10.json");
+		try {
+			File f = new File("new_file_math_10");
+			OutputStream outputStream = new FileOutputStream(f);
+			byte buffer[] = new byte[1024];//int size = inputStream.available();
+			int length = 0;
+			while ((length = inputStream.read(buffer)) > 0) {
+				outputStream.write(buffer, 0, length);
+			}
+			outputStream.close();
+			inputStream.close();
+			return f;
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
+	
 	private Animation inFromRightAnimation() {
 		
 		Animation inFromRight = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, +1.0f, Animation.RELATIVE_TO_PARENT, 0.0f,
@@ -310,17 +328,6 @@ public class SessionActivity extends AppCompatActivity {
 	}
 	
 	public Card getTopCardDetails() {
-		//AllCardsList topCard = new AllCardsList();
-//		if(cardAdapter == null) {
-//			cardList = new ArrayList<>();
-//			cardList.add(new AllCardsList("123","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//			cardList.add(new AllCardsList("456","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//			cardList.add(new AllCardsList("567","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//			cardList.add(new AllCardsList("678","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//			cardList.add(new AllCardsList("890","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers"));
-//
-//			cardAdapter = new CardAdapter(getContext(), cardList);
-//		}
 		return cardAdapter.getItem(0);
 	}
 	
@@ -340,6 +347,13 @@ public class SessionActivity extends AppCompatActivity {
 		endTime = SystemClock.uptimeMillis();
 		long duration = endTime - startTime;
 		TimeCounter.INSTANCE.updateTimeCounter(duration);
+	}
+	
+	private int countWords(String s) {
+		String trim = s.trim();
+		if (trim.isEmpty())
+			return 0;
+		return trim.split("\\s+").length; // separate string around spaces
 	}
 	
 	private class CardAdapter extends ArrayAdapter<Card> {
@@ -362,7 +376,7 @@ public class SessionActivity extends AppCompatActivity {
 				type = type.toUpperCase();
 			}
 			/* when there is latex */
-			if (card != null && card.getIsLatex().equalsIgnoreCase("yes")) {
+			if (card != null && card.isLatex()) {
 				switch (type) {
 					case "TEXT_IMAGE": {
 						if (convertView == null) {
@@ -442,13 +456,6 @@ public class SessionActivity extends AppCompatActivity {
 			/* when there's no latex required */
 			else {
 				switch (type) {
-					case "TEXT":
-						if (convertView == null) {
-							convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.card_item_text, parent, false);
-						}
-						TextView textView = (TextView) convertView.findViewById(R.id.tvSimpleText);
-						textView.setText(card.getMainText());
-						break;
 					case "IMAGE":
 						if (convertView == null) {
 							convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.card_item_image, parent, false);
@@ -492,12 +499,57 @@ public class SessionActivity extends AppCompatActivity {
 						tvTxImTx2.setText(card.getCard_text_below());
 						Glide.with(getContext()).load(card.getImageUrl()).into(ivTxImTx);
 						break;
+					case "VIDEO":
+						//this method does not work as required:-
+/*						if (convertView == null) {
+							convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.card_item_video_web, parent, false);
+						}
+						WebView wv = (WebView) convertView.findViewById(R.id.web_view_video);
+						wv.getSettings().setJavaScriptEnabled(true);
+						wv.getSettings().setPluginState(WebSettings.PluginState.ON);
+						wv.loadUrl(card.getMediaUrl()+ "?autoplay=1&vq=small");
+						wv.setWebChromeClient(new WebChromeClient());*/
+						String API_KEY = "AIzaSyC478zY8ceNGbxOkPe34qllO7ZtjWxzX7E";
+						if (convertView == null) {
+							convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.card_item_video, parent, false);
+						}
+						final String videoUrl = card.getMediaUrl();
+						//YouTubePlayerView video = (YouTubePlayerView) convertView.findViewById(R.id.youtube_view);
+						/*video.initialize(API_KEY, new YouTubePlayer.OnInitializedListener() {
+							@Override
+							public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
+								if (!wasRestored) {
+									// loadVideo() will auto play video
+									// Use cueVideo() method, if you don't want to play it automatically
+									youTubePlayer.loadVideo(videoUrl);
+									// Hiding player controls
+									youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.CHROMELESS);
+								}
+							}
+							@Override
+							public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason) {
+								if (errorReason.isUserRecoverableError()) {
+									errorReason.getErrorDialog(SessionActivity.this, YT_RECOVERY_REQUEST).show();
+								} else {
+									Toast.makeText(getContext(), errorReason.toString(), Toast.LENGTH_LONG).show();
+								}
+							}
+						});
+						*/
+						break;
+					case "TEXT":
 					default: //text
 						if (convertView == null) {
 							convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.card_item_text, parent, false);
 						}
 						TextView textView2 = (TextView) convertView.findViewById(R.id.tvSimpleText);
-						textView2.setText(card.getMainText());
+						String mainText = card.getMainText();
+						int wordCount = countWords(mainText);
+						if (wordCount < 6)
+							textView2.setTextSize(50f);
+						/*if (wordCount>70)
+							textView2.setTextSize(12f);*/
+						textView2.setText(mainText);
 				}
 			}
 //            cardText.setWebViewClient(new WebViewClient() {

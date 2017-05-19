@@ -9,13 +9,14 @@ import java.util.List;
 
 public class Chapter {
 	
-	private String chapter_id;
+	/* using this class */
+	
+	private long chapter_id;
 	private String chapter_name = "";
-	private String chapter_duration = "";
+	private int chapter_duration = 0;
 	private String chapter_image_url = "";
-	//private List<String> chapter_learning_objectives=new ArrayList<>();
-	private String chapter_learning_objectives = "";
-	private String chapter_summary = "";
+	private List<Card> chapter_learning_objectives = new ArrayList<>();
+	private List<Card> chapter_summary = new ArrayList<>();
 	private List<Topic> topics_list = new ArrayList<>();
 	
 	
@@ -36,9 +37,5 @@ public class Chapter {
 	private String chapter_user_interaction;
 	private String total_number_of_topics;*/
 	
-	
-	public String getChapter_name() {
-		return chapter_name;
-	}
 	
 }
