@@ -88,9 +88,6 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="0b7ce8631edb7a072dbe7a0a98e0c5923a92f30c"/>
-        <meta-data
-            android:name="net.hockeyapp.android.appIdentifier"
-            android:value="${HOCKEYAPP_APP_ID}"/>
 
         <activity android:name=".memory_game.ActivityGameScreenSlide">
         </activity>

@@ -1,17 +1,17 @@
 buildscript {
     repositories {
-        //  maven { url 'https://maven.fabric.io/public' } //todo undo
+        maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
-        // classpath 'io.fabric.tools:gradle:1.+' //todo undo
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 apply plugin: 'com.android.application'
-//apply plugin: 'io.fabric' //todo undo comment
+apply plugin: 'io.fabric'
 
 repositories {
-    // maven { url 'https://maven.fabric.io/public' } //todo undo comment
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 
@@ -22,13 +22,10 @@ android {
         applicationId "g.sw2"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 0
+        versionName "0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        /* hotkeyapp analytics code */
-        manifestPlaceholders = [HOCKEYAPP_APP_ID: "7497afb60ce94cd7b0ff068e21455fce"]
-        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -44,11 +41,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-/*    compile 'com.lorentzos.swipecards:library:1.0.9@aar'*/
 
-    /*compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') { //todo undo comment
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
         transitive = true;
-    }*/
+    }
 
 
     compile 'com.android.support:appcompat-v7:25.3.0'
