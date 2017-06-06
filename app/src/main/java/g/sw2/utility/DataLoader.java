@@ -1,10 +1,11 @@
-package g.sw2;
+package g.sw2.utility;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.IOException;
 
+import g.sw2.BuildConfig;
 import g.sw2.model.DataInfo;
 import okhttp3.Call;
 import okhttp3.Callback;

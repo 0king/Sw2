@@ -7,28 +7,20 @@ import android.support.v4.app.FragmentActivity;
 
 import com.ToxicBakery.viewpager.transforms.CubeOutTransformer;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import g.sw2.R;
 import me.relex.circleindicator.CircleIndicator;
 
 public class ActivityGameScreenSlide extends FragmentActivity {
 	
-	
-	@BindView(R.id.viewpager_nonswipe_activity_game_screen_slide)
 	ViewPagerNonSwipeable nonSwipeableViewPager;
-	@BindView(R.id.view_pager_circle_indicator)
 	CircleIndicator circleIndicator;
 	Handler slideRepeatHandler;
 	
 	private AdapterViewPagerSlideGame mScreenSlidePagerAdapter;
 	
-	private Unbinder unbinder;//for ButterKnife
 	private Runnable next = new Runnable() {
 		@Override
 		public void run() {
-			//Log.d("Zenius","aa gelu: ");
 			moveToNextPage();
 			slideRepeatHandler.postDelayed(this, 3000);
 		}
@@ -38,7 +30,9 @@ public class ActivityGameScreenSlide extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_screen_slide);
-		ButterKnife.bind(this);
+		
+		nonSwipeableViewPager = (ViewPagerNonSwipeable) findViewById(R.id.viewpager_nonswipe_activity_game_screen_slide);
+		circleIndicator = (CircleIndicator) findViewById(R.id.view_pager_circle_indicator);
 		
 		mScreenSlidePagerAdapter = new AdapterViewPagerSlideGame(getSupportFragmentManager());
 		nonSwipeableViewPager.setAdapter(mScreenSlidePagerAdapter);

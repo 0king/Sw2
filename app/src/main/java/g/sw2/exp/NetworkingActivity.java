@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -15,10 +14,7 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.ParsedRequestListener;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import g.sw2.R;
 import g.sw2.model.Card;
 
@@ -32,16 +28,13 @@ public class NetworkingActivity extends AppCompatActivity {
 	private final static String FILE1 = "math.json";
 	private final static String UPDATE_URL = "https://s3.ap-south-1.amazonaws.com/0kingg/file_changed.json";
 	private static final int MY_PERMISSIONS_REQUEST_STORAGE = 10101;
-	@BindView(R.id.textView3)
-	TextView tv1;
-	@BindView(R.id.textView4)
-	TextView tv2;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_networking);
-		ButterKnife.bind(this);
+		
 		
 		AndroidNetworking.get(COMPLETE_URL)
 				.setPriority(Priority.HIGH)
@@ -49,16 +42,12 @@ public class NetworkingActivity extends AppCompatActivity {
 				.getAsJSONArray(new JSONArrayRequestListener() {
 					@Override
 					public void onResponse(JSONArray response) {
-						try {
-							tv1.setText(response.getJSONObject(0).getString("chapter_name"));
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
+						
 					}
 					
 					@Override
 					public void onError(ANError anError) {
-						tv1.setText(anError.toString());
+						
 					}
 				});
 		

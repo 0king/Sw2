@@ -48,9 +48,6 @@ import java.util.Locale;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import g.sw2.R;
 import g.sw2.database.DatabaseManager;
 import g.sw2.exp.NetworkingActivity;
@@ -68,9 +65,7 @@ public class FragmentPerformance extends Fragment {
 	LineChart scoreLineChart;
 	View rootView;
 	
-	@BindView(R.id.button)
 	Button button;
-	@BindView(R.id.button2)
 	Button button2;
 	
 	BarChart timeBarChart;
@@ -91,23 +86,29 @@ public class FragmentPerformance extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	    rootView = inflater.inflate(R.layout.performance_layout, container, false);
 	    //ButterKnife.bind(getActivity());
-	    ButterKnife.bind(this, rootView);
+	    button = (Button) rootView.findViewById(R.id.button);
+	    button2 = (Button) rootView.findViewById(R.id.button2);
+	
+	    button.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+			    startActivity(new Intent(getContext(), ActivityGameScreenSlide.class));
+		    }
+	    });
+	
+	
+	    button2.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+			    startActivity(new Intent(getContext(), NetworkingActivity.class));
+		    }
+	    });
 	    setUpDailyStudyTimeBarChart();
 	    setUpDailyUserZScoreLineChart();
 	    setUpDailyStudyHistoryCalendar();
 	    return rootView;
     }
 	
-	
-	@OnClick(R.id.button)
-	void buttonClick(View v) {
-		startActivity(new Intent(getContext(), ActivityGameScreenSlide.class));
-	}
-	
-	@OnClick(R.id.button2)
-	void button2Click(View v) {
-		startActivity(new Intent(getContext(), NetworkingActivity.class));
-	}
 	
 	void setUpDailyStudyTimeBarChart() {
 		timeBarChart = (BarChart) rootView.findViewById(R.id.time_bar_chart);

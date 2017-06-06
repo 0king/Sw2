@@ -1,21 +1,14 @@
 package g.sw2.other;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-
 /**
  * Created by 5dr on 21/10/16.
  */
 
-public class CircleTransform extends BitmapTransformation {
+public class CircleTransform {//extends BitmapTransformation
+	
+	/* using Glide */
 
-	public CircleTransform(Context context) {
+	/*public CircleTransform(Context context) {
 		super(context);
 	}
 
@@ -31,7 +24,6 @@ public class CircleTransform extends BitmapTransformation {
 		int x = (source.getWidth() - size) / 2;
 		int y = (source.getHeight() - size) / 2;
 
-		// TODO this could be acquired from the pool too
 		Bitmap squared = Bitmap.createBitmap(source, x, y, size, size);
 
 		Bitmap result = pool.get(size, size, Bitmap.Config.ARGB_8888);
@@ -52,4 +44,5 @@ public class CircleTransform extends BitmapTransformation {
 	public String getId() {
 		return getClass().getName();
 	}
+*/
 }

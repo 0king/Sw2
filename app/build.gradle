@@ -1,27 +1,26 @@
-buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-    }
-
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.+'
-    }
-}
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
 
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
+    signingConfigs {
+        debugConfig {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
     defaultConfig {
         applicationId "g.sw2"
         minSdkVersion 19
         targetSdkVersion 25
+        multiDexEnabled true
         versionCode 0
         versionName "0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,41 +28,62 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            useProguard true    // obfuscate
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debugConfig
+        }
+    }
+    productFlavors {
+        legacy {
+            minSdkVersion 14
+        }
+        modern {
+            minSdkVersion 19
+        }
+        basic {
+            minSdkVersion 19
+            applicationId 'g.sw2'
+            targetSdkVersion 25
+            testApplicationId 'com.getzenius.app.android.free.test'
+            versionCode 0
+            versionName '0'
+        }
+        premium {
+            minSdkVersion 19
+            applicationId 'g.sw2'
+            targetSdkVersion 25
+            testApplicationId 'com.getzenius.app.android.free.pro'
+            versionCode 0
+            versionName '0'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
-
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
-        transitive = true;
-    }
-
-
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support:support-v4:25.3.0'
-    compile 'com.android.support:cardview-v7:25.3.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:25.3.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.google.code.gson:gson:2.7'
-    compile 'com.mixpanel.android:mixpanel-android:4.9.6'
-    compile 'com.google.android.gms:play-services:10.2.1'
-    compile 'com.github.anrwatchdog:anrwatchdog:1.3.+'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.google.android.gms:play-services-auth:10.2.4'
+    compile 'com.google.android.gms:play-services-analytics:10.2.4'
+    compile 'com.google.android.gms:play-services-gcm:10.2.4'
+    compile 'com.google.firebase:firebase-core:10.2.4'
+    compile 'com.google.firebase:firebase-database:10.2.4'
+    compile 'com.google.firebase:firebase-storage:10.2.4'
+    compile 'com.google.firebase:firebase-crash:10.2.4'
+    compile 'com.google.firebase:firebase-auth:10.2.4'
     compile 'io.github.kexanie.library:MathView:0.0.6'
-    compile 'com.google.firebase:firebase-core:10.2.1'
-    compile 'com.google.firebase:firebase-database:10.2.1'
-    compile 'com.google.firebase:firebase-storage:10.2.1'
-    compile 'com.google.firebase:firebase-crash:10.2.1'
-    compile 'com.google.firebase:firebase-auth:10.2.1'
     compile 'me.relex:circleindicator:1.2.2@aar'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.6'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
@@ -71,19 +91,22 @@ dependencies {
     compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
     compile 'me.zhanghai.android.materialprogressbar:library:1.3.0'
     compile 'com.aurelhubert:ahbottomnavigation:2.0.5'
-    compile 'com.jakewharton:butterknife:8.5.1'
-    compile 'com.facebook.stetho:stetho:1.5.0'
-    compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
     compile 'com.amitshekhar.android:android-networking:1.0.0'
     testCompile 'junit:junit:4.12'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
     debugCompile 'com.readystatesoftware.chuck:library:1.0.4'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
-    releaseCompile 'com.readystatesoftware.chuck:library-no-op:1.0.4'
+    debugCompile 'com.facebook.stetho:stetho:1.5.0'
+
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
-    //compile files('libs/YouTubeAndroidPlayerApi.jar')
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+
+    //legacyCompile 'com.google.android.gms:play-services:10.0.0' //gives error
+    //other combination - legacyReleaseCompile
+    //modernCompile 'com.google.android.gms:play-services:10.2.4'  //gives error
 }
 
 /* added for google analytics and firebase */

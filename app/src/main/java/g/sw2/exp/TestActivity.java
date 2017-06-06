@@ -20,8 +20,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.analytics.Tracker;
 
 import g.sw2.R;
@@ -187,10 +185,10 @@ public class TestActivity extends AppCompatActivity
 		urlNavHeaderBg = UrlList.coverPicChooser();
 
 		// loading header background image
-		Glide.with(this).load(urlNavHeaderBg)
+		/*Glide.with(this).load(urlNavHeaderBg)
 				.crossFade()
 				.diskCacheStrategy(DiskCacheStrategy.ALL)
-				.into(imgNavHeaderBg);
+				.into(imgNavHeaderBg);*/
 
 		// Loading profile image
 		/*Glide.with(this).load(urlProfileImg)

@@ -6,17 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.ToxicBakery.viewpager.transforms.RotateDownTransformer;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import g.sw2.R;
 import me.relex.circleindicator.CircleIndicator;
 
 public class ActivityGameQuestionScreenSlide extends AppCompatActivity {
 	
 	
-	@BindView(R.id.view_pager_non_swipe_question_slide)
 	ViewPagerNonSwipeable questionSlidePager;
-	@BindView(R.id.circle_indicator_view_pager_question_slide)
 	CircleIndicator circleIndicator;
 	
 	private AdapterViewPagerSlideGame mQuestionSlidePagerAdapter;
@@ -26,7 +22,9 @@ public class ActivityGameQuestionScreenSlide extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_question_screen_slide);
-		ButterKnife.bind(this);
+		
+		questionSlidePager = (ViewPagerNonSwipeable) findViewById(R.id.view_pager_non_swipe_question_slide);
+		circleIndicator = (CircleIndicator) findViewById(R.id.circle_indicator_view_pager_question_slide);
 		
 		mQuestionSlidePagerAdapter = new AdapterViewPagerSlideGame(getSupportFragmentManager());
 		questionSlidePager.setAdapter(mQuestionSlidePagerAdapter);

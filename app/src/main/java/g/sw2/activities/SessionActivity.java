@@ -1,8 +1,12 @@
 package g.sw2.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
@@ -23,7 +27,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.BitmapRequestListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -49,16 +55,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import g.sw2.R;
 import g.sw2.model.Card;
 import g.sw2.model.Chapter;
 import g.sw2.model.Topic;
 import g.sw2.swipelib.SwipeFlingAdapterView;
+import g.sw2.utility.Constants;
+import g.sw2.utility.DataManager;
 import g.sw2.utility.TimeCounter;
 import io.github.kexanie.library.MathView;
-
 
 public class SessionActivity extends AppCompatActivity {
 	
@@ -69,24 +74,30 @@ public class SessionActivity extends AppCompatActivity {
 	ArrayList<Topic> topicList;
 	CardAdapter cardAdapter;
 	long startTime, endTime;
-	@BindView(R.id.iv_show_options)
-	ImageView ivShowOptions;
-	@BindView(R.id.ll_all_options)
-	View llAllOptions;
 	Animation animFadeOut, animFadeIn, animFadeSlide;
 	Animation animInFromRight;
 	File mathJsonFile;
 	String mathString;//complete file converted to string
 	
+	ImageView ivShowOptions;
+	View llAllOptions;
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_home);
-		ButterKnife.bind(this);
-		
-		readMathFileFromAssets();
-		//readMathJsonFile();
-		//fillData();
 		//getSupportActionBar().hide();
+		
+		if (!DataManager.isNetworkAvailable(getBaseContext())) {
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+			alertDialogBuilder.setTitle("No Internet").setMessage("App can not work as expected without internet").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+				}
+			}).show();
+		}
+		
+		//readMathFileFromAssets();
+		readMathJsonFile();//from sd card
+		//fillData();
 
 		swipeView = (SwipeFlingAdapterView) findViewById(R.id.swipecards);
 		swipeView.bringToFront();
@@ -141,42 +152,23 @@ public class SessionActivity extends AppCompatActivity {
 		}
 		
 		
-		//Gson gson = new Gson();
-		//Type listType = new TypeToken<ArrayList<Card>>(){}.getType();
-		//cardList = gson.fromJson(mathChaptersList,listType);
-		
-		//Card[] cards = gson.fromJson(mathString,Card[].class);
-		//cardList = new ArrayList<>(Arrays.asList(cards));
-		//Log.d("durga",cardList.toString());
-		
-
-		
-		/*cardList.add(new Card("123","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers","TEXT"));
-		cardList.add(new Card("456","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers","IMAGE"));
-        cardList.add(new Card("890","http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg","In Class IX, you began your exploration of the world of real numbers and encountered irrational numbers","TEXT"));
-*/
-		
 		cardAdapter = new CardAdapter(this, cardList);
 		swipeView.setAdapter(cardAdapter);
         swipeView.setMaxVisible(cardAdapter.getCount());
 		swipeView.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
 			@Override
 			public void removeFirstObjectInAdapter() {
-				/*itemList.remove(0);
-				arrayAdapter.notifyDataSetChanged();*/
 				cardList.remove(0);
 				cardAdapter.notifyDataSetChanged();
 			}
 
 			@Override
 			public void onLeftCardExit(Object o) {
-				//cardList.remove(0);
 				cardAdapter.notifyDataSetChanged();
 			}
 
 			@Override
 			public void onRightCardExit(Object o) {
-				//cardList.remove(0);
 				cardAdapter.notifyDataSetChanged();
 			}
 
@@ -187,7 +179,6 @@ public class SessionActivity extends AppCompatActivity {
                     Intent intent = new Intent(SessionActivity.this, PostSessionActivity.class);
                     startActivity(intent);
                 }
-
 			}
 
 			@Override
@@ -195,23 +186,6 @@ public class SessionActivity extends AppCompatActivity {
 
 			}
 		});
-
-
-		/* added this line to make textview scrollable */
-		//cardText = (TextView) view.findViewById(R.id.cardText);
-		//cardText.setMovementMethod(new ScrollingMovementMethod());//todo how to initialise textview in card_item_latex_text layout
-
-		/* code for Crashlytics */
-
-		//todo check how to do this type of linking
-/*		Button crashBtn = (Button) view.findViewById(R.id.crash_button);
-		crashBtn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				throw new RuntimeException("OnClickListener: This is a crash");
-			}
-		});*/
-		
 		
 		animFadeOut = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fade_out);
 		animFadeIn = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fade_in);
@@ -219,6 +193,9 @@ public class SessionActivity extends AppCompatActivity {
 		//animInFromRight = inFromRightAnimation();
 		//animFadeOut.setAnimationListener();
 		
+		ivShowOptions = (ImageView) findViewById(R.id.iv_show_options);
+		llAllOptions = findViewById(R.id.ll_all_options);
+				
 		ivShowOptions.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -254,32 +231,25 @@ public class SessionActivity extends AppCompatActivity {
 			reader = new BufferedReader(new FileReader(file));
 			Gson gson = new GsonBuilder().create();
 			Chapter[] chapters = gson.fromJson(reader, Chapter[].class);
-			//chapterList = new ArrayList<>(Arrays.asList(chapters));
-			//Log.d("durga",String.valueOf(chapterList.size()));
-			//Log.d("durga",chapters[0].toString());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	void readMathJsonFile() {
+	void readMathJsonFile() {//from sd card
 		mathString = null;
 		try {
-			mathJsonFile = new File(Environment.getExternalStorageDirectory(), "math10.json");
-			FileInputStream inputStream = new FileInputStream(mathJsonFile);
-			try {
+			mathJsonFile = new File(Constants.SDCARD_PATH, Constants.LOCAL_FILENAME_MATH10);
+			try (FileInputStream inputStream = new FileInputStream(mathJsonFile)) {
 				FileChannel fileChannel = inputStream.getChannel();
 				MappedByteBuffer mbb = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
 				mathString = Charset.defaultCharset().decode(mbb).toString();
 				//Log.d("durga",mathString);
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				inputStream.close();
+			} catch (IOException e) {
+				Log.d("durga", e.toString());
 			}
-			
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.d("durga", e.toString());
 		}
 	}
 	
@@ -460,9 +430,23 @@ public class SessionActivity extends AppCompatActivity {
 						if (convertView == null) {
 							convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.card_item_image, parent, false);
 						}
-						ImageView img = (ImageView) convertView.findViewById(R.id.image_view);
+						final ImageView img = (ImageView) convertView.findViewById(R.id.image_view);
 						//img.setImageURI(Uri.parse(card.getMediaUrl()));
-						Glide.with(getContext()).load(card.getImageUrl()).into(img);
+						//Glide.with(getContext()).load().into(img);
+						AndroidNetworking.get(card.getImageUrl())
+								.setBitmapConfig(Bitmap.Config.ARGB_8888)
+								.build()
+								.getAsBitmap(new BitmapRequestListener() {
+									@Override
+									public void onResponse(Bitmap bitmap) {
+										img.setImageBitmap(bitmap);
+									}
+									
+									@Override
+									public void onError(ANError error) {
+										img.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.bg_image_creativity_colors));
+									}
+								});
 						//img.setImageResource(R.mipmap.disha);
 						break;
 					case "TOPIC_COVER":
@@ -484,9 +468,23 @@ public class SessionActivity extends AppCompatActivity {
 							convertView = LayoutInflater.from(this.getContext()).inflate(R.layout.card_item_text_image, parent, false);
 						}
 						TextView tvTxIm = (TextView) convertView.findViewById(R.id.tvTxIm);
-						ImageView ivTxIm = (ImageView) convertView.findViewById(R.id.ivTxIm);
+						final ImageView ivTxIm = (ImageView) convertView.findViewById(R.id.ivTxIm);
 						tvTxIm.setText(card.getMainText());
-						Glide.with(getContext()).load(card.getImageUrl()).into(ivTxIm);
+						//Glide.with(getContext()).load(card.getImageUrl()).into(ivTxIm);
+						AndroidNetworking.get(card.getImageUrl())
+								.setBitmapConfig(Bitmap.Config.ARGB_8888)
+								.build()
+								.getAsBitmap(new BitmapRequestListener() {
+									@Override
+									public void onResponse(Bitmap bitmap) {
+										ivTxIm.setImageBitmap(bitmap);
+									}
+									
+									@Override
+									public void onError(ANError error) {
+										ivTxIm.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.bg_image_creativity_colors));
+									}
+								});
 						break;
 					case "TEXT_IMAGE_TEXT":
 						if (convertView == null) {
@@ -494,10 +492,24 @@ public class SessionActivity extends AppCompatActivity {
 						}
 						TextView tvTxImTx1 = (TextView) convertView.findViewById(R.id.tvTxImTi1);
 						TextView tvTxImTx2 = (TextView) convertView.findViewById(R.id.tvTxImTi2);
-						ImageView ivTxImTx = (ImageView) convertView.findViewById(R.id.ivTxImTx);
+						final ImageView ivTxImTx = (ImageView) convertView.findViewById(R.id.ivTxImTx);
 						tvTxImTx1.setText(card.getCard_text_above());
 						tvTxImTx2.setText(card.getCard_text_below());
-						Glide.with(getContext()).load(card.getImageUrl()).into(ivTxImTx);
+						//Glide.with(getContext()).load(card.getImageUrl()).into(ivTxImTx);
+						AndroidNetworking.get(card.getImageUrl())
+								.setBitmapConfig(Bitmap.Config.ARGB_8888)
+								.build()
+								.getAsBitmap(new BitmapRequestListener() {
+									@Override
+									public void onResponse(Bitmap bitmap) {
+										ivTxImTx.setImageBitmap(bitmap);
+									}
+									
+									@Override
+									public void onError(ANError error) {
+										ivTxImTx.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.bg_image_creativity_colors));
+									}
+								});
 						break;
 					case "VIDEO":
 						//this method does not work as required:-
@@ -552,14 +564,6 @@ public class SessionActivity extends AppCompatActivity {
 						textView2.setText(mainText);
 				}
 			}
-//            cardText.setWebViewClient(new WebViewClient() {
-//                public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//                    return false;
-//                }
-//            });
-			//cardImage.setImageURI(Uri.parse(card.getMediaUrl()));
-			//Glide.with(getContext()).load(card.getMediaUrl()).into(cardImage);
-
 			return convertView;
 		}
 

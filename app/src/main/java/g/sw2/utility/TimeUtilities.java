@@ -15,7 +15,7 @@ import g.sw2.R;
 
 public class TimeUtilities {
 	
-	public static boolean checkAppFirstTimeInstalled(Context context) {
+	public static boolean appFirstTimeInstalled(Context context) {
 		SharedPreferences prefs = context.getSharedPreferences(context.getString(R.string.prefs_first_time), Context.MODE_PRIVATE);
 		boolean result = prefs.getBoolean(Constants.USER_FIRST_INSTALL, true);
 		if (result) {
@@ -24,9 +24,9 @@ public class TimeUtilities {
 		return result;
 	}
 	
-	public static void saveMath10UpdateDate(Context context) {
+	public static void saveMath10UpdateDate(Context context, String date) {
 		SharedPreferences prefs = context.getSharedPreferences(Constants.PREFS_MATH10_FILE_UPDATE, Context.MODE_PRIVATE);
-		prefs.edit().putString(Constants.MATH10_UPDATE_DATE, getTodaysDate()).apply();
+		prefs.edit().putString(Constants.MATH10_UPDATE_DATE, date).apply();
 	}
 	
 	public static String getMath10UpdateDate(Context context) {

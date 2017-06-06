@@ -26,17 +26,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.DownloadListener;
-import com.androidnetworking.interfaces.DownloadProgressListener;
 
 import g.sw2.R;
-import g.sw2.utility.Constants;
-import g.sw2.utility.TimeUtilities;
 
 
 public class OnBoardingActivity extends AppCompatActivity {
@@ -93,12 +84,6 @@ public class OnBoardingActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.black_trans80));
         }
         setContentView(R.layout.activity_on_boarding);
-        
-        /* download math data file from server if its first install */
-	    if (getIntent().getBooleanExtra("download_data_from_server", false)) {
-		    startFileDownloadFromServer();
-	    }
-
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -245,30 +230,8 @@ public class OnBoardingActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 	
-	void startFileDownloadFromServer() {
-		AndroidNetworking.download(Constants.MATH10_AWS_URL, Constants.SDCARD_PATH, Constants.LOCAL_FILENAME_MATH10)//this happens asynchronously
-				.setPriority(Priority.HIGH)
-				.build()
-				.setDownloadProgressListener(new DownloadProgressListener() {
-					@Override
-					public void onProgress(long bytesDownloaded, long totalBytes) {
-					}
-				})
-				.startDownload(new DownloadListener() {
-					@Override
-					public void onDownloadComplete() {
-						TimeUtilities.saveMath10UpdateDate(OnBoardingActivity.this.getBaseContext());
-					}
-					
-					@Override
-					public void onError(ANError anError) {
-						Toast.makeText(OnBoardingActivity.this.getBaseContext(), "Error downloading data. Retrying...", Toast.LENGTH_LONG).show();
-						startFileDownloadFromServer();
-					}
-				});
-	}
-
-    /**
+	
+	/**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {

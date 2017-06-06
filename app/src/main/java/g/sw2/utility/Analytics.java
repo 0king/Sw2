@@ -1,4 +1,4 @@
-package g.sw2;
+package g.sw2.utility;
 
 import android.content.Context;
 
@@ -15,7 +15,7 @@ import com.google.android.gms.analytics.Tracker;
 public class Analytics {
 
 	private static Analytics instance;
-	String mixpanelToken = "fc4e9c7385c84486e86a36beebbe01d2";
+	//String mixpanelToken = "fc4e9c7385c84486e86a36beebbe01d2";
 	/* google analytics */
 	private Tracker gTracker;
 

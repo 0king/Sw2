@@ -5,9 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-public class HexagonImageView extends ImageView {
+public class HexagonImageView extends android.support.v7.widget.AppCompatImageView {
     private Bitmap animationBitmap;
     private PathMaskedDrawable maskedImageDrawable;
 

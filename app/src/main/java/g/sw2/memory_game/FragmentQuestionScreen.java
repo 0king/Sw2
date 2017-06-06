@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.BindView;
 import g.sw2.R;
 import g.sw2.utility.ContentManager;
 
@@ -24,7 +23,6 @@ import g.sw2.utility.ContentManager;
 public class FragmentQuestionScreen extends Fragment implements View.OnClickListener {
 	
 	private static final String TAG = "FragmentQuestionScreen";
-	@BindView(R.id.tv_question)
 	TextView tvQuestionText;
 	private ActivityGameQuestionScreenSlide parentActivity;
 	private String colorList[] = {"#ff0015", "#f200ff", "#00aeff", "#00ff15", "#f6ff00"};//red, purple,blue,green,yellow
@@ -49,6 +47,9 @@ public class FragmentQuestionScreen extends Fragment implements View.OnClickList
 		View rootView = inflater.inflate(R.layout.fragment_question_screen, container, false);
 		parentActivity = (ActivityGameQuestionScreenSlide) getActivity();
 		rootView.setBackgroundColor(Color.parseColor(colorList[indexOfArrayColor]));
+		
+		
+		tvQuestionText = (TextView) rootView.findViewById(R.id.tv_question);
 		
 		buttonQuestionOptions = new Button[5];
 		buttonQuestionOptions[0] = (Button) rootView.findViewById(R.id.option1);

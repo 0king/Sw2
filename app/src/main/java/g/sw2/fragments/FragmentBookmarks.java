@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import g.sw2.R;
 
 
@@ -79,7 +77,7 @@ public class FragmentBookmarks extends Fragment {
 		textView.setText(cardtext);*/
 
 		//imageView.setImageURI(Uri.parse("http://st1.bollywoodlife.com/wp-content/uploads/photos/disha-patani-looks-extremely-hot-during-her-photo-shoot-201601-649027.jpg"));
-		Glide.with(getContext()).load("http://www.telugubang.in/wp-content/uploads/2017/02/Hot-Disha-patani-at-Jio-Filmfare-Award-2017t.jpg").into(imageView);
+		//Glide.with(getContext()).load("http://www.telugubang.in/wp-content/uploads/2017/02/Hot-Disha-patani-at-Jio-Filmfare-Award-2017t.jpg").into(imageView);
 		return view;
 	}
 

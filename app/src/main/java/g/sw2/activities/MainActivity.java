@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,13 +25,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.BitmapRequestListener;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
 
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
 // Create items
         AHBottomNavigationItem item1 = new AHBottomNavigationItem("Training", R.mipmap.ic_dumbbell_skycolor_material_48);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem("Progress", R.mipmap.ic_performance_24dp);
-	    AHBottomNavigationItem item3 = new AHBottomNavigationItem("All Subjects", R.mipmap.ic_all_contents_black_24dp);
+	    AHBottomNavigationItem item3 = new AHBottomNavigationItem("Explore", R.mipmap.ic_all_contents_black_24dp);
 	    AHBottomNavigationItem item4 = new AHBottomNavigationItem("Others", R.mipmap.ic_list_black_24dp);
 
 // Add items
@@ -271,7 +271,7 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
         // loading header background image
     
         //showProgressBar();
-        Glide.with(this).load(urlNavHeaderBg)
+       /* Glide.with(this).load(urlNavHeaderBg)
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -290,6 +290,21 @@ public class MainActivity extends AppCompatActivity implements FragmentSession.O
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgNavHeaderBg);
+    */
+	    AndroidNetworking.get(urlNavHeaderBg)
+			    .setBitmapConfig(Bitmap.Config.ARGB_8888)
+			    .build()
+			    .getAsBitmap(new BitmapRequestListener() {
+				    @Override
+				    public void onResponse(Bitmap bitmap) {
+					    imgNavHeaderBg.setImageBitmap(bitmap);
+				    }
+				
+				    @Override
+				    public void onError(ANError error) {
+					    imgNavHeaderBg.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.bg_image_creativity_colors));
+				    }
+			    });
     
     
         // Loading profile image
